@@ -1,0 +1,29 @@
+local NetMingShanNewresultBase = {}
+
+--名山通关领奖
+-- mingshanId(string): 名山id
+function NetMingShanNewresultBase:Init(mingshanId,callback)
+    self.data = {}
+	self.data.msgName = "MingShanNewresult"
+
+	self.data.mingshanId = mingshanId
+	self.callback = callback
+
+    return self
+end
+
+function NetMingShanNewresultBase:Send()
+    Net.Send(self)
+end
+
+function NetMingShanNewresultBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMingShanNewresultBase
+

@@ -1,0 +1,17 @@
+NetInitEatChick = {}
+local net = require("Net/Base/NetInitEatChickBase")
+net.__index = net
+
+function NetInitEatChick.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+     self.isHaveChicken = v.value.data.isHaveChicken
+     self.noonChicken = v.value.data.noonChicken --0可以开吃了，1已吃鸡，2时间未到，3时间过了，4已补吃
+     self.nightChicken =  v.value.data.nightChicken--0可以开吃了，1已吃鸡，2时间未到，3时间过了，4已补吃
+     self.is_double =  v.value.data.is_double--0是没有双倍活动，1是有双倍
+end

@@ -1,0 +1,27 @@
+local NetGetHerartInItBase = {}
+
+--易容术初始化
+function NetGetHerartInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetHerartInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetHerartInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetHerartInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetHerartInItBase
+

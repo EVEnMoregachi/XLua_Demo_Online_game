@@ -1,0 +1,20 @@
+NetGetdrawcardInIt = {}
+local net = require("Net/Base/NetGetdrawcardInItBase")
+net.__index = net
+
+function NetGetdrawcardInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+    local data  = v.value.data.callDrawCardInIt
+    drawcard.DarwCard1Num = data.darwCard1Num
+    drawcard.DarwCard2Num = data.darwCard2Num
+    drawcard.DarwCard3Num = data.darwCard3Num
+    drawcard.CardActiveTime = data.cardActiveTime
+    drawcard.CardActivePetId = data.cardActivePetId
+ end
+ 

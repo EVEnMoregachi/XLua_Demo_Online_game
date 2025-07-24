@@ -1,0 +1,29 @@
+local NetSkyBookAddBase = {}
+
+--天书增加
+-- sky_id(string): 天书id
+function NetSkyBookAddBase:Init(sky_id,callback)
+    self.data = {}
+	self.data.msgName = "SkyBookAdd"
+
+	self.data.sky_id = sky_id
+	self.callback = callback
+
+    return self
+end
+
+function NetSkyBookAddBase:Send()
+    Net.Send(self)
+end
+
+function NetSkyBookAddBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetSkyBookAddBase
+

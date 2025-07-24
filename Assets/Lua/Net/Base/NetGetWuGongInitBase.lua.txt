@@ -1,0 +1,27 @@
+local NetGetWuGongInitBase = {}
+
+--武功初始化
+function NetGetWuGongInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetWuGongInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetWuGongInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetWuGongInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetWuGongInitBase
+

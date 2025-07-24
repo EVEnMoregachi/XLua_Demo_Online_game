@@ -1,0 +1,14 @@
+NetGamePetCrossEquip = {}
+local net = require("Net/Base/NetGamePetCrossEquipBase")
+net.__index = net
+
+function NetGamePetCrossEquip.Create(petId,equipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,equipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,29 @@
+local NetJiangHuGameCopyGiftsBase = {}
+
+--江湖副本:送礼
+-- npc_id(string): 弟子id
+function NetJiangHuGameCopyGiftsBase:Init(npc_id,callback)
+    self.data = {}
+	self.data.msgName = "JiangHuGameCopyGifts"
+
+	self.data.npc_id = npc_id
+	self.callback = callback
+
+    return self
+end
+
+function NetJiangHuGameCopyGiftsBase:Send()
+    Net.Send(self)
+end
+
+function NetJiangHuGameCopyGiftsBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJiangHuGameCopyGiftsBase
+

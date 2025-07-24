@@ -1,0 +1,15 @@
+NetOnlineGetPrize = {}
+local net = require("Net/Base/NetOnlineGetPrizeBase")
+net.__index = net
+
+function NetOnlineGetPrize.Create(prize_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(prize_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+                welfare.WelfareMsg = v.value.data.welfareMsg 
+        welfare.WelfareOnlineInIt = v.value.data.welfareOnlineInIt
+ end

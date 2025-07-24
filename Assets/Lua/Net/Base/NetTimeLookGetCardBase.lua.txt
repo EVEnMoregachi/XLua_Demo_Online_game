@@ -1,0 +1,29 @@
+local NetTimeLookGetCardBase = {}
+
+--限时寻侠抽卡
+-- cardType(string): 抽卡类型 1单抽  10十连抽
+function NetTimeLookGetCardBase:Init(cardType,callback)
+    self.data = {}
+	self.data.msgName = "TimeLookGetCard"
+
+	self.data.cardType = cardType
+	self.callback = callback
+
+    return self
+end
+
+function NetTimeLookGetCardBase:Send()
+    Net.Send(self)
+end
+
+function NetTimeLookGetCardBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTimeLookGetCardBase
+

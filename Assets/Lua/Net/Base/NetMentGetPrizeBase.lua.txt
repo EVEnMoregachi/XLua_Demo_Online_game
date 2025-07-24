@@ -1,0 +1,29 @@
+local NetMentGetPrizeBase = {}
+
+--成就领取
+-- ment_Id(string): 成就id
+function NetMentGetPrizeBase:Init(ment_Id,callback)
+    self.data = {}
+	self.data.msgName = "MentGetPrize"
+
+	self.data.ment_Id = ment_Id
+	self.callback = callback
+
+    return self
+end
+
+function NetMentGetPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetMentGetPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMentGetPrizeBase
+

@@ -1,0 +1,15 @@
+NetGetUserData = {}
+local Net = require("Net/Base/NetGetUserDataBase")
+Net.__index = Net
+
+function NetGetUserData.Create(callback)
+    local t = {}
+	setmetatable(t, Net)
+    t:Init(callback)
+    return t
+end 
+
+function Net:OnResult(v)
+        self.data = v.value.data.PlayerInfoModel
+       
+end

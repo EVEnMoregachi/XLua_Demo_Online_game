@@ -1,0 +1,14 @@
+NetJiangHuGameCopyEvent = {}
+local net = require("Net/Base/NetJiangHuGameCopyEventBase")
+net.__index = net
+
+function NetJiangHuGameCopyEvent.Create(npc_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(npc_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

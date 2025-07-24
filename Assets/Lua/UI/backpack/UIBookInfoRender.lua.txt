@@ -1,0 +1,29 @@
+local Render = UI.CreateRenderTable()
+
+function Render:SetUICompent(child) 
+	if child.name == "pic" then   
+		self.picB = child:GetComponent("Button")  
+		self.picB.onClick:RemoveAllListeners()   
+		self.picB.onClick:AddListener(function() self:doSome() end) 
+		self.picImage = child:GetComponent("Image") 
+	end
+end
+
+function Render:SetData(v) 
+ 	self.BookData = v 
+	self:RefreshBookItem()
+end
+
+function Render:RefreshBookItem() 
+	-- print("self.BookData.metaID =",self.BookData.metaID ) 
+	self.picImage.sprite = Public.ResMeg.GetSpritePath(self.BookData.metaID,"wuGong")  
+end 
+
+function Render:doSome()
+	  print("点击了武功id=",self.BookData.bookID)
+	  print("元id",self.BookData.metaID)
+	backpack.wuGongDetail(self.BookData.bookID)
+end 
+
+
+return Render

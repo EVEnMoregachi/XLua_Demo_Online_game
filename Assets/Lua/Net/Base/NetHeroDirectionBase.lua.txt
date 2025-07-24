@@ -1,0 +1,31 @@
+local NetHeroDirectionBase = {}
+
+--弟子指点
+-- heroId(string): 弟子id
+-- pointType(int): 指点类型 1升1级 5升5级
+function NetHeroDirectionBase:Init(heroId,pointType,callback)
+    self.data = {}
+	self.data.msgName = "HeroDirection"
+
+	self.data.heroId = heroId
+	self.data.pointType = pointType
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroDirectionBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroDirectionBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroDirectionBase
+

@@ -1,0 +1,27 @@
+local NetGetDayTaskInItBase = {}
+
+--日常任务初始化
+function NetGetDayTaskInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetDayTaskInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetDayTaskInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetDayTaskInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetDayTaskInItBase
+

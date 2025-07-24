@@ -1,0 +1,30 @@
+local Render = UI.CreateRenderTable()
+
+function Render:SetUICompent(child) 
+ 	if child.name == "pic" then   
+		 self.picB = child:GetComponent("Button")  
+		 self.picB.onClick:RemoveAllListeners()   
+		 self.picB.onClick:AddListener(function() self:doSome() end) 
+		 self.picImage = child:GetComponent("Image") 
+	 elseif child.name == "num" then  
+		self.num = child:GetComponent("Text")  
+ 	end
+end
+
+function Render:SetData(v) 
+ 	self.PropData = v 
+	self:RefreshPropItem()
+end
+
+function Render:RefreshPropItem() 
+	-- -- print("self.PropData.propID =",self.PropData.propID ) 
+ 	self.picImage.sprite = Public.ResMeg.GetSpritePath(self.PropData.propID,"backpack")  
+	self.num.text = self.PropData.propNum
+end 
+
+function Render:doSome() 
+ 	backpack.propDetail(self.PropData.propID)
+	 
+end 
+
+return Render

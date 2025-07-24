@@ -1,0 +1,27 @@
+local NetGetSkyBookInItBase = {}
+
+--天书初始化
+function NetGetSkyBookInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetSkyBookInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetSkyBookInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetSkyBookInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetSkyBookInItBase
+

@@ -1,0 +1,29 @@
+local NetWuGongCombineBase = {}
+
+--合成
+-- chipId(string): 武功碎片id
+function NetWuGongCombineBase:Init(chipId,callback)
+    self.data = {}
+	self.data.msgName = "WuGongCombine"
+
+	self.data.chipId = chipId
+	self.callback = callback
+
+    return self
+end
+
+function NetWuGongCombineBase:Send()
+    Net.Send(self)
+end
+
+function NetWuGongCombineBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetWuGongCombineBase
+

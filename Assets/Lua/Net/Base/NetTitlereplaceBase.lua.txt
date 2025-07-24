@@ -1,0 +1,29 @@
+local NetTitlereplaceBase = {}
+
+--称号替换
+-- title_Id(string): 称号id
+function NetTitlereplaceBase:Init(title_Id,callback)
+    self.data = {}
+	self.data.msgName = "Titlereplace"
+
+	self.data.title_Id = title_Id
+	self.callback = callback
+
+    return self
+end
+
+function NetTitlereplaceBase:Send()
+    Net.Send(self)
+end
+
+function NetTitlereplaceBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTitlereplaceBase
+

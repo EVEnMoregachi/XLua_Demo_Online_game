@@ -1,0 +1,14 @@
+NetGetSunBattleInit = {}
+local net = require("Net/Base/NetGetSunBattleInitBase")
+net.__index = net
+
+function NetGetSunBattleInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

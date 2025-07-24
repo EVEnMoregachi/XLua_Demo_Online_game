@@ -1,0 +1,14 @@
+NetDishValleyThrow = {}
+local net = require("Net/Base/NetDishValleyThrowBase")
+net.__index = net
+
+function NetDishValleyThrow.Create(throwMold,changed,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(throwMold,changed,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.DieGuData = v.value.data
+end

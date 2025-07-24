@@ -1,0 +1,28 @@
+NetGetSmallMapNpcInIt = {}
+local net = require("Net/Base/NetGetSmallMapNpcInItBase")
+net.__index = net
+
+function NetGetSmallMapNpcInIt.Create(map_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+        if v.value.data.smallMapRandomEvent ~= nil then
+            JiangHu2.RanDomDaoJu = {}
+            JiangHu2.RanDomDaoJu = v.value.data.smallMapRandomEvent
+            for i = 1,#JiangHu2.RanDomDaoJu do
+                JiangHu2.RanDomDaoJu[i].BeCreat = 0
+            end
+        end
+        if v.value.data.smallMapRandomNpcEvent ~= nil then
+            JiangHu2.RanDomNpc = {}
+            JiangHu2.RanDomNpc = v.value.data.smallMapRandomNpcEvent
+            for i = 1,#JiangHu2.RanDomNpc do
+                JiangHu2.RanDomNpc[i].BeCreat = 0 
+            end
+        end
+end

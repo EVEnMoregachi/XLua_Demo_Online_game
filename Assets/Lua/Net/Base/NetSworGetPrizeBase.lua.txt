@@ -1,0 +1,27 @@
+local NetSworGetPrizeBase = {}
+
+--侠客岛领取奖励
+function NetSworGetPrizeBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "SworGetPrize"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetSworGetPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetSworGetPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetSworGetPrizeBase
+

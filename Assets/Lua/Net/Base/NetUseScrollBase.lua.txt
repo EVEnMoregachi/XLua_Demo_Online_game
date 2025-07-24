@@ -1,0 +1,29 @@
+local NetUseScrollBase = {}
+
+--使用卷轴
+-- scroll_Id(string): 卷轴id
+function NetUseScrollBase:Init(scroll_Id,callback)
+    self.data = {}
+	self.data.msgName = "UseScroll"
+
+	self.data.scroll_Id = scroll_Id
+	self.callback = callback
+
+    return self
+end
+
+function NetUseScrollBase:Send()
+    Net.Send(self)
+end
+
+function NetUseScrollBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetUseScrollBase
+

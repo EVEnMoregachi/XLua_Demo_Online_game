@@ -1,0 +1,14 @@
+NetGetCard = {}
+local Net = require("Net/Base/NetGetCardBase")
+Net.__index = Net
+
+function NetGetCard.Create(cardType,callback)
+    local t = {}
+	setmetatable(t, Net)
+    t:Init(cardType,callback)
+    return t
+end 
+
+function Net:OnResult(v)
+        
+end

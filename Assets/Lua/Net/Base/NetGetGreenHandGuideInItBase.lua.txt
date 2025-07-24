@@ -1,0 +1,27 @@
+local NetGetGreenHandGuideInItBase = {}
+
+--新手引导进度初始化
+function NetGetGreenHandGuideInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetGreenHandGuideInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetGreenHandGuideInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetGreenHandGuideInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetGreenHandGuideInItBase
+

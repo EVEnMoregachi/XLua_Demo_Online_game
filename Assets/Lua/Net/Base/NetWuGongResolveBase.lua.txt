@@ -1,0 +1,29 @@
+local NetWuGongResolveBase = {}
+
+--分解
+-- wuGongId(string): 装备id
+function NetWuGongResolveBase:Init(wuGongId,callback)
+    self.data = {}
+	self.data.msgName = "WuGongResolve"
+
+	self.data.wuGongId = wuGongId
+	self.callback = callback
+
+    return self
+end
+
+function NetWuGongResolveBase:Send()
+    Net.Send(self)
+end
+
+function NetWuGongResolveBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetWuGongResolveBase
+

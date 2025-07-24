@@ -1,0 +1,14 @@
+NetGetJiangHuGameCopyInIt = {}
+local net = require("Net/Base/NetGetJiangHuGameCopyInItBase")
+net.__index = net
+
+function NetGetJiangHuGameCopyInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

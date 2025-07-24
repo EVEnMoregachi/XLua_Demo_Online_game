@@ -1,0 +1,14 @@
+NetSkyBookAdd = {}
+local net = require("Net/Base/NetSkyBookAddBase")
+net.__index = net
+
+function NetSkyBookAdd.Create(sky_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(sky_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

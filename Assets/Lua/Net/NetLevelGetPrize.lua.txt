@@ -1,0 +1,15 @@
+NetLevelGetPrize = {}
+local net = require("Net/Base/NetLevelGetPrizeBase")
+net.__index = net
+
+function NetLevelGetPrize.Create(prize_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(prize_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+         welfare.WelfareMsg = v.value.data.welfareMsg  
+        welfare.WelfareLevelInIt = v.value.data.welfareLevelInIt
+end

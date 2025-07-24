@@ -1,0 +1,14 @@
+NetGetMingShanInit = {}
+local net = require("Net/Base/NetGetMingShanInitBase")
+net.__index = net
+
+function NetGetMingShanInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,14 @@
+NetGetDishValleyInIt = {}
+local net = require("Net/Base/NetGetDishValleyInItBase")
+net.__index = net
+
+function NetGetDishValleyInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.DieGuData = v.value.data
+end

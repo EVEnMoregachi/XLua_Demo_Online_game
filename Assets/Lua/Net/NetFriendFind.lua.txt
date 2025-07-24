@@ -1,0 +1,14 @@
+NetFriendFind = {}
+local net = require("Net/Base/NetFriendFindBase")
+net.__index = net
+
+function NetFriendFind.Create(findDetails,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(findDetails,callback)
+    return t
+end 
+
+function net:OnResult(v) 
+        social.friendAddInfo = v.value.data["friendFind"] 
+end

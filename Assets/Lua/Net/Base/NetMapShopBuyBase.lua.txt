@@ -1,0 +1,33 @@
+local NetMapShopBuyBase = {}
+
+--购买商品
+-- person_id(string): 人物id
+-- shop_id(string): 商品id
+-- shop_num(string): 数量
+function NetMapShopBuyBase:Init(person_id,shop_id,shop_num,callback)
+    self.data = {}
+	self.data.msgName = "MapShopBuy"
+
+	self.data.person_id = person_id
+	self.data.shop_id = shop_id
+	self.data.shop_num = shop_num
+	self.callback = callback
+
+    return self
+end
+
+function NetMapShopBuyBase:Send()
+    Net.Send(self)
+end
+
+function NetMapShopBuyBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapShopBuyBase
+

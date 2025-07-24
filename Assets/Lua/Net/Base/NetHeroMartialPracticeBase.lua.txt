@@ -1,0 +1,35 @@
+local NetHeroMartialPracticeBase = {}
+
+--弟子武学修炼
+-- heroId(string): 弟子id
+-- wuXueLearnType(int): 修炼类型 0乙魂一键修炼 1普通修炼
+-- wuXueLearnExpend(string): 使用的是魂魄 传魂魄id 1 使用的是精华 
+-- wuXueUseNum(int): 使用数量
+function NetHeroMartialPracticeBase:Init(heroId,wuXueLearnType,wuXueLearnExpend,wuXueUseNum,callback)
+    self.data = {}
+	self.data.msgName = "HeroMartialPractice"
+
+	self.data.heroId = heroId
+	self.data.wuXueLearnType = wuXueLearnType
+	self.data.wuXueLearnExpend = wuXueLearnExpend
+	self.data.wuXueUseNum = wuXueUseNum
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroMartialPracticeBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroMartialPracticeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroMartialPracticeBase
+

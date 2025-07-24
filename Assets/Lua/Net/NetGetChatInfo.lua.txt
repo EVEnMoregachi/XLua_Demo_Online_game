@@ -1,0 +1,15 @@
+NetGetChatInfo = {}
+local Net = require("Net/Base/NetGetChatInfoBase")
+Net.__index = Net
+
+function NetGetChatInfo.Create(Cursor,callback)
+    local t = {}
+	setmetatable(t, Net)
+    t:Init(Cursor,callback)
+    return t
+end 
+
+function Net:OnResult(v)  
+    a_chat.num = v.value.data.num
+    a_chat.chatList = v.value.data.chatList
+end

@@ -1,0 +1,29 @@
+local NetEatChickBase = {}
+
+--吃鸡
+-- mold(string): 吃鸡类型(0吃免费鸡 1补吃)
+function NetEatChickBase:Init(mold,callback)
+    self.data = {}
+	self.data.msgName = "EatChick"
+
+	self.data.mold = mold
+	self.callback = callback
+
+    return self
+end
+
+function NetEatChickBase:Send()
+    Net.Send(self)
+end
+
+function NetEatChickBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEatChickBase
+

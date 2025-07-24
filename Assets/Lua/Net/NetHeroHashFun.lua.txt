@@ -1,0 +1,14 @@
+NetHeroHashFun = {}
+local net = require("Net/Base/NetHeroHashFunBase")
+net.__index = net
+
+function NetHeroHashFun.Create(heroId,hashType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,hashType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

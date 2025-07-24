@@ -1,0 +1,14 @@
+NetMentOneGetPrize = {}
+local net = require("Net/Base/NetMentOneGetPrizeBase")
+net.__index = net
+
+function NetMentOneGetPrize.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        master.mentMsgInIt = v.value.data.mentMsgInIt
+end

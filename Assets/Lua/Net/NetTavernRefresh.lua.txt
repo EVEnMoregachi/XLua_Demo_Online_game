@@ -1,0 +1,15 @@
+NetTavernRefresh = {}
+local net = require("Net/Base/NetTavernRefreshBase")
+net.__index = net
+
+function NetTavernRefresh.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+            tavern.PTheroData = v.value.data.commonDrinkHeroList
+            tavern.refNum = v.value.data.refNum
+end

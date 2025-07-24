@@ -1,0 +1,119 @@
+local PlayerInfoModel = {}
+ 
+local headId = ""
+ function PlayerInfoModel:SetData(v)
+	if v.playerId == "" then
+		return
+	end
+	self.data = v   
+	--print("headId=====================",headId)
+	--print("self.data.herartTime=====================",self.data.herartTime)
+
+	--如果headId为空或者发生改变时  通知易容
+	if headId ~= "" then  
+ 		if headId ~= self.data.headId then 
+			headId = self.data.headId
+			Event.Call("HerartTimeShow")   
+		end 
+	else  
+		headId = self.data.headId 
+	end  
+ 	Event.Call("changeUserInfo" , self.data) 
+end
+
+--等级
+ function PlayerInfoModel:Level()
+    if self.data.level ~= nil then
+		return  self.data.level
+ 	else 
+		return 5
+	end 
+end
+
+function PlayerInfoModel:playerId() 
+	 return self.data.playerId 
+end
+
+--银两
+function PlayerInfoModel:getSilver() 
+	return self.data.silver 
+end
+--元宝
+function PlayerInfoModel:getYuanBao() 
+	return self.data.yuanBao 
+end
+--体力
+function PlayerInfoModel:getTili() 
+	return self.data.vit 
+end
+--精力
+function PlayerInfoModel:getJingli() 
+	return self.data.vim 
+end
+--元气
+function PlayerInfoModel:getYuanqi() 
+	return self.data.yuanQi 
+end
+--id
+function PlayerInfoModel:getPlayerId() 
+	return self.data.playerId 
+end
+--昵称
+function PlayerInfoModel:getNickName() 
+ 	return self.data.nickName 
+end
+--vip
+function PlayerInfoModel:getVip() 
+	return self.data.vip 
+end
+--称号
+function PlayerInfoModel:getTitle() 
+	return self.data.title 
+end
+--性别
+function PlayerInfoModel:getGender() 
+	return self.data.gender 
+end
+--头像id
+function PlayerInfoModel:getHeadId() 
+	return self.data.headId 
+end
+
+--战斗力
+function PlayerInfoModel:GetfightValue() 
+	return self.data.fightValue 
+end
+
+--服饰
+function PlayerInfoModel:Fushi() 
+	return self.data.fushi 
+end
+--发色
+function PlayerInfoModel:Fase() 
+	return self.data.fase 
+end
+--肤色
+function PlayerInfoModel:Fuse() 
+	return self.data.fuse 
+end
+--发行
+function PlayerInfoModel:Faxing() 
+	return self.data.faxing 
+end
+--属性
+function PlayerInfoModel:Shuxiang() 
+	return self.data.shuxiang 
+end
+--易容时间
+function PlayerInfoModel:getHeartTime() 
+	return self.data.herartTime 
+end
+
+ 
+function PlayerInfoModel:SetOneData(type_, value)
+   if type_ == "vip" then
+		self.data.vip = value
+ 
+   end 
+ end 
+return PlayerInfoModel

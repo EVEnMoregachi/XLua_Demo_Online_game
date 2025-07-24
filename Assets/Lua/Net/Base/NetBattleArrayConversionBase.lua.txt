@@ -1,0 +1,31 @@
+local NetBattleArrayConversionBase = {}
+
+--阵容换位
+-- posid(int): 更换的位置1
+-- posid2(int): 更换的位置2
+function NetBattleArrayConversionBase:Init(posid,posid2,callback)
+    self.data = {}
+	self.data.msgName = "BattleArrayConversion"
+
+	self.data.posid = posid
+	self.data.posid2 = posid2
+	self.callback = callback
+
+    return self
+end
+
+function NetBattleArrayConversionBase:Send()
+    Net.Send(self)
+end
+
+function NetBattleArrayConversionBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetBattleArrayConversionBase
+

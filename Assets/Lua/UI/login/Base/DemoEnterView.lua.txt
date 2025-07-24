@@ -1,0 +1,21 @@
+local DemoEnterView = {}
+setmetatable(DemoEnterView, {__index=UIBase})
+
+function DemoEnterView:Create()
+    self.name = "DemoEnter"
+    self.path = "login"
+end
+function DemoEnterView:SetUICompent(child)  
+    if child.name == "buttonEnter" then 
+		DemoEnterView.buttonEnter = child:GetComponent("Button") 
+	end
+    
+end
+function DemoEnterView:Init()   
+	DemoEnterView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(DemoEnterView.buttonEnter) end) 
+end
+
+
+
+return DemoEnterView
+

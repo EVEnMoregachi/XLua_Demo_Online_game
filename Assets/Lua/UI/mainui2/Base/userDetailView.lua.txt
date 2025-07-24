@@ -1,0 +1,81 @@
+local userDetailView = {}
+setmetatable(userDetailView, {__index=UIBase})
+
+function userDetailView:Create()
+    self.name = "mainui"
+    self.path = "userDetail"
+end
+function userDetailView:SetUICompent(child) 
+	if child.name == "n_level" then
+		userDetailView.n_level = child:GetComponent("Text") 
+		
+	elseif child.name == "vip" then
+		userDetailView.vip = child:GetComponent("Text") 
+		
+	elseif child.name == "name" then
+		userDetailView.name = child:GetComponent("Text") 
+		
+	elseif child.name == "n_yuanbao" then
+		userDetailView.n_yuanbao = child:GetComponent("Text") 
+		
+	elseif child.name == "n_goldleaf" then
+		userDetailView.n_goldleaf = child:GetComponent("Text") 
+		
+	elseif child.name == "n_tili" then
+		userDetailView.n_tili = child:GetComponent("Text") 
+		
+	elseif child.name == "n_silver" then
+		userDetailView.n_silver = child:GetComponent("Text") 
+		
+	elseif child.name == "n_weiwang" then 
+		userDetailView.n_weiwang = child:GetComponent("Text") 
+	elseif child.name == "n_zhenrong" then 
+		userDetailView.n_zhenrong = child:GetComponent("Text") 
+	elseif child.name == "n_tilinext" then 
+		userDetailView.n_tilinext = child:GetComponent("Text")  
+	elseif child.name == "n_tiliall" then 
+		userDetailView.n_tiliall = child:GetComponent("Text") 
+	elseif child.name == "n_yuanqinext" then 
+		userDetailView.n_yuanqinext = child:GetComponent("Text")  
+	elseif child.name == "n_yuanqiall" then 
+		userDetailView.n_yuanqiall = child:GetComponent("Text") 
+	elseif child.name == "n_jinglinext" then 
+		userDetailView.n_jinglinext = child:GetComponent("Text")  
+	elseif child.name == "n_jingliall" then 
+		userDetailView.n_jingliall = child:GetComponent("Text") 
+ 
+	elseif child.name == "userDetail" then 
+		userDetailView.userDetail = child:GetComponent("Button")  
+	end
+    
+end
+function userDetailView:Init()  
+	for key,value in pairs(userDetailView) do
+		if string.find(key,"a_") then 
+			value.onClick:AddListener(function() self:ButtonClickHandler(value) end) 
+		end 
+	end 
+
+	--[[
+	userDetailView.a_wulin.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) 
+	userDetailView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonYes) end) 
+	userDetailView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(userDetailView.buttonEnter) end) ]]
+end 
+
+return userDetailView
+

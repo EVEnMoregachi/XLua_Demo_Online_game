@@ -1,0 +1,31 @@
+local NetDishValleyThrowBase = {}
+
+--蝶谷医仙投掷、改命
+-- throwMold(int):  0仙桃 1人参
+-- changed(int): 0投掷  1改命
+function NetDishValleyThrowBase:Init(throwMold,changed,callback)
+    self.data = {}
+	self.data.msgName = "DishValleyThrow"
+
+	self.data.throwMold = throwMold
+	self.data.changed = changed
+	self.callback = callback
+
+    return self
+end
+
+function NetDishValleyThrowBase:Send()
+    Net.Send(self)
+end
+
+function NetDishValleyThrowBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetDishValleyThrowBase
+

@@ -1,0 +1,33 @@
+local NetWuGongDownBase = {}
+
+--武功卸下
+-- heroId(string): 弟子id
+-- wuGongId(string): 武功id
+-- wuGongPos(int): 武功位置
+function NetWuGongDownBase:Init(heroId,wuGongId,wuGongPos,callback)
+    self.data = {}
+	self.data.msgName = "WuGongDown"
+
+	self.data.heroId = heroId
+	self.data.wuGongId = wuGongId
+	self.data.wuGongPos = wuGongPos
+	self.callback = callback
+
+    return self
+end
+
+function NetWuGongDownBase:Send()
+    Net.Send(self)
+end
+
+function NetWuGongDownBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetWuGongDownBase
+

@@ -1,0 +1,31 @@
+local NetGetTavernShoppBuyBase = {}
+
+--商贾购买
+-- buyShoppId(string): 购买商品id
+-- buyNum(int): 购买数量
+function NetGetTavernShoppBuyBase:Init(buyShoppId,buyNum,callback)
+    self.data = {}
+	self.data.msgName = "GetTavernShoppBuy"
+
+	self.data.buyShoppId = buyShoppId
+	self.data.buyNum = buyNum
+	self.callback = callback
+
+    return self
+end
+
+function NetGetTavernShoppBuyBase:Send()
+    Net.Send(self)
+end
+
+function NetGetTavernShoppBuyBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetTavernShoppBuyBase
+

@@ -1,0 +1,14 @@
+NetLunjianExamineBattle = {}
+local net = require("Net/Base/NetLunjianExamineBattleBase")
+net.__index = net
+
+function NetLunjianExamineBattle.Create(playerID,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(playerID,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

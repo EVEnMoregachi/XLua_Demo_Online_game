@@ -1,0 +1,29 @@
+local NetBloodFightAddNatureBase = {}
+
+--血战增加属性
+-- addNatureType(string): 增加类型
+function NetBloodFightAddNatureBase:Init(addNatureType,callback)
+    self.data = {}
+	self.data.msgName = "BloodFightAddNature"
+
+	self.data.addNatureType = addNatureType
+	self.callback = callback
+
+    return self
+end
+
+function NetBloodFightAddNatureBase:Send()
+    Net.Send(self)
+end
+
+function NetBloodFightAddNatureBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetBloodFightAddNatureBase
+

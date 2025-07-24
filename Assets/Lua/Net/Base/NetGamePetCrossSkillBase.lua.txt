@@ -1,0 +1,31 @@
+local NetGamePetCrossSkillBase = {}
+
+--宠物穿技能 
+-- petId(string): 宠物id
+-- skillId(string): 技能id
+function NetGamePetCrossSkillBase:Init(petId,skillId,callback)
+    self.data = {}
+	self.data.msgName = "GamePetCrossSkill"
+
+	self.data.petId = petId
+	self.data.skillId = skillId
+	self.callback = callback
+
+    return self
+end
+
+function NetGamePetCrossSkillBase:Send()
+    Net.Send(self)
+end
+
+function NetGamePetCrossSkillBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGamePetCrossSkillBase
+

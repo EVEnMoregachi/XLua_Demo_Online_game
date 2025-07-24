@@ -1,0 +1,29 @@
+local NetJiangHuGameCopyEventBase = {}
+
+--江湖副本:特殊事件
+-- npc_id(string): 弟子id
+function NetJiangHuGameCopyEventBase:Init(npc_id,callback)
+    self.data = {}
+	self.data.msgName = "JiangHuGameCopyEvent"
+
+	self.data.npc_id = npc_id
+	self.callback = callback
+
+    return self
+end
+
+function NetJiangHuGameCopyEventBase:Send()
+    Net.Send(self)
+end
+
+function NetJiangHuGameCopyEventBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJiangHuGameCopyEventBase
+

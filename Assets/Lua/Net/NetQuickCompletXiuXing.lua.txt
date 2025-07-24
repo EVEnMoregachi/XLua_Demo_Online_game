@@ -1,0 +1,15 @@
+NetQuickCompletXiuXing = {}
+local net = require("Net/Base/NetQuickCompletXiuXingBase")
+net.__index = net
+
+function NetQuickCompletXiuXing.Create(xiuXingType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(xiuXingType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.jiangHuInfoList = {}
+        self.jiangHuInfoList =  v.value.data.jiangHuInfo
+end

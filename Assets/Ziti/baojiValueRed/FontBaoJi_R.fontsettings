@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!128 &12800000
+Font:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FontBaoJi_R
+  serializedVersion: 5
+  m_LineSpacing: 32
+  m_DefaultMaterial: {fileID: 2100000, guid: 9d9f0904c39bf394ea15c8da9f60694c, type: 2}
+  m_FontSize: 0
+  m_Texture: {fileID: 0}
+  m_AsciiStartOffset: 0
+  m_Tracking: 1
+  m_CharacterSpacing: 0
+  m_CharacterPadding: 1
+  m_ConvertCase: 0
+  m_CharacterRects:
+  - serializedVersion: 2
+    index: 45
+    uv:
+      serializedVersion: 2
+      x: 0.68
+      y: 0.91796875
+      width: 0.045000017
+      height: 0.08203125
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: -35
+      width: 45
+      height: -21
+    advance: 45
+    flipped: 0
+  - serializedVersion: 2
+    index: 48
+    uv:
+      serializedVersion: 2
+      x: 0.468
+      y: 0.671875
+      width: 0.06800002
+      height: 0.328125
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 68
+      height: -84
+    advance: 68
+    flipped: 0
+  - serializedVersion: 2
+    index: 49
+    uv:
+      serializedVersion: 2
+      x: 0.273
+      y: 0.6640625
+      width: 0.044
+      height: 0.3359375
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 44
+      height: -86
+    advance: 44
+    flipped: 0
+  - serializedVersion: 2
+    index: 50
+    uv:
+      serializedVersion: 2
+      x: 0.398
+      y: 0.671875
+      width: 0.069000006
+      height: 0.328125
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 69
+      height: -84
+    advance: 69
+    flipped: 0
+  - serializedVersion: 2
+    index: 51
+    uv:
+      serializedVersion: 2
+      x: 0.318
+      y: 0.66796875
+      width: 0.078999996
+      height: 0.33203125
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 79
+      height: -85
+    advance: 79
+    flipped: 0
+  - serializedVersion: 2
+    index: 52
+    uv:
+      serializedVersion: 2
+      x: 0.137
+      y: 0.66015625
+      width: 0.069000006
+      height: 0.33984375
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 69
+      height: -87
+    advance: 69
+    flipped: 0
+  - serializedVersion: 2
+    index: 53
+    uv:
+      serializedVersion: 2
+      x: 0.537
+      y: 0.67578125
+      width: 0.07499999
+      height: 0.32421875
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 75
+      height: -83
+    advance: 75
+    flipped: 0
+  - serializedVersion: 2
+    index: 54
+    uv:
+      serializedVersion: 2
+      x: 0.613
+      y: 0.67578125
+      width: 0.065999985
+      height: 0.32421875
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 66
+      height: -83
+    advance: 66
+    flipped: 0
+  - serializedVersion: 2
+    index: 55
+    uv:
+      serializedVersion: 2
+      x: 0.207
+      y: 0.6640625
+      width: 0.06500001
+      height: 0.3359375
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 65
+      height: -86
+    advance: 65
+    flipped: 0
+  - serializedVersion: 2
+    index: 56
+    uv:
+      serializedVersion: 2
+      x: 0.064
+      y: 0.65234375
+      width: 0.072000004
+      height: 0.34765625
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 72
+      height: -89
+    advance: 72
+    flipped: 0
+  - serializedVersion: 2
+    index: 57
+    uv:
+      serializedVersion: 2
+      x: 0
+      y: 0.64453125
+      width: 0.063
+      height: 0.35546875
+    vert:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 63
+      height: -91
+    advance: 63
+    flipped: 0
+  m_KerningValues: []
+  m_PixelScale: 0.1
+  m_FontData: 
+  m_Ascent: 0
+  m_Descent: 0
+  m_DefaultStyle: 0
+  m_FontNames: []
+  m_FallbackFonts: []
+  m_FontRenderingMode: 0
+  m_UseLegacyBoundsCalculation: 0
+  m_ShouldRoundAdvanceValue: 1

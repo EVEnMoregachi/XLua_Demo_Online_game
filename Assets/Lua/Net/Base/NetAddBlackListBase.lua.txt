@@ -1,0 +1,29 @@
+local NetAddBlackListBase = {}
+
+--加入黑名单
+-- playerId(string): 好友id
+function NetAddBlackListBase:Init(playerId,callback)
+    self.data = {}
+	self.data.msgName = "AddBlackList"
+
+	self.data.playerId = playerId
+	self.callback = callback
+
+    return self
+end
+
+function NetAddBlackListBase:Send()
+    Net.Send(self)
+end
+
+function NetAddBlackListBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetAddBlackListBase
+

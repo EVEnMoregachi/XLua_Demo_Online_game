@@ -1,0 +1,15 @@
+NetGetFriendInIt = {}
+local net = require("Net/Base/NetGetFriendInItBase")
+net.__index = net
+
+function NetGetFriendInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+     social.friendInfo = v.value.data["friendInit"]  
+     social.OnlineNum = v.value.data.onlineNum
+end

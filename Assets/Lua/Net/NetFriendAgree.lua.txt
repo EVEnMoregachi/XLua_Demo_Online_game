@@ -1,0 +1,14 @@
+NetFriendAgree = {}
+local net = require("Net/Base/NetFriendAgreeBase")
+net.__index = net
+
+function NetFriendAgree.Create(playerId,emailId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(playerId,emailId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+      social.emailMsgInIt = v.value.data.emailMsgInIt   
+end

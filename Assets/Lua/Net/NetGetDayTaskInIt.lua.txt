@@ -1,0 +1,21 @@
+NetGetDayTaskInIt = {}
+local net = require("Net/Base/NetGetDayTaskInItBase")
+net.__index = net
+
+function NetGetDayTaskInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end  
+
+function net:OnResult(v)  
+    sign_task.taskData ={ }  -- 任务列表
+    sign_task.taskBoxState ={ } --任务箱子信息
+    sign_task.nowScore = v.value.data.nowScore  --当前任务积分 
+    sign_task.taskData  = v.value.data.taskStateInfo   
+     for i,v1 in ipairs(v.value.data["taskBoxStateInfo"]) do   --宝箱信息 
+        sign_task.taskBoxState[v1.boxID] = v1.boxState  --(0未达到 1待领取 2已领取)
+     end
+end
+ 

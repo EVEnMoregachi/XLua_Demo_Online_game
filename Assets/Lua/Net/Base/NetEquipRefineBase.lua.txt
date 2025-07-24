@@ -1,0 +1,31 @@
+local NetEquipRefineBase = {}
+
+--精炼
+-- equipId(string): 装备id
+-- equipRefineExpend(string): 装备精炼使用道具信息
+function NetEquipRefineBase:Init(equipId,equipRefineExpend,callback)
+    self.data = {}
+	self.data.msgName = "EquipRefine"
+
+	self.data.equipId = equipId
+	self.data.equipRefineExpend = equipRefineExpend
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipRefineBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipRefineBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipRefineBase
+

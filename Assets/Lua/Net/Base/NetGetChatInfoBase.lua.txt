@@ -1,0 +1,29 @@
+local NetGetChatInfoBase = {}
+
+--获取聊天信息
+-- Cursor(int): 标志位
+function NetGetChatInfoBase:Init(Cursor,callback)
+    self.data = {}
+	self.data.msgName = "GetChatInfo"
+
+	self.data.Cursor = Cursor
+	self.callback = callback
+
+    return self
+end
+
+function NetGetChatInfoBase:Send()
+    Net.Send(self)
+end
+
+function NetGetChatInfoBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetChatInfoBase
+

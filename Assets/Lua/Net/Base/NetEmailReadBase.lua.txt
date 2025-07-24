@@ -1,0 +1,29 @@
+local NetEmailReadBase = {}
+
+--邮件读取（单个）
+-- emailId(string): 邮件Id
+function NetEmailReadBase:Init(emailId,callback)
+    self.data = {}
+	self.data.msgName = "EmailRead"
+
+	self.data.emailId = emailId
+	self.callback = callback
+
+    return self
+end
+
+function NetEmailReadBase:Send()
+    Net.Send(self)
+end
+
+function NetEmailReadBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEmailReadBase
+

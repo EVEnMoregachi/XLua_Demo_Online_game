@@ -1,0 +1,29 @@
+local NetMingShanFightBase = {}
+
+--名山战斗
+-- mingshanId(string): 名山id
+function NetMingShanFightBase:Init(mingshanId,callback)
+    self.data = {}
+	self.data.msgName = "MingShanFight"
+
+	self.data.mingshanId = mingshanId
+	self.callback = callback
+
+    return self
+end
+
+function NetMingShanFightBase:Send()
+    Net.Send(self)
+end
+
+function NetMingShanFightBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMingShanFightBase
+

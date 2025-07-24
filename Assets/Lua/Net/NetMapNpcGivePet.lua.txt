@@ -1,0 +1,14 @@
+NetMapNpcGivePet = {}
+local net = require("Net/Base/NetMapNpcGivePetBase")
+net.__index = net
+
+function NetMapNpcGivePet.Create(npc_id,ueType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(npc_id,ueType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

@@ -1,0 +1,14 @@
+NetGamePetCrossSkill = {}
+local net = require("Net/Base/NetGamePetCrossSkillBase")
+net.__index = net
+
+function NetGamePetCrossSkill.Create(petId,skillId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,skillId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

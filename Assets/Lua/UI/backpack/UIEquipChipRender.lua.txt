@@ -1,0 +1,32 @@
+local Render = UI.CreateRenderTable()
+
+local UIEquipChipInfoRender = require("UI/backpack/UIEquipChipInfoRender")
+UIEquipChipInfoRender.__index = UIEquipChipInfoRender 
+
+function Render:Awake()
+	self.EquipChipInfo = {} 
+end 
+
+function Render:SetUICompent(child)
+	if child.name == "equipchip1" then
+		self:CreateItemRender(child)
+	elseif child.name == "equipchip2" then
+		self:CreateItemRender(child)
+	elseif child.name == "equipchip3" then
+		self:CreateItemRender(child)
+	elseif child.name == "equipchip4" then
+		self:CreateItemRender(child)
+	 
+	end
+end
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIEquipChipInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.EquipChipInfo, tempRender)
+end  
+
+return Render
+
+ 

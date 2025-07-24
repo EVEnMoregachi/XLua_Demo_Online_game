@@ -1,0 +1,18 @@
+NetPlayerSendChat = {}
+local net = require("Net/Base/NetPlayerSendChatBase")
+net.__index = net
+
+function NetPlayerSendChat.Create(Cursor,chat_info,callback)
+    print(Cursor)
+    print(chat_info)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(Cursor,chat_info,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    a_chat.num = v.value.data.num
+    a_chat.chatList = v.value.data.chatList
+
+end

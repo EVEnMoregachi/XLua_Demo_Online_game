@@ -1,0 +1,145 @@
+local SeeMapView = {}
+setmetatable(SeeMapView, {__index=UIBase})
+
+function SeeMapView:Create()
+    self.name = "SeeMap"
+    self.path = "SeeMap"
+end
+function SeeMapView:SetUICompent(child) 
+	if child.name == "a_wulin" then 
+		SeeMapView.a_wulin  = child:GetComponent("Button")  
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_zhenrong" then 
+		SeeMapView.a_zhenrong = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_xingxia" then 
+		SeeMapView.a_xingxia = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_qiyu" then 
+		SeeMapView.a_qiyu = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "ButtonSocial" then 
+		SeeMapView.ButtonSocial = child:GetComponent("Button")
+ 	elseif child.name == "ButtonJiuGuan" then 
+		SeeMapView.ButtonJiuGuan = child:GetComponent("Button") 
+	elseif child.name == "ButtonBeiBao" then 
+		SeeMapView.ButtonBeiBao = child:GetComponent("Button") 
+	elseif child.name == "ButtonQianDao" then 
+		SeeMapView.ButtonQianDao = child:GetComponent("Button") 
+	elseif child.name == "a_package" then 
+		SeeMapView.a_package = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_equip" then 
+		SeeMapView.a_equip = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_dizi" then 
+		SeeMapView.a_dizi = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name)  
+	elseif child.name == "a_jianghu" then 
+		SeeMapView.a_jianghu = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_company" then 
+		SeeMapView.a_company = child:GetComponent("Button")
+	elseif child.name == "a_xiuxing" then 
+		SeeMapView.a_xiuxing = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_wugong" then 
+		SeeMapView.a_wugong = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_lunjian" then 
+		SeeMapView.a_lunjian = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_blood" then 
+		SeeMapView.a_blood = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_menpai" then 
+		SeeMapView.a_menpai = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name) 
+	elseif child.name == "a_juanzhou" then 
+		SeeMapView.a_juanzhou = child:GetComponent("Button")
+		SeeMapView:CheckEnable(child.name)  
+	elseif child.name == "beibaoDot" then 
+		SeeMapView.beibaoDot = child.gameObject
+  	elseif child.name == "socialDot" then 
+		SeeMapView.socialDot = child.gameObject
+	elseif child.name == "qiandaoDot" then 
+		SeeMapView.qiandaoDot = child.gameObject
+	elseif child.name == "jiuguanDot" then 
+		SeeMapView.jiuguanDot = child.gameObject
+
+	elseif child.name == "level" then 
+		SeeMapView.level = child:GetComponent("Text") 
+		
+	elseif child.name == "vip" then 
+		SeeMapView.vip = child:GetComponent("Text") 
+		
+	elseif child.name == "name" then 
+		SeeMapView.nickname = child:GetComponent("Text") 
+		
+	elseif child.name == "n_yuanbao" then 
+		SeeMapView.n_yuanbao = child:GetComponent("Text") 
+		
+	elseif child.name == "n_goldleaf" then 
+		SeeMapView.n_goldleaf = child:GetComponent("Text") 
+		
+	elseif child.name == "n_vit" then 
+		SeeMapView.n_vit = child:GetComponent("Text") 
+		
+	elseif child.name == "n_silver" then 
+		SeeMapView.n_silver = child:GetComponent("Text") 
+		
+	elseif child.name == "n_exp" then 
+		SeeMapView.n_exp = child:GetComponent("Text") 
+		
+	elseif child.name == "image_tianqi" then 
+		SeeMapView.image_tianqi = child:GetComponent("Image") 
+		
+	elseif child.name == "buttonmain" then 
+		SeeMapView.buttonmain = child:GetComponent("Button")  
+	elseif child.name == "button_playerInfo" then 
+		SeeMapView.button_playerInfo = child:GetComponent("Button") 
+ elseif child.name == "jindutiao" then 
+		SeeMapView.jindutiao = child:GetComponent("Image") 
+  elseif child.name == "cloud1" then 
+      SeeMapView.cloud1 = child.gameObject
+    elseif child.name == "cloud2" then 
+      SeeMapView.cloud2 = child.gameObject
+    elseif child.name == "cloud3" then 
+      SeeMapView.cloud3 = child.gameObject
+    elseif child.name == "cloud4" then 
+	  SeeMapView.cloud4 = child.gameObject
+	elseif child.name == "ButtonZhenrong" then 
+		SeeMapView.ButtonZhenrong = child:GetComponent("Button") 
+	 
+	  
+	end
+    
+end
+function SeeMapView:Init()  
+	for key,value in pairs(SeeMapView) do
+		if string.find(key,"a_") then 
+			value.onClick:AddListener(function() self:ButtonClickHandler(value) end) 
+		end 
+	end 
+	--SeeMapView.buttonmain.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.buttonmain) end) 
+     SeeMapView.ButtonSocial.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.ButtonSocial) end) 
+     SeeMapView.ButtonJiuGuan.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.ButtonJiuGuan) end) 
+	 SeeMapView.ButtonBeiBao.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.ButtonBeiBao) end) 
+	 SeeMapView.ButtonQianDao.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.ButtonQianDao) end) 
+ 	  SeeMapView.ButtonZhenrong.onClick:AddListener(function() self:ButtonClickHandler(SeeMapView.ButtonZhenrong) end) 
+	 
+
+end
+local config = require( "StaticData/ConfigData/ConfigOpenPageInfo" )
+function SeeMapView:CheckEnable(name)  
+	--if ConfigOpenPageInfo.IfShowMoudle( name ,   Public.GameMainData.level   ) then 
+	if  config.IfShowMoudle( name , 11   ) == false then 
+
+		 
+		SeeMapView[name].gameObject:SetActive(false)
+	end 
+
+end 
+
+return SeeMapView
+

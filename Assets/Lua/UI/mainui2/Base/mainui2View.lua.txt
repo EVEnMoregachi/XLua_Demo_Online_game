@@ -1,0 +1,27 @@
+local mainui2View = {}
+setmetatable(mainui2View, {__index=UIBase})
+
+function mainui2View:Create()
+    self.name = "mainui2"
+    self.path = "mainui2"
+end
+
+mainui2View.saveDotObj ={}  
+function mainui2View:SetUICompent(child) 
+	 if child.name == "ButtonBeiBao" then 
+		mainui2View.ButtonBeiBao = child:GetComponent("Button") 
+	 
+	end
+    
+end
+function mainui2View:Init()  
+	 
+ 
+	 mainui2View.ButtonBeiBao.onClick:AddListener(function() self:ButtonClickHandler(mainui2View.ButtonBeiBao) end) 
+	 
+	
+end
+ 
+
+return mainui2View
+

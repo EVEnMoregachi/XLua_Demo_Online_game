@@ -1,0 +1,29 @@
+local NetGetCardBase = {}
+
+--抽卡
+-- cardType(int): 1十里 2百里 3万里 4甲魂魄转换万能魂魄
+function NetGetCardBase:Init(cardType,callback)
+    self.data = {}
+	self.data.msgName = "GetCard"
+
+	self.data.cardType = cardType
+	self.callback = callback
+
+    return self
+end
+
+function NetGetCardBase:Send()
+    Net.Send(self)
+end
+
+function NetGetCardBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetCardBase
+

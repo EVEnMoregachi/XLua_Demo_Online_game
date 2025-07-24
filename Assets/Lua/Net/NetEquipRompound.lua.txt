@@ -1,0 +1,14 @@
+NetEquipRompound = {}
+local net = require("Net/Base/NetEquipRompoundBase")
+net.__index = net
+
+function NetEquipRompound.Create(compoundChipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(compoundChipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

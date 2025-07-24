@@ -1,0 +1,31 @@
+local NetMapNpcChatBase = {}
+
+--交谈
+-- map_id(string): 地图id
+-- npc_id(string): NPCID
+function NetMapNpcChatBase:Init(map_id,npc_id,callback)
+    self.data = {}
+	self.data.msgName = "MapNpcChat"
+
+	self.data.map_id = map_id
+	self.data.npc_id = npc_id
+	self.callback = callback
+
+    return self
+end
+
+function NetMapNpcChatBase:Send()
+    Net.Send(self)
+end
+
+function NetMapNpcChatBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapNpcChatBase
+

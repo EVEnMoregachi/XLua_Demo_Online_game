@@ -1,0 +1,27 @@
+local NetKneelStatueBase = {}
+
+--参拜雕像
+function NetKneelStatueBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "KneelStatue"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetKneelStatueBase:Send()
+    Net.Send(self)
+end
+
+function NetKneelStatueBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetKneelStatueBase
+

@@ -1,0 +1,15 @@
+NetKingSpeedTreasuryTimeLookBoxPrize = {}
+local net = require("Net/Base/NetKingSpeedTreasuryTimeLookBoxPrizeBase")
+net.__index = net
+
+function NetKingSpeedTreasuryTimeLookBoxPrize.Create(boxId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(boxId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    ChuangWang.BoxData = {} 
+       ChuangWang.BoxData = v.value.data["kingSpeedTreasuryBoxState"]  
+end

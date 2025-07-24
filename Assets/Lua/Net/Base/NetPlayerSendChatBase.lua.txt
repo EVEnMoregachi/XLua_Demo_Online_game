@@ -1,0 +1,31 @@
+local NetPlayerSendChatBase = {}
+
+--玩家发送聊天信息
+-- Cursor(int): 标志位
+-- chat_info(int): 聊天内容
+function NetPlayerSendChatBase:Init(Cursor,chat_info,callback)
+    self.data = {}
+	self.data.msgName = "PlayerSendChat"
+
+	self.data.Cursor = Cursor
+	self.data.chat_info = chat_info
+	self.callback = callback
+
+    return self
+end
+
+function NetPlayerSendChatBase:Send()
+    Net.Send(self)
+end
+
+function NetPlayerSendChatBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPlayerSendChatBase
+

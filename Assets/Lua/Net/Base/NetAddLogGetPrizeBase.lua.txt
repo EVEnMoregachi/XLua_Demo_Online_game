@@ -1,0 +1,29 @@
+local NetAddLogGetPrizeBase = {}
+
+--累计登陆奖励领取
+-- prize_id(string): 奖励id
+function NetAddLogGetPrizeBase:Init(prize_id,callback)
+    self.data = {}
+	self.data.msgName = "AddLogGetPrize"
+
+	self.data.prize_id = prize_id
+	self.callback = callback
+
+    return self
+end
+
+function NetAddLogGetPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetAddLogGetPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetAddLogGetPrizeBase
+

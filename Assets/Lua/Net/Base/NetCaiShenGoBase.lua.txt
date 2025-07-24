@@ -1,0 +1,27 @@
+local NetCaiShenGoBase = {}
+
+--财神到摇奖
+function NetCaiShenGoBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "CaiShenGo"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetCaiShenGoBase:Send()
+    Net.Send(self)
+end
+
+function NetCaiShenGoBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetCaiShenGoBase
+

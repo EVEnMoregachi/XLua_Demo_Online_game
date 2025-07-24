@@ -1,0 +1,14 @@
+NetEquipIntensify = {}
+local net = require("Net/Base/NetEquipIntensifyBase")
+net.__index = net
+
+function NetEquipIntensify.Create(equipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(equipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

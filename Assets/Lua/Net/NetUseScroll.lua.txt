@@ -1,0 +1,14 @@
+NetUseScroll = {}
+local net = require("Net/Base/NetUseScrollBase")
+net.__index = net
+
+function NetUseScroll.Create(scroll_Id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(scroll_Id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

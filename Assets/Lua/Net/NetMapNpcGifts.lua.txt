@@ -1,0 +1,15 @@
+NetMapNpcGifts = {}
+local net = require("Net/Base/NetMapNpcGiftsBase")
+net.__index = net
+
+function NetMapNpcGifts.Create(map_id,npc_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,npc_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+   
+    
+end

@@ -1,0 +1,14 @@
+NetGetRanShowYuanbaoSilver = {}
+local net = require("Net/Base/NetGetRanShowYuanbaoSilverBase")
+net.__index = net
+
+function NetGetRanShowYuanbaoSilver.Create(prize_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(prize_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        mainui2.nextTime = v.value.data.nextTime 
+end

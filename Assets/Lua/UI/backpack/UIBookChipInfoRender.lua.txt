@@ -1,0 +1,32 @@
+local Render = UI.CreateRenderTable()
+
+function Render:SetUICompent(child) 
+	if child.name == "pic" then   
+		self.picB = child:GetComponent("Button")  
+		self.picB.onClick:RemoveAllListeners()   
+		self.picB.onClick:AddListener(function() self:doSome() end) 
+		self.picImage = child:GetComponent("Image") 
+	elseif child.name == "num" then  
+		self.num = child:GetComponent("Text")  
+	end
+end
+
+function Render:SetData(v) 
+ 	self.BookChipData = v 
+	self:RefreshBookChipItem()
+end
+
+function Render:RefreshBookChipItem() 
+	-- print("self.BookData.chipID =",self.BookChipData.chipID ) 
+	self.picImage.sprite = Public.ResMeg.GetSpritePath(self.BookChipData.chipID,"wuGong")  
+    self.num.text = self.BookChipData.num
+
+end 
+
+function Render:doSome()
+	-- print("点击了武功Chip_id=",self.BookChipData.chipID)
+    backpack.wuGongChipDetail(self.BookChipData.chipID)
+end 
+
+
+return Render

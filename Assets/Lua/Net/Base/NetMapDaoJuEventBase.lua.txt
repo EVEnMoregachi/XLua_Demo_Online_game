@@ -1,0 +1,33 @@
+local NetMapDaoJuEventBase = {}
+
+--道具特殊事件
+-- map_id(string): 地图id
+-- daoju_id(string): 特殊事件道具id
+-- secretKey(string): 特殊事件道具id
+function NetMapDaoJuEventBase:Init(map_id,daoju_id,secretKey,callback)
+    self.data = {}
+	self.data.msgName = "MapDaoJuEvent"
+
+	self.data.map_id = map_id
+	self.data.daoju_id = daoju_id
+	self.data.secretKey = secretKey
+	self.callback = callback
+
+    return self
+end
+
+function NetMapDaoJuEventBase:Send()
+    Net.Send(self)
+end
+
+function NetMapDaoJuEventBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapDaoJuEventBase
+

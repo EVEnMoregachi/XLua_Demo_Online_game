@@ -1,0 +1,17 @@
+NetInitXiuXingInfo = {}
+local net = require("Net/Base/NetInitXiuXingInfoBase")
+net.__index = net
+
+function NetInitXiuXingInfo.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+		-- print("v.value.data.jiangHuInfo **" ,v)
+		-- print("v.value.data.jiangHuInfo " ,v.value.data.jiangHuInfo)
+		self.jiangHuInfoList = {}
+        self.jiangHuInfoList =  v.value.data.jiangHuInfo
+end

@@ -1,0 +1,29 @@
+local NetRegisterOrLoginBase = {}
+
+--登陆或者注册
+-- account(string): 玩家输入的用户名
+function NetRegisterOrLoginBase:Init(account,callback)
+    self.data = {}
+	self.data.msgName = "RegisterOrLogin"
+
+	self.data.account = account
+	self.callback = callback
+
+    return self
+end
+
+function NetRegisterOrLoginBase:Send()
+    Net.Send(self)
+end
+
+function NetRegisterOrLoginBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetRegisterOrLoginBase
+

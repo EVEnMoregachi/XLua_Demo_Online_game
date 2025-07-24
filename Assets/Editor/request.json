@@ -1,0 +1,1177 @@
+﻿[
+  {
+    "name": "getUserData",
+    "desc": "登录获取玩家数据",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "Test",
+    "desc": "测试",
+    "parameter": [
+      {
+        "name": "ID",
+        "type": "string",
+        "desc": "ID"
+      },
+      {
+        "name": "Num",
+        "type": "int",
+        "desc": "数量"
+      }
+    ]
+  },
+  {
+    "name": "GetChatInfo",
+    "desc": "获取聊天信息",
+    "parameter": [
+
+      {
+        "name": "Cursor",
+        "type": "int",
+        "desc": "标志位"    
+      }
+    ]
+  }, 
+  {
+    "name": "PlayerMsgRef",
+    "desc": "刷新玩家数据",
+    "parameter": [ 
+    ]
+  },
+  {
+    "name": "PlayerSendChat",
+    "desc": "玩家发送聊天信息",
+    "parameter": [
+
+      {
+        "name": "Cursor",
+        "type": "int",
+        "desc": "标志位"
+      },
+      {
+        "name": "chat_info",
+        "type": "int",
+        "desc": "聊天内容"
+      }
+    ]
+  },
+  {
+    "name": "ChatRefresh",
+    "desc": "刷新聊天信息",
+    "parameter": [
+
+      {
+        "name": "Cursor",
+        "type": "int",
+        "desc": "标志位"
+      }
+    ]
+  },
+  {
+    "name": "RegisterOrLogin",
+    "desc": "登陆或者注册",
+    "parameter": [
+
+      {
+        "name": "account",
+        "type": "string",
+        "desc": "玩家输入的用户名"
+      }
+    ]
+  },
+  {
+    "name": "EnterGame",
+    "desc": "进入游戏",
+    "parameter": [
+
+
+    ]
+  },
+  {
+    "name": "EnterGame2",
+    "desc": "进入游戏",
+    "parameter": [
+
+
+    ]
+  },
+  {
+    "name": "GetPackageInit",
+    "desc": "初始化背包",
+    "parameter": [
+
+    ]
+  },
+  {
+    "name": "PlayerUseProp",
+    "desc": "客户端使用道具",
+    "parameter": [
+      {
+        "name": "propId",
+        "type": "string",
+        "desc": "道具id"
+      },
+      {
+        "name": "propNum",
+        "type": "string",
+        "desc": "数量"
+      },
+      {
+        "name": "heroId",
+        "type": "string",
+        "desc": "弟子id"
+      }
+    ]
+  },
+  {
+    "name": "GetSignInIt",
+    "desc": "签到初始化",
+    "parameter": [
+
+    ]
+  },
+  {
+    "name": "GetSignPrize",
+    "desc": "签到领取",
+    "parameter": [
+      {
+        "name": "signType",
+        "type": "int",
+        "desc": "1普通签到   2补签   3豪华签到  4签到宝箱领取"
+      },
+      {
+        "name": "signBoxId",
+        "type": "int",
+        "desc": "宝箱id"
+      }
+    ]
+  },
+  {
+    "name": "GetDayTaskInIt",
+    "desc": "日常任务初始化",
+    "parameter": [
+
+    ]
+  },
+  {
+    "name": "GetDayTaskPrize",
+    "desc": "日常任务领取",
+    "parameter": [
+      {
+        "name": "taskId",
+        "type": "string",
+        "desc": "日常任务ID"
+      } 
+    ]
+  },
+  {
+    "name": "GetOpenQiyuPage",
+    "desc": "拿到奇遇开放的功能",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "GetOpenLevelUpRewardPage",
+    "desc": "升级页面初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "GetRewardLevelUp",
+    "desc": "升级页面领奖请求",
+    "parameter": [
+      {
+        "name": "level",
+        "type": "int",
+        "desc": "奖项等级"
+      }
+    ]
+  },
+  {
+    "name": "InitEatChick",
+    "desc": "吃鸡界面初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "EatChick",
+    "desc": "吃鸡",
+    "parameter": [
+      {
+        "name": "mold",
+        "type": "string",
+        "desc": "吃鸡类型(0吃免费鸡 1补吃)"
+      }
+    ]
+  },
+  {
+    "name": "InitCaiShen",
+    "desc": "财神到初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "CaiShenGo",
+    "desc": "财神到摇奖",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "XiaKeDaoInit",
+    "desc": "侠客岛初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "InitXiuXingInfo",
+    "desc": "修行信息初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "StartXiuXing",
+    "desc": "开始修行",
+    "parameter": [
+      {
+        "name": "xiuXingType",
+        "type": "string",
+        "desc": "修行的10种类型"
+      }
+
+    ]
+  },
+  {
+    "name": "RewardXiuXing",
+    "desc": "修行领奖",
+    "parameter": [
+      {
+        "name": "xiuXingType",
+        "type": "string",
+        "desc": "修行的10种类型"
+      }
+
+    ]
+  },
+  {
+    "name": "QuickCompletXiuXing",
+    "desc": "快速完成修行",
+    "parameter": [
+      {
+        "name": "xiuXingType",
+        "type": "string",
+        "desc": "修行的10种类型"
+      }
+
+    ]
+  },
+  {
+    "name": "GetLunJianInit",
+    "desc": "论剑初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "LunjianChallenge",
+    "desc": "论剑发起挑战",
+    "parameter": [
+      {
+        "name": "checkedId",
+        "type": "string",
+        "desc": "被挑战者的id"
+      },
+      {
+        "name": "checkedType",
+        "type": "string",
+        "desc": "被挑战者的类型"
+      },
+      {
+        "name": "checkedRank",
+        "type": "string",
+        "desc": "被挑战者的排名"
+      }
+    ]
+  },
+  {
+    "name": "LunjianExamineBattle",
+    "desc": "论剑查看阵容",
+    "parameter": [
+      {
+        "name": "playerID",
+        "type": "string",
+        "desc": "被查看的玩家id"
+      }
+    ]
+  },
+  {
+    "name": "LunJianShopInit",
+    "desc": "论剑商店初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "LunJianConversion",
+    "desc": "论剑商店兑换",
+    "parameter": [
+      {
+        "name": "convertId",
+        "type": "string",
+        "desc": "兑换商品id"
+      }
+    ]
+  },
+  {
+    "name": "GetBloodFightInIt",
+    "desc": "血战初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "BloodFight",
+    "desc": "血战战斗请求",
+    "parameter": [
+      {
+        "name": "arrayId",
+        "type": "string",
+        "desc": "战斗类型"
+      }
+    ]
+  },
+  {
+    "name": "CanBaiInit",
+    "desc": "参拜初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "CanBai",
+    "desc": "参拜",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "SetDiaoXiang",
+    "desc": "设置雕像",
+    "parameter": [
+      {
+        "name": "dx_id",
+        "type": "string",
+        "desc": "雕像ID"
+      }
+    ]
+  },
+  {
+    "name": "BloodFightAddNature",
+    "desc": "血战增加属性",
+    "parameter": [
+      {
+        "name": "addNatureType",
+        "type": "string",
+        "desc": "增加类型"
+      }
+    ]
+  },
+  {
+    "name": "GetBloodFightRankList",
+    "desc": "血战排行榜列表（天榜、地榜）",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "GetSmallMapNpcInIt",
+    "desc": "初始化小地图NPC",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "MapNpcChat",
+    "desc": "交谈",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      },
+      {
+        "name": "npc_id",
+        "type": "string",
+        "desc": "NPCID"
+      }
+    ]
+  },
+  {
+    "name": "MapNpcGifts",
+    "desc": "送礼",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      },
+      {
+        "name": "npc_id",
+        "type": "string",
+        "desc": "NPCID"
+      }
+    ]
+  },
+  {
+    "name": "MapNpcFight",
+    "desc": "切磋/决斗",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      },
+      {
+        "name": "npc_id",
+        "type": "string",
+        "desc": "NPCID"
+      },
+      {
+        "name": "fight_type",
+        "type": "int",
+        "desc": "1切磋 2决斗"
+      }
+    ]
+  },
+  {
+    "name": "GetMapDaoJuInIt",
+    "desc": "初始化地图道具信息",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "MapDaoJuEvent",
+    "desc": "道具特殊事件",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      },
+      {
+        "name": "daoju_id",
+        "type": "string",
+        "desc": "特殊事件道具id"
+      },
+      {
+        "name": "secretKey",
+        "type": "string",
+        "desc": "特殊事件道具id"
+      }
+    ]
+  },
+  {
+    "name": "GetBigMapInIt",
+    "desc": "道具特殊事件",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "GetBigMapInIt",
+    "desc": "大地图初始化",
+    "parameter": [
+
+    ]
+  },
+  {
+    "name": "GetMapTaskInIt",
+    "desc": "初始化当前任务",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "GetFriendInIt",
+    "desc": "好友初始化",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "FriendFind",
+    "desc": "查找好友（门派名或等级）",
+    "parameter": [
+      {
+        "name": "findDetails",
+        "type": "string",
+        "desc": "查找内容"
+      }
+    ]
+  },
+  {
+    "name": "FriendCall",
+    "desc": "邀请好友",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      }
+    ]
+  },
+  {
+    "name": "FriendDelete",
+    "desc": "删除好友",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      }
+    ]
+  },
+  {
+    "name": "FriendAgree",
+    "desc": "同意添加好友",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      },
+      {
+        "name": "emailId",
+        "type": "string",
+        "desc": "邮件id"
+      }
+    ]
+  },
+  {
+    "name": "FriendReject",
+    "desc": "拒绝添加好友",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      },
+      {
+        "name": "emailId",
+        "type": "string",
+        "desc": "邮件id"
+      }
+    ]
+  },
+  {
+    "name": "AddBlackList",
+    "desc": "加入黑名单",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      }
+    ]
+  },
+  {
+    "name": "RemoveBlackList",
+    "desc": "移出黑名单",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      }
+    ]
+  },
+  {
+    "name": "FriendToast",
+    "desc": "敬酒",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      }
+    ]
+  },
+  {
+    "name": "FriendMessgage",
+    "desc": "留言",
+    "parameter": [
+      {
+        "name": "playerId",
+        "type": "string",
+        "desc": "好友id"
+      },
+      {
+        "name": "msgInfo",
+        "type": "string",
+        "desc": "留言内容"
+      }
+    ]
+  },
+  {
+    "name": "GetScrollInit",
+    "desc": "初始化玩家卷轴",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "TavernRefresh",
+    "desc": "酒馆刷新普通弟子列表",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "LookPassword",
+    "desc": "道具密函查看密码",
+    "parameter": [
+    ]
+  },
+  {
+    "name": "EnterTheCopy",
+    "desc": "进入副本",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "副本id"
+      }
+    ]
+  },
+  {
+    "name": "MapSecretArea",
+    "desc": "进入秘境",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "MapTeleporter",
+    "desc": "开启传送点",
+    "parameter": [
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "GetEmailInIt",
+    "desc": "邮件初始化",
+    "parameter": [ 
+    ]
+  },
+  {
+    "name": "EmailGetPrize",
+    "desc": "邮件领奖",
+    "parameter": [
+      {
+        "name": "emailId",
+        "type": "string",
+        "desc": "邮件Id"
+      }
+    ]
+  },
+  {
+    "name": "EmailRead",
+    "desc": "邮件读取（单个）",
+    "parameter": [
+      {
+        "name": "emailId",
+        "type": "string",
+        "desc": "邮件Id"
+      }
+    ]
+  }, 
+  {
+    "name": "EmailOneKeyRead",
+    "desc": "邮件一键读取,提取所有附件",
+    "parameter": [ 
+    ]
+  },
+  {
+    "name": "EmailRemove",
+    "desc": "邮件删除",
+    "parameter": [
+      {
+        "name": "emailId",
+        "type": "string",
+        "desc": "邮件Id"
+      },
+      {
+        "name": "delType",
+        "type": "string",
+        "desc": "删除类型"
+      }
+    ]
+  },
+  {
+    "name": "GetMentInIt",
+    "desc": "获取成就初始化",
+    "parameter": [
+      
+    ]
+  },
+  {
+    "name": "MentGetPrize",
+    "desc": "成就领取",
+    "parameter": [
+      {
+        "name": "ment_Id",
+        "type": "string",
+        "desc": "成就id"
+      }
+    ]
+  },
+  {
+    "name": "MentOneGetPrize",
+    "desc": "成就一键领取",
+    "parameter": [
+       
+    ]
+  },
+  {
+    "name": "GetPersonMsg",
+    "desc": "获取个人信息",
+    "parameter": [
+       
+    ]
+  },
+  {
+    "name": "GetTitleInIt",
+    "desc": "称号初始化",
+    "parameter": [
+       
+    ]
+  },
+  {
+    "name": "Titlereplace",
+    "desc": "称号替换",
+    "parameter": [
+      {
+        "name": "title_Id",
+        "type": "string",
+        "desc": "称号id"
+      }
+    ]
+  },
+  {
+    "name": "SecretAreaGetBox",
+    "desc": "秘境宝箱领取",
+    "parameter": [ 
+      {
+        "name": "map_id",
+        "type": "string",
+        "desc": "地图id"
+      }
+    ]
+  },
+  {
+    "name": "GetWelfareInIt",
+    "desc": "获取福利初始化",
+    "parameter": [ 
+       
+    ]
+  },
+  {
+    "name": "OnlineGetPrize",
+    "desc": "在线奖励领取",
+    "parameter": [ 
+      {
+        "name": "prize_id",
+        "type": "string",
+        "desc": "奖励id"
+      }
+    ]
+  },
+  {
+    "name": "AddLogGetPrize",
+    "desc": "累计登陆奖励领取",
+    "parameter": [ 
+      {
+        "name": "prize_id",
+        "type": "string",
+        "desc": "奖励id"
+      }
+    ]
+  },
+  {
+    "name": "LevelGetPrize",
+    "desc": "等级奖励领取",
+    "parameter": [ 
+      {
+        "name": "prize_id",
+        "type": "string",
+        "desc": "奖励id"
+      }
+    ]
+  },
+  {
+    "name": "FightResult",
+    "desc": "客户端发回战斗结果",
+    "parameter": [ 
+      {
+        "name": "fight_result",
+        "type": "string",
+        "desc": "战斗结果"
+      }
+    ]
+  },
+  {
+    "name": "GetGreenHandGuideInIt",
+    "desc": "新手引导进度初始化",
+    "parameter": [ 
+      
+    ]
+  },
+  {
+    "name": "GreenHandGuide",
+    "desc": "新手引导进度更新",
+    "parameter": [ 
+      {
+        "name": "guide_id",
+        "type": "int",
+        "desc": "引导id"
+      }
+    ]
+  },
+  {
+    "name": "GetHerartInIt",
+    "desc": "易容术初始化",
+    "parameter": [ 
+      
+    ]
+  },
+  {
+    "name": "HerartChange",
+    "desc": "易容改变",
+    "parameter": [ 
+      {
+        "name": "headId",
+        "type": "string",
+        "desc": "头像id"
+      }
+    ]
+  },
+  {
+    "name": "SetNickName",
+    "desc": "昵称设置",
+    "parameter": [ 
+      {
+        "name": "nick_name",
+        "type": "string",
+        "desc": "名字"
+      },
+      {
+        "name": "gender",
+        "type": "int",
+        "desc": "性别（0男 1女）"
+      },
+      {
+        "name": "faxing",
+        "type": "int",
+        "desc": "发型"
+      },
+      {
+        "name": "fase",
+        "type": "int",
+        "desc": "发色"
+      },
+      {
+        "name": "fushi",
+        "type": "int",
+        "desc": "服饰"
+      },
+      {
+        "name": "fuse",
+        "type": "int",
+        "desc": "肤色"
+      },
+      {
+        "name": "shuxiang",
+        "type": "int",
+        "desc": "属性"
+      }
+    ]
+  },           
+
+  {
+    "name": "GetMoveYuanBaoSilverInIt",
+    "desc": "移动元宝银两初始化",
+    "parameter": [  
+    ]
+  },
+  {
+    "name": "GetRanShowYuanbaoSilver",
+    "desc": "领取随机出现的元宝或银两",
+    "parameter": [ 
+      {
+        "name": "prize_id",
+        "type": "string",
+        "desc": "奖励id"
+      }
+    ]
+  },
+  {
+    "name": "CatchPet",
+    "desc": "捕捉宠物",
+    "parameter": [ 
+      {
+        "name": "pet_id",
+        "type": "string",
+        "desc": "宠物id"
+      },
+      {
+        "name": "win_pr",
+        "type": "int",
+        "desc": "成功几率"
+      } 
+    ]
+  },
+  {
+    "name": "GetRankingInit",
+    "desc": "排行榜初始化",
+    "parameter": [  
+    ]
+  },
+  {
+    "name": "WuGongCanWu",
+    "desc": "武功参悟",
+    "parameter": [ 
+      {
+        "name": "wuGongId",
+        "type": "string",
+        "desc": "武功id"
+      }
+    ]
+  },
+  {
+    "name": "TfwuGongCanWu",
+    "desc": "天赋武功的参悟",
+    "parameter": [ 
+      {
+        "name": "heroId",
+        "type": "string",
+        "desc": "弟子id"
+      }
+    ]
+  },
+  {
+    "name": "GetMenPaiUpLv",
+    "desc": "门派升级领取奖励",
+    "parameter": [  
+    ]
+  },
+  {
+    "name": "GameCopySettle",
+    "desc": "副本结算",
+    "parameter": [ 
+      {
+        "name": "ectype",
+        "type": "string",
+        "desc": "副本id"
+      }
+    ]
+  },
+  {
+    "name": "ClientInItData",
+    "desc": "初始化数据",
+    "parameter": [ 
+    
+    ]
+  },
+  {
+    "name": "GiveUpBranchTask",
+    "desc": "放弃任务",
+    "parameter": [ 
+      {
+        "name": "task_id",
+        "type": "string",
+        "desc": "任务id"
+      }
+    ]
+  },{
+    "name": "GetSkyBookInIt",
+    "desc": "天书初始化",
+    "parameter": [  
+    ]
+  },{
+    "name": "SkyBookAdd",
+    "desc": "天书增加",
+    "parameter": [ 
+      {
+        "name": "sky_id",
+        "type": "string",
+        "desc": "天书id"
+      }
+    ]
+  },{
+    "name": "GetdrawcardInIt",
+    "desc": "召唤抽卡初始化",
+    "parameter": [ 
+     
+    ]
+  },{
+    "name": "Calldrawcard",
+    "desc": "召唤抽卡",
+    "parameter": [ 
+      {
+        "name": "card_mold",
+        "type": "string",
+        "desc": "抽卡mold"
+      }
+    ]
+  },{
+    "name": "PetRecruit",
+    "desc": "宠物招募",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      }
+    ]
+  },{
+    "name": "PetCultivate",
+    "desc": "宠物培养请求",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      },
+      {
+        "name": "trainType",
+        "type": "string",
+        "desc": "培养类型"
+      }
+    ]
+  },{
+    "name": "PetCultivateChoose",
+    "desc": "宠物培养选择",
+    "parameter": [ 
+      {
+        "name": "trainChoose",
+        "type": "int",
+        "desc": "培养选择（0放弃本次培养，1同意）"
+      }
+    ]
+  },{
+    "name": "PetHashFun",
+    "desc": "宠物散功",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      },
+      {
+        "name": "hashType",
+        "type": "int",
+        "desc": "散功类型（0 普通散工 1九转散功）"
+      }
+    ]
+  },{
+    "name": "PetBreakThrough",
+    "desc": "宠物突破",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      },{
+        "name": "if_useSoulS",
+        "type": "int",
+        "desc": "突破是否优先使用甲级魂魄精华（0不优先，1优先）"
+      }
+    ]
+  },{
+    "name": "PetWuXueStateLift",
+    "desc": "宠物武学境界提升",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      } 
+    ]
+  },{
+    "name": "PetMartialPractice",  
+    "desc": "宠物武学修炼",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      } ,
+      {
+        "name": "wuXueLearnType",
+        "type": "int",
+        "desc": "修炼类型  0乙魂一键修炼  1普通修炼"
+      } ,
+      {
+        "name": "wuXueLearnExpend",
+        "type": "string",
+        "desc": "1 使用的是精华 否则使用的是魂魄 传魂魄id"
+      } ,
+      {
+        "name": "wuXueUseNum",
+        "type": "int",
+        "desc": "使用数量"
+      }
+    ]
+  },{
+    "name": "PetVeinSys",
+    "desc": "宠物经脉系统",
+    "parameter": [ 
+      {
+        "name": "petId",
+        "type": "string",
+        "desc": "宠物id"
+      } 
+    ]
+  },{
+    "name": "PlotStateRenewal",
+    "desc": "剧情状态更新",
+    "parameter": [ 
+      {
+        "name": "plot_id",
+        "type": "string",
+        "desc": "剧情id"
+      } 
+    ]
+  } ,{
+    "name": "RoyalSword",
+    "desc": "御剑",
+    "parameter": [  
+    ]
+  } ,{
+    "name": "SendBulletScreen",
+    "desc": "BOSS战发送弹幕",
+    "parameter": [ 
+      {
+        "name": "chat_info",
+        "type": "string",
+        "desc": "聊天内容"
+      },{
+        "name": "boss_id",
+        "type": "string",
+        "desc": "BOSSID"
+      }
+    ]
+  }
+] 
+ 

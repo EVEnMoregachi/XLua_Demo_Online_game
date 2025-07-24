@@ -1,0 +1,15 @@
+NetFriendReject = {}
+local net = require("Net/Base/NetFriendRejectBase")
+net.__index = net
+
+function NetFriendReject.Create(playerId,emailId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(playerId,emailId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        social.emailMsgInIt = v.value.data.emailMsgInIt  
+
+end

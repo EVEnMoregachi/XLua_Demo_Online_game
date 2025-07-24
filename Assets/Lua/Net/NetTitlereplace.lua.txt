@@ -1,0 +1,15 @@
+NetTitlereplace = {}
+local net = require("Net/Base/NetTitlereplaceBase")
+net.__index = net
+
+function NetTitlereplace.Create(title_Id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(title_Id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+         master.titleMsg = v.value.data.titleInItList
+         master.nowTitle = v.value.data.nowTitle
+end

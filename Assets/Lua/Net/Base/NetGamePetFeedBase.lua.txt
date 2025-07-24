@@ -1,0 +1,33 @@
+local NetGamePetFeedBase = {}
+
+--宠物喂食
+-- petId(string): 宠物id
+-- feedType(int): 喂食类型（1 一键喂食 0普通）
+-- foodId(string): 食物id
+function NetGamePetFeedBase:Init(petId,feedType,foodId,callback)
+    self.data = {}
+	self.data.msgName = "GamePetFeed"
+
+	self.data.petId = petId
+	self.data.feedType = feedType
+	self.data.foodId = foodId
+	self.callback = callback
+
+    return self
+end
+
+function NetGamePetFeedBase:Send()
+    Net.Send(self)
+end
+
+function NetGamePetFeedBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGamePetFeedBase
+

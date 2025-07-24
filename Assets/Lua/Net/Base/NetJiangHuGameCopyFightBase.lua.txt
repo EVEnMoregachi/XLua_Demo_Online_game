@@ -1,0 +1,31 @@
+local NetJiangHuGameCopyFightBase = {}
+
+--江湖副本:切磋,决斗
+-- npc_id(string): 弟子id
+-- fightType(int): 战斗类型 (1切磋 2决斗）
+function NetJiangHuGameCopyFightBase:Init(npc_id,fightType,callback)
+    self.data = {}
+	self.data.msgName = "JiangHuGameCopyFight"
+
+	self.data.npc_id = npc_id
+	self.data.fightType = fightType
+	self.callback = callback
+
+    return self
+end
+
+function NetJiangHuGameCopyFightBase:Send()
+    Net.Send(self)
+end
+
+function NetJiangHuGameCopyFightBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJiangHuGameCopyFightBase
+

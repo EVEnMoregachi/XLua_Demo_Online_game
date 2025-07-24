@@ -1,0 +1,14 @@
+NetSunBattleUpdate = {}
+local net = require("Net/Base/NetSunBattleUpdateBase")
+net.__index = net
+
+function NetSunBattleUpdate.Create(heroId,posid,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,posid,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

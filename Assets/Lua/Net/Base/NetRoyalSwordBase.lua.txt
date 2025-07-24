@@ -1,0 +1,27 @@
+local NetRoyalSwordBase = {}
+
+--御剑
+function NetRoyalSwordBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "RoyalSword"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetRoyalSwordBase:Send()
+    Net.Send(self)
+end
+
+function NetRoyalSwordBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetRoyalSwordBase
+

@@ -1,0 +1,1613 @@
+ConfigPropJson  = {}  
+
+ local configName = "ConfigPropJson"
+local configTable ={
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "神秘的丹药可将弟子潜力置换为基础属性",
+    ["prop_name"] = "培养丹",
+    ["prop_btname"] = "5",
+    ["prop_id"] = "1001",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用来打开金箱子",
+    ["prop_name"] = "金钥匙",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1002",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "内藏白银5000两，传闻有江湖侠士在其中获得了装备、武功、元宝等物品",
+    ["prop_name"] = "金箱子",
+    ["prop_btname"] = "3",
+    ["prop_id"] = "1003",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用来打开银箱子",
+    ["prop_name"] = "银钥匙",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1004",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "内藏白银2000两，传闻有江湖侠士在其中获得了装备、武功、元宝等物品",
+    ["prop_name"] = "银箱子",
+    ["prop_btname"] = "3",
+    ["prop_id"] = "1005",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "一级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1006",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "二级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1007",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "三级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1008",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "四级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1009",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "五级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1010",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "六级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1011",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "七级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1012",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "八级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1013",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可开出玄铁、蚕丝、荧粉中的一种",
+    ["prop_name"] = "九级精炼物",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1014",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "光明顶独有的宝匣，内含稀有道具或神秘武功",
+    ["prop_name"] = "光明宝匣",
+    ["prop_btname"] = "3",
+    ["prop_id"] = "1015",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "黑木崖独有的宝匣，内含稀有道具或神秘武功",
+    ["prop_name"] = "黑木宝匣",
+    ["prop_btname"] = "3",
+    ["prop_id"] = "1016",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "2",
+    ["prop_info"] = "武林争斗极耗元气，玉蜂蜜补充每日所需元气，再无后顾之忧",
+    ["prop_name"] = "补元丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1017",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "2",
+    ["prop_info"] = "乃一道美食，香气四溢，回味无穷，食用后可增加10点体力",
+    ["prop_name"] = "叫花鸡",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1018",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "摩天居士的手令，可用于在摩天崖闭关修炼一次（谢烟客可以免费闭关）",
+    ["prop_name"] = "闭关令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1019",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用于合成九转散功丹的物品",
+    ["prop_name"] = "九转碎片",
+    ["prop_btname"] = "6",
+    ["prop_id"] = "1020",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来合成玄铁重剑的重要原料",
+    ["prop_name"] = "天外陨铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1021",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "可用来增加行舟次数",
+    ["prop_name"] = "行舟令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1022",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "2",
+    ["prop_info"] = "寒潭底所生的特殊鳕鱼，服用后可令练功必定成功",
+    ["prop_name"] = "银鳕鱼",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1023",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "练功者必备良物，可除周身困倦，精神抖擞，额外练功一次",
+    ["prop_name"] = "练功丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1024",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "可用来更改门派名称一次",
+    ["prop_name"] = "门派更名令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1025",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "从神兵利器中精心淬炼而来，可使装备进阶为太甲品质，熔炼甲级装备可获得",
+    ["prop_name"] = "金气进阶石",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1026",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "每十年江湖上就会出现此令，使用此令可以选择上侠客岛或者与二使决战",
+    ["prop_name"] = "赏善罚恶令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1027",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "藏经阁为少林寺所有，藏有无数珍贵武学，拥有此令可进入藏经阁参阅片刻",
+    ["prop_name"] = "藏经阁令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1028",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用于装备淬精期的重铸",
+    ["prop_name"] = "淬精金",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1029",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用于装备淬精期的重铸",
+    ["prop_name"] = "锻意钢",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1030",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用于装备淬精期的重铸",
+    ["prop_name"] = "炼形铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1031",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用来突破甲级弟子的万能魂魄",
+    ["prop_name"] = "甲级魂魄精华",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1032",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "神秘令旗，插于两仪七星阵位上可激活阵位",
+    ["prop_name"] = "七星旗",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1033",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用于弟子行舟，有招来贵人的神秘力量",
+    ["prop_name"] = "行舟金令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1034",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升1点精炼值",
+    ["prop_name"] = "一级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1035",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升4点精炼值",
+    ["prop_name"] = "二级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1036",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升8点精炼值",
+    ["prop_name"] = "三级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1037",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升16点精炼值",
+    ["prop_name"] = "四级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1038",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升40点精炼值",
+    ["prop_name"] = "五级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1039",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升80点精炼值",
+    ["prop_name"] = "六级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1040",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升160点精炼值",
+    ["prop_name"] = "七级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1041",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升320点精炼值",
+    ["prop_name"] = "八级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1042",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼武器时使用物品，可提升640点精炼值",
+    ["prop_name"] = "九级玄铁",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1043",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升1点精炼值",
+    ["prop_name"] = "一级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1044",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升4点精炼值",
+    ["prop_name"] = "二级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1045",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升8点精炼值",
+    ["prop_name"] = "三级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1046",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升16点精炼值",
+    ["prop_name"] = "四级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1047",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升40点精炼值",
+    ["prop_name"] = "五级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1048",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升80点精炼值",
+    ["prop_name"] = "六级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1049",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升160点精炼值",
+    ["prop_name"] = "七级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1050",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升320点精炼值",
+    ["prop_name"] = "八级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1051",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼服装时使用物品，可提升640点精炼值",
+    ["prop_name"] = "九级蚕丝",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1052",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升1点精炼值",
+    ["prop_name"] = "一级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1053",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升4点精炼值",
+    ["prop_name"] = "二级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1054",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升8点精炼值",
+    ["prop_name"] = "三级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1055",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升16点精炼值",
+    ["prop_name"] = "四级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1056",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升40点精炼值",
+    ["prop_name"] = "五级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1057",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升80点精炼值",
+    ["prop_name"] = "六级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1058",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升160点精炼值",
+    ["prop_name"] = "七级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1059",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升320点精炼值",
+    ["prop_name"] = "八级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1060",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "精炼饰品时使用物品，可提升640点精炼值",
+    ["prop_name"] = "九级荧粉",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1061",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用来将弟子散功，百分之百返还资源",
+    ["prop_name"] = "九转散功丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1062",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "酒馆“烧刀子”饮酒一次",
+    ["prop_name"] = "烧刀子",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1063",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "酒馆“女儿红”饮酒一次",
+    ["prop_name"] = "女儿红",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1064",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "酒馆“百草香”饮酒一次",
+    ["prop_name"] = "百草香",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1065",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "借助此物，可利用内力将声音传播到极远处",
+    ["prop_name"] = "千里传音",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1066",
+},
+
+{
+    ["get_way"] = "可通过活动领取或地图怪物掉落获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "欲成大器，必先修炼根骨，此物可迅速提升根骨等级",
+    ["prop_name"] = "根骨石",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1067",
+},
+
+{
+    ["get_way"] = "升级赠送",
+    ["prop_type"] = "5",
+    ["prop_info"] = "新手大礼，助力江湖行！内涵500两银子，传功丹10个，叫化鸡1个，千里传音1个",
+    ["prop_name"] = "新手礼包",
+    ["prop_btname"] = "2",
+    ["prop_id"] = "1068",
+},
+
+{
+    ["get_way"] = "升级赠送",
+    ["prop_type"] = "1",
+    ["prop_info"] = "武当基础修炼法门,练神化气,滋养丹田气脉,乃至长生久观，于丹田修炼,可增加弟子韧性、血量",
+    ["prop_name"] = "抱元守一心法",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1069",
+},
+
+{
+    ["get_way"] = "可通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "内涵稀有弟子、武功、装备。",
+    ["prop_name"] = "秘境宝箱",
+    ["prop_btname"] = "2",
+    ["prop_id"] = "1070",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "乃掌门行走江湖所获馈赠之物，可用来提升掌门的声望",
+    ["prop_name"] = "声望帖",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1071",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来进阶武器",
+    ["prop_name"] = "甲级武器进阶图纸",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1072",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来进阶服装",
+    ["prop_name"] = "甲级服装进阶图纸",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1073",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来进阶饰品",
+    ["prop_name"] = "甲级饰品进阶图纸",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1074",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来精炼武器",
+    ["prop_name"] = "武器精炼材料值",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1075",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来精炼服装",
+    ["prop_name"] = "服装精炼材料值",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1076",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来精炼饰品",
+    ["prop_name"] = "饰品精炼材料值",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1077",
+},
+
+{
+    ["get_way"] = "可通过分解装备获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "用来把乙级装备进阶至甲级",
+    ["prop_name"] = "紫气进阶石",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1078",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用来将弟子散功，返还百分之70资源",
+    ["prop_name"] = "散功丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1079",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "储存弟子经验溢出",
+    ["prop_name"] = "弟子经验卷",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1080",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "武学上的精华",
+    ["prop_name"] = "武学精华",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1081",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "天下奇宝舍利子",
+    ["prop_name"] = "舍利子",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1082",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "提升功力的必需品",
+    ["prop_name"] = "功力点",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1083",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "3",
+    ["prop_info"] = "大补大补的补品",
+    ["prop_name"] = "补品",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1084",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "弟子闭关时使用",
+    ["prop_name"] = "闭关卷轴",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1085",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "提升弟子的重要物品",
+    ["prop_name"] = "行侠令",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1086",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "提升武学境界所需要的重要物品",
+    ["prop_name"] = "境界提升卷",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1087",
+},
+
+{
+    ["get_way"] = "弟子散工获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "提升武学等级所需要的重要物品",
+    ["prop_name"] = "修为精华",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1088",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "增加论剑时2000血",
+    ["prop_name"] = "极品论剑丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1089",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "增加10点功力",
+    ["prop_name"] = "十年玄蛇胆",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1090",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "增加100点功力",
+    ["prop_name"] = "百年玄蛇胆",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1091",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "增加1000点功力",
+    ["prop_name"] = "千年玄蛇胆",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1092",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用于在蝶谷医仙处提升弟子血量",
+    ["prop_name"] = "仙桃",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1093",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用于弟子续命",
+    ["prop_name"] = "人参",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1094",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "可开出装备或者装备碎片。",
+    ["prop_name"] = "玄机兵甲盒",
+    ["prop_btname"] = "3",
+    ["prop_id"] = "1095",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "3",
+    ["prop_info"] = "提高精力10点",
+    ["prop_name"] = "精力丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1096",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "是一个掌门帖",
+    ["prop_name"] = "掌门帖",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1097",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "用于挑战掌门",
+    ["prop_name"] = "挑战书",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1098",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "特制丹药，次药可疏通筋骨，治疗暗基，每名弟子可以服用三颗，每次服用攻击增加150",
+    ["prop_name"] = "小还丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1099",
+},
+
+{
+    ["get_way"] = "可找商人购买获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "特制丹药，此药可状元阳，强筋骨，暖丹田，每名弟子可服用2颗，每颗每次增加攻击300",
+    ["prop_name"] = "大还丹",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1100",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "砍伐树木的斧子",
+    ["prop_name"] = "斧子",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1101",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "钓鱼的鱼竿",
+    ["prop_name"] = "鱼竿",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1102",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "开启铜门的钥匙",
+    ["prop_name"] = "铜钥匙",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1103",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "开启银门的钥匙",
+    ["prop_name"] = "银钥匙",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1104",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "开启金门的钥匙",
+    ["prop_name"] = "金钥匙",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1105",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "是一件不错的贺礼",
+    ["prop_name"] = "宝箱",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1106",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "可以盖房子的木材",
+    ["prop_name"] = "木材",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1107",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "可以吃的鱼哦",
+    ["prop_name"] = "鱼",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1108",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "带来好运气",
+    ["prop_name"] = "运气",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1109",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "开启密室门的密码",
+    ["prop_name"] = "密码函",
+    ["prop_btname"] = "7",
+    ["prop_id"] = "1110",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "玉峰山上的果浆",
+    ["prop_name"] = "玉峰浆",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1111",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "神秘无比的野果",
+    ["prop_name"] = "神秘果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1112",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "次草有特殊效果",
+    ["prop_name"] = "断肠草",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1113",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "放入武当山水缸中可拜见张三丰。",
+    ["prop_name"] = "太极球",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1114",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "不多不多，越喝越多。",
+    ["prop_name"] = "剑神一笑",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1115",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "可跟商人交换好东西。",
+    ["prop_name"] = "野兽之骨",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "1116",
+},
+
+{
+    ["get_way"] = "可通过分解武功获得",
+    ["prop_type"] = "4",
+    ["prop_info"] = "储存武功参悟所需的经验值，可通过分解武功获得。",
+    ["prop_name"] = "武功经验卷",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "1117",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "百合",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_1",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "雏菊",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_2",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "粉玫瑰",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_3",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = " 甘草",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_4",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "鬼羽剑",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_5",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "合欢",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_6",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "黑火红莲",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_7",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "红玫瑰",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_8",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "藿香",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_9",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "金银盏",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_10",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "兰花",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_11",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "龙葵",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_12",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "墨莲",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_13",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "三七",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_14",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "山茶花",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_15",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "石仙桃",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_16",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "桃花",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_17",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "向日葵",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_18",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "花的一种，种植在帮派，可以增加帮派成员运势。",
+    ["prop_name"] = "雪莲",
+    ["prop_btname"] = "99",
+    ["prop_id"] = "flower_19",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力10",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_01",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力20",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_02",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力30",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_03",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力40",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_04",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力50",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_05",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力60",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_06",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力70",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_07",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力80",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_08",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力90",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_09",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加攻击力100",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_00",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力10",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_11",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力20",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_12",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力30",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_13",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力40",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_14",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力50",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_15",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力60",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_16",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力70",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_17",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力80",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_18",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力90",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_19",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加防御力100",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_10",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量10",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_21",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量20",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_22",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量30",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_23",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量40",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_24",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量50",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_25",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量60",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_26",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量70",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_27",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量80",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_28",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量90",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_29",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增加血量100",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_20",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力10",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_31",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力20",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_32",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力30",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_33",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力40",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_34",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力50",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_35",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力60",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_36",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力70",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_37",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力80",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_38",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力90",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_39",
+},
+
+{
+    ["get_way"] = "可找通过地图探索获得",
+    ["prop_type"] = "1",
+    ["prop_info"] = "山中野果，酸甜可口，永久增内力100",
+    ["prop_name"] = "野果",
+    ["prop_btname"] = "1",
+    ["prop_id"] = "Item_YeGuo_30",
+},
+}
+function ConfigPropJson.getVarByCustom(name, value)
+    for key, var in pairs(configTable) do
+        if var[name] == value then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigPropJson.getVarById(id)
+    for key, var in pairs(configTable) do
+        if tonumber(var.id) == tonumber(id) then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigPropJson.getVarByIndex(index)
+    return configTable[tonumber(index)]
+end
+
+function ConfigPropJson.getSize()
+    return #configTable
+end

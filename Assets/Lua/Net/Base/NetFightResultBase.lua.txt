@@ -1,0 +1,29 @@
+local NetFightResultBase = {}
+
+--客户端发回战斗结果
+-- fight_result(string): 战斗结果
+function NetFightResultBase:Init(fight_result,callback)
+    self.data = {}
+	self.data.msgName = "FightResult"
+
+	self.data.fight_result = fight_result
+	self.callback = callback
+
+    return self
+end
+
+function NetFightResultBase:Send()
+    Net.Send(self)
+end
+
+function NetFightResultBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFightResultBase
+

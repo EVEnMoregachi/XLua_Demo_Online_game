@@ -1,0 +1,27 @@
+local NetJiangHuGameCopyOpenStateEventBase = {}
+
+--江湖副本开启随机事件请求
+function NetJiangHuGameCopyOpenStateEventBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "JiangHuGameCopyOpenStateEvent"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetJiangHuGameCopyOpenStateEventBase:Send()
+    Net.Send(self)
+end
+
+function NetJiangHuGameCopyOpenStateEventBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJiangHuGameCopyOpenStateEventBase
+

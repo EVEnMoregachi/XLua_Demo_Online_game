@@ -1,0 +1,14 @@
+NetGetRankingInit = {}
+local net = require("Net/Base/NetGetRankingInitBase")
+net.__index = net
+
+function NetGetRankingInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        rankList.RankingInitInfo = v.value.data.fightRankingInIt 
+end

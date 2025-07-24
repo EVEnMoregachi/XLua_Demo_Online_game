@@ -1,0 +1,17 @@
+NetWuGongResolve = {}
+local net = require("Net/Base/NetWuGongResolveBase")
+net.__index = net
+
+function NetWuGongResolve.Create(wuGongId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(wuGongId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data.bookResolve
+        local info = "分解获得武功卷 <color=#13ff01>"..self.datav.bookExp.."</color>|".."获得 "..self.datav.xinName.."<color=#13ff01>"..self.datav.xinDeNum.."</color> 本" 
+        backpack.resolve_InfoShow(info) 
+end
+ 

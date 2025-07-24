@@ -1,0 +1,14 @@
+NetHeroCultivate = {}
+local net = require("Net/Base/NetHeroCultivateBase")
+net.__index = net
+
+function NetHeroCultivate.Create(heroId,trainType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,trainType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

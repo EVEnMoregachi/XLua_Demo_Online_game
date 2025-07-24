@@ -1,0 +1,14 @@
+NetJiangHuGameCopyGifts = {}
+local net = require("Net/Base/NetJiangHuGameCopyGiftsBase")
+net.__index = net
+
+function NetJiangHuGameCopyGifts.Create(npc_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(npc_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,29 @@
+local NetPetCultivateChooseBase = {}
+
+--宠物培养选择
+-- trainChoose(int): 培养选择（0放弃本次培养，1同意）
+function NetPetCultivateChooseBase:Init(trainChoose,callback)
+    self.data = {}
+	self.data.msgName = "PetCultivateChoose"
+
+	self.data.trainChoose = trainChoose
+	self.callback = callback
+
+    return self
+end
+
+function NetPetCultivateChooseBase:Send()
+    Net.Send(self)
+end
+
+function NetPetCultivateChooseBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetCultivateChooseBase
+

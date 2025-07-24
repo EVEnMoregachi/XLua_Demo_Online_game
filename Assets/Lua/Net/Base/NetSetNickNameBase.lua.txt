@@ -1,0 +1,41 @@
+local NetSetNickNameBase = {}
+
+--昵称设置
+-- nick_name(string): 名字
+-- gender(int): 性别（0男 1女）
+-- faxing(int): 发型
+-- fase(int): 发色
+-- fushi(int): 服饰
+-- fuse(int): 肤色
+-- shuxiang(int): 属性
+function NetSetNickNameBase:Init(nick_name,gender,faxing,fase,fushi,fuse,shuxiang,callback)
+    self.data = {}
+	self.data.msgName = "SetNickName"
+
+	self.data.nick_name = nick_name
+	self.data.gender = gender
+	self.data.faxing = faxing
+	self.data.fase = fase
+	self.data.fushi = fushi
+	self.data.fuse = fuse
+	self.data.shuxiang = shuxiang
+	self.callback = callback
+
+    return self
+end
+
+function NetSetNickNameBase:Send()
+    Net.Send(self)
+end
+
+function NetSetNickNameBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetSetNickNameBase
+

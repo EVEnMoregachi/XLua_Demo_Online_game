@@ -1,0 +1,14 @@
+NetPetWuXueStateLift = {}
+local net = require("Net/Base/NetPetWuXueStateLiftBase")
+net.__index = net
+
+function NetPetWuXueStateLift.Create(petId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

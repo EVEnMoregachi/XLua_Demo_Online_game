@@ -1,0 +1,27 @@
+local NetGetBloodFightInItBase = {}
+
+--血战初始化
+function NetGetBloodFightInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetBloodFightInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetBloodFightInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetBloodFightInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetBloodFightInItBase
+

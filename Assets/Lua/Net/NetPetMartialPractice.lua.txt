@@ -1,0 +1,14 @@
+NetPetMartialPractice = {}
+local net = require("Net/Base/NetPetMartialPracticeBase")
+net.__index = net
+
+function NetPetMartialPractice.Create(petId,wuXueLearnType,wuXueLearnExpend,wuXueUseNum,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,wuXueLearnType,wuXueLearnExpend,wuXueUseNum,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

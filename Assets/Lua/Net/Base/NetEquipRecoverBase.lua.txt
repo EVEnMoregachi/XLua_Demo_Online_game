@@ -1,0 +1,29 @@
+local NetEquipRecoverBase = {}
+
+--还原restore
+-- equipId(string): 装备id
+function NetEquipRecoverBase:Init(equipId,callback)
+    self.data = {}
+	self.data.msgName = "EquipRecover"
+
+	self.data.equipId = equipId
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipRecoverBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipRecoverBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipRecoverBase
+

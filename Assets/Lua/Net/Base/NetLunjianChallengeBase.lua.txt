@@ -1,0 +1,33 @@
+local NetLunjianChallengeBase = {}
+
+--论剑发起挑战
+-- checkedId(string): 被挑战者的id
+-- checkedType(string): 被挑战者的类型
+-- checkedRank(string): 被挑战者的排名
+function NetLunjianChallengeBase:Init(checkedId,checkedType,checkedRank,callback)
+    self.data = {}
+	self.data.msgName = "LunjianChallenge"
+
+	self.data.checkedId = checkedId
+	self.data.checkedType = checkedType
+	self.data.checkedRank = checkedRank
+	self.callback = callback
+
+    return self
+end
+
+function NetLunjianChallengeBase:Send()
+    Net.Send(self)
+end
+
+function NetLunjianChallengeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetLunjianChallengeBase
+

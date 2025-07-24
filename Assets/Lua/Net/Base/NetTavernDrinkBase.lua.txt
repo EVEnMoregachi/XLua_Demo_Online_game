@@ -1,0 +1,31 @@
+local NetTavernDrinkBase = {}
+
+--酒馆饮酒
+-- drinkHero(string): 共饮弟子id
+-- drinkType(int): 饮酒类型 1烧刀  2女儿红  3百草酒  4活动饮酒
+function NetTavernDrinkBase:Init(drinkHero,drinkType,callback)
+    self.data = {}
+	self.data.msgName = "TavernDrink"
+
+	self.data.drinkHero = drinkHero
+	self.data.drinkType = drinkType
+	self.callback = callback
+
+    return self
+end
+
+function NetTavernDrinkBase:Send()
+    Net.Send(self)
+end
+
+function NetTavernDrinkBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTavernDrinkBase
+

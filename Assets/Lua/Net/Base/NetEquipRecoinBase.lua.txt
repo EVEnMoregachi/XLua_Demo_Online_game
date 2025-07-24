@@ -1,0 +1,31 @@
+local NetEquipRecoinBase = {}
+
+--重铸
+-- equipId(string): 装备id
+-- recastType(string): 装备的重铸类型
+function NetEquipRecoinBase:Init(equipId,recastType,callback)
+    self.data = {}
+	self.data.msgName = "EquipRecoin"
+
+	self.data.equipId = equipId
+	self.data.recastType = recastType
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipRecoinBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipRecoinBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipRecoinBase
+

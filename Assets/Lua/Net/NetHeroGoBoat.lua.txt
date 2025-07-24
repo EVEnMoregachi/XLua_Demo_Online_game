@@ -1,0 +1,14 @@
+NetHeroGoBoat = {}
+local net = require("Net/Base/NetHeroGoBoatBase")
+net.__index = net
+
+function NetHeroGoBoat.Create(heroId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.XingZhouData = v.value.data
+end

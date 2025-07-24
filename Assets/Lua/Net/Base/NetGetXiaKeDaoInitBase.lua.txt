@@ -1,0 +1,27 @@
+local NetGetXiaKeDaoInitBase = {}
+
+--侠客岛初始化
+function NetGetXiaKeDaoInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetXiaKeDaoInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetXiaKeDaoInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetXiaKeDaoInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetXiaKeDaoInitBase
+

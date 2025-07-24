@@ -1,0 +1,14 @@
+NetKneelStatue = {}
+local net = require("Net/Base/NetKneelStatueBase")
+net.__index = net
+
+function NetKneelStatue.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.canbaiData = v.value.data
+end

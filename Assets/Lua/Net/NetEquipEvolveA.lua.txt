@@ -1,0 +1,14 @@
+NetEquipEvolveA = {}
+local net = require("Net/Base/NetEquipEvolveABase")
+net.__index = net
+
+function NetEquipEvolveA.Create(equipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(equipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

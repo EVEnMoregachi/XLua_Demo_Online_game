@@ -1,0 +1,32 @@
+local Render = UI.CreateRenderTable()
+
+local UIBookChipInfoRender = require("UI/backpack/UIBookChipInfoRender")
+UIBookChipInfoRender.__index = UIBookChipInfoRender 
+
+function Render:Awake()
+	self.BookChipInfo = {} 
+end 
+function Render:SetUICompent(child)
+	if child.name == "bookchip1" then
+		self:CreateItemRender(child)
+	elseif child.name == "bookchip2" then
+		self:CreateItemRender(child)
+	elseif child.name == "bookchip3" then
+		self:CreateItemRender(child)
+	elseif child.name == "bookchip4" then
+		self:CreateItemRender(child)
+	 
+	end
+end
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIBookChipInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.BookChipInfo, tempRender)
+end 
+ 
+
+return Render
+
+ 

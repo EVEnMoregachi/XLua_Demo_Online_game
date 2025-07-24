@@ -1,0 +1,30 @@
+local Render = UI.CreateRenderTable()
+
+local UIPropInfoRender = require("UI/backpack/UIPropInfoRender")
+UIPropInfoRender.__index = UIPropInfoRender 
+
+function Render:Awake()
+	self.PropInfo = {} 
+end 
+
+function Render:SetUICompent(child)
+	if child.name == "prop1" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop2" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop3" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop4" then
+		self:CreateItemRender(child)
+	 
+	end
+end
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIPropInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.PropInfo, tempRender)
+end 
+ 
+ return Render

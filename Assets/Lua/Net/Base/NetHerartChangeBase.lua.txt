@@ -1,0 +1,29 @@
+local NetHerartChangeBase = {}
+
+--易容改变
+-- headId(string): 头像id
+function NetHerartChangeBase:Init(headId,callback)
+    self.data = {}
+	self.data.msgName = "HerartChange"
+
+	self.data.headId = headId
+	self.callback = callback
+
+    return self
+end
+
+function NetHerartChangeBase:Send()
+    Net.Send(self)
+end
+
+function NetHerartChangeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHerartChangeBase
+

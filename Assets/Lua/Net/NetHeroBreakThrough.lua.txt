@@ -1,0 +1,14 @@
+NetHeroBreakThrough = {}
+local net = require("Net/Base/NetHeroBreakThroughBase")
+net.__index = net
+
+function NetHeroBreakThrough.Create(heroId,if_useSoulS,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,if_useSoulS,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

@@ -1,0 +1,31 @@
+NetBloodFight = {}
+local net = require("Net/Base/NetBloodFightBase")
+net.__index = net
+
+function NetBloodFight.Create(arrayId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(arrayId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    bloodfight.bloodcurrentDefendTime = v.value.data.bloodBattle.bloodcurrentDefendTime
+    bloodfight.bloodMaxLevel = v.value.data.bloodBattle.bloodMaxLevel
+    bloodfight.bloodMaxStar = v.value.data.bloodBattle.bloodMaxStar
+    bloodfight.bloodGetStarAmo = v.value.data.bloodBattle.bloodGetStarAmo
+    bloodfight.bloodRangking = v.value.data.bloodBattle.bloodRangking
+    bloodfight.bloodCurrentLevel = v.value.data.bloodBattle.bloodCurrentLevel
+    bloodfight.bloodLeftStarAmo = v.value.data.bloodBattle.bloodLeftStarAmo
+    bloodfight.bloodXueJiaCheng = v.value.data.bloodBattle.bloodXueJiaCheng
+    bloodfight.bloodGongJiaCheng = v.value.data.bloodBattle.bloodGongJiaCheng
+    bloodfight.bloodFangJiaCheng = v.value.data.bloodBattle.bloodFangJiaCheng
+    bloodfight.bloodNeiJiaCheng = v.value.data.bloodBattle.bloodNeiJiaCheng
+    bloodfight.xueZhanTeam = v.value.data.bloodBattle.xueZhanTeam
+    bloodfight.liZhanTeam = v.value.data.bloodBattle.liZhanTeam
+    bloodfight.zhanTeam = v.value.data.bloodBattle.zhanTeam
+    bloodfight.bloodCurrentState = v.value.data.bloodBattle.bloodCurrentState
+    bloodfight.bloodFourValueFirstNum = v.value.data.bloodBattle.bloodFourValueFirstNum
+    bloodfight.bloodResult = v.value.data.bloodBattle.bloodResult
+    bloodfight.roundNum = v.value.data.bloodBattle.roundNum 
+end

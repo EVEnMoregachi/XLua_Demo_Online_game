@@ -1,0 +1,19 @@
+NetEquipResolve = {}
+local net = require("Net/Base/NetEquipResolveBase")
+net.__index = net
+
+function NetEquipResolve.Create(smeltId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(smeltId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data.equipSmelt
+        local info = "分解获得武器图纸 <color=#13ff01>"..self.datav.weaponBook.."</color>|".."获得衣服图纸 <color=#13ff01>"..self.datav.clothingBook.."</color>|".."获得饰品图纸 <color=#13ff01>"..self.datav.accessoriesBook.."</color>|".."获得紫气进阶石 <color=#13ff01>"..self.datav.gainZQJJS
+        .."</color>|".."获得金气进阶石 <color=#13ff01>"..self.datav.gainJQJJS.."</color>|".."获得金材料的数量 <color=#13ff01>"..self.datav.goldMaterNum.."</color>|".."获得钢材料的数量 <color=#13ff01>"..self.datav.steelMaterNum
+        .."</color>|".."获得铁材料的数量 <color=#13ff01>"..self.datav.ironMaterNum.."</color>|".."获得银两 <color=#13ff01>"..self.datav.silverValue.."</color>|".."获得武器精炼材料 <color=#13ff01>"..self.datav.weaponMaterValue
+        .."</color>|".."获得衣服精炼材料 <color=#13ff01>"..self.datav.clothingMaterValue.."</color>|".."获得饰品精炼材料 <color=#13ff01>"..self.datav.accessoriesMaterValue.."</color>"  
+        backpack.resolve_InfoShow(info)
+end

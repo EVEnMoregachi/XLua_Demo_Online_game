@@ -1,0 +1,29 @@
+local NetGetDayTaskPrizeBase = {}
+
+--日常任务领取
+-- taskId(string): 日常任务ID
+function NetGetDayTaskPrizeBase:Init(taskId,callback)
+    self.data = {}
+	self.data.msgName = "GetDayTaskPrize"
+
+	self.data.taskId = taskId
+	self.callback = callback
+
+    return self
+end
+
+function NetGetDayTaskPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetGetDayTaskPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetDayTaskPrizeBase
+

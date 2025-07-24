@@ -1,0 +1,29 @@
+local NetEquipEvolveABase = {}
+
+--乙级装备进阶
+-- equipId(string): 装备id
+function NetEquipEvolveABase:Init(equipId,callback)
+    self.data = {}
+	self.data.msgName = "EquipEvolveA"
+
+	self.data.equipId = equipId
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipEvolveABase:Send()
+    Net.Send(self)
+end
+
+function NetEquipEvolveABase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipEvolveABase
+

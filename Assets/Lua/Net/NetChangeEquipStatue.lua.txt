@@ -1,0 +1,14 @@
+NetChangeEquipStatue = {}
+local net = require("Net/Base/NetChangeEquipStatueBase")
+net.__index = net
+
+function NetChangeEquipStatue.Create(dx_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(dx_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.canbaiData = v.value.data
+end

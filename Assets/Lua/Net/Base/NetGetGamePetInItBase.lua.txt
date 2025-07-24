@@ -1,0 +1,27 @@
+local NetGetGamePetInItBase = {}
+
+--宠物初始化
+function NetGetGamePetInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetGamePetInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetGamePetInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetGamePetInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetGamePetInItBase
+

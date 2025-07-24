@@ -1,0 +1,31 @@
+local NetGamePetRenameBase = {}
+
+--宠物改名
+-- petId(string): 宠物id
+-- newName(string): 新名字
+function NetGamePetRenameBase:Init(petId,newName,callback)
+    self.data = {}
+	self.data.msgName = "GamePetRename"
+
+	self.data.petId = petId
+	self.data.newName = newName
+	self.callback = callback
+
+    return self
+end
+
+function NetGamePetRenameBase:Send()
+    Net.Send(self)
+end
+
+function NetGamePetRenameBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGamePetRenameBase
+

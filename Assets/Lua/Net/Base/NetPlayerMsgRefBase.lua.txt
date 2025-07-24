@@ -1,0 +1,27 @@
+local NetPlayerMsgRefBase = {}
+
+--刷新玩家数据
+function NetPlayerMsgRefBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "PlayerMsgRef"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetPlayerMsgRefBase:Send()
+    Net.Send(self)
+end
+
+function NetPlayerMsgRefBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPlayerMsgRefBase
+

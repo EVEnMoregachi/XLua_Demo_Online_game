@@ -1,0 +1,31 @@
+local NetMapNpcGivePetBase = {}
+
+--给NPC送宠物
+-- npc_id(string): NPCID
+-- ueType(string): 0 交谈 1给予(送宠物)
+function NetMapNpcGivePetBase:Init(npc_id,ueType,callback)
+    self.data = {}
+	self.data.msgName = "MapNpcGivePet"
+
+	self.data.npc_id = npc_id
+	self.data.ueType = ueType
+	self.callback = callback
+
+    return self
+end
+
+function NetMapNpcGivePetBase:Send()
+    Net.Send(self)
+end
+
+function NetMapNpcGivePetBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapNpcGivePetBase
+

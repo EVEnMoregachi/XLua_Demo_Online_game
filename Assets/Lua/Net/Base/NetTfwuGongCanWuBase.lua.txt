@@ -1,0 +1,29 @@
+local NetTfwuGongCanWuBase = {}
+
+--天赋武功的参悟
+-- heroId(string): 弟子id
+function NetTfwuGongCanWuBase:Init(heroId,callback)
+    self.data = {}
+	self.data.msgName = "TfwuGongCanWu"
+
+	self.data.heroId = heroId
+	self.callback = callback
+
+    return self
+end
+
+function NetTfwuGongCanWuBase:Send()
+    Net.Send(self)
+end
+
+function NetTfwuGongCanWuBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTfwuGongCanWuBase
+

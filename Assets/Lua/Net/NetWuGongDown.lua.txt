@@ -1,0 +1,14 @@
+NetWuGongDown = {}
+local net = require("Net/Base/NetWuGongDownBase")
+net.__index = net
+
+function NetWuGongDown.Create(heroId,wuGongId,wuGongPos,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,wuGongId,wuGongPos,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

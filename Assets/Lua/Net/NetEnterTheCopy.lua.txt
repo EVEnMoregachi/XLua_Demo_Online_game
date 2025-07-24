@@ -1,0 +1,18 @@
+NetEnterTheCopy = {}
+local net = require("Net/Base/NetEnterTheCopyBase")
+net.__index = net
+
+function NetEnterTheCopy.Create(map_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    self.datav=v.value.data
+    if v.value.data.tongrenMsg ~= nil then
+        JiangHu2.TongRenList = {}
+        JiangHu2.TongRenList = v.value.data.tongrenMsg 
+    end
+end

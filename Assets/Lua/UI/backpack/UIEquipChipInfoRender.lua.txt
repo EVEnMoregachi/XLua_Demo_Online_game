@@ -1,0 +1,32 @@
+local Render = UI.CreateRenderTable()
+
+function Render:SetUICompent(child) 
+     if child.name == "pic" then   
+        self.picB = child:GetComponent("Button")  
+        self.picB.onClick:RemoveAllListeners()   
+        self.picB.onClick:AddListener(function() self:doSome() end) 
+        self.picImage = child:GetComponent("Image") 
+    elseif child.name == "num" then  
+		self.num = child:GetComponent("Text")  
+    end
+end
+
+function Render:SetData(v) 
+    self.EquipChipData = v 
+	self:RefreshEquipChipItem()
+end
+
+function Render:RefreshEquipChipItem() 
+    -- print("self.EquipChipData.chipId=",self.EquipChipData.chipId ) 
+    self.picImage.sprite = Public.ResMeg.GetSpritePath(self.EquipChipData.chipId,"equip")  
+    self.num.text = self.EquipChipData.num
+end 
+
+function Render:doSome()
+    -- print("点击了装备碎片id=",self.EquipChipData.chipId)
+  	backpack.equipChipDetail(self.EquipChipData.chipId)
+
+end 
+ 
+
+return Render

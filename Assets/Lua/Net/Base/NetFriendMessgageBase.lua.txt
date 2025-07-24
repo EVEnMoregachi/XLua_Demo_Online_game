@@ -1,0 +1,31 @@
+local NetFriendMessgageBase = {}
+
+--留言
+-- playerId(string): 好友id
+-- msgInfo(string): 留言内容
+function NetFriendMessgageBase:Init(playerId,msgInfo,callback)
+    self.data = {}
+	self.data.msgName = "FriendMessgage"
+
+	self.data.playerId = playerId
+	self.data.msgInfo = msgInfo
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendMessgageBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendMessgageBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendMessgageBase
+

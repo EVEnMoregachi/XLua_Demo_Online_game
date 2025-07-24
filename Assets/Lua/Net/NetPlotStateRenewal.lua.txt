@@ -1,0 +1,14 @@
+NetPlotStateRenewal = {}
+local net = require("Net/Base/NetPlotStateRenewalBase")
+net.__index = net
+
+function NetPlotStateRenewal.Create(plot_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(plot_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

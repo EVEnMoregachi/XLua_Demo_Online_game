@@ -1,0 +1,29 @@
+local NetStartXiuXingBase = {}
+
+--开始修行
+-- xiuXingType(string): 修行的10种类型
+function NetStartXiuXingBase:Init(xiuXingType,callback)
+    self.data = {}
+	self.data.msgName = "StartXiuXing"
+
+	self.data.xiuXingType = xiuXingType
+	self.callback = callback
+
+    return self
+end
+
+function NetStartXiuXingBase:Send()
+    Net.Send(self)
+end
+
+function NetStartXiuXingBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetStartXiuXingBase
+

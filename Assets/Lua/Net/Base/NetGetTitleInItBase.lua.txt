@@ -1,0 +1,27 @@
+local NetGetTitleInItBase = {}
+
+--称号初始化
+function NetGetTitleInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetTitleInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetTitleInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetTitleInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetTitleInItBase
+

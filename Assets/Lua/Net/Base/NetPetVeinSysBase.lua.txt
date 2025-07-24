@@ -1,0 +1,29 @@
+local NetPetVeinSysBase = {}
+
+--宠物经脉系统
+-- petId(string): 宠物id
+function NetPetVeinSysBase:Init(petId,callback)
+    self.data = {}
+	self.data.msgName = "PetVeinSys"
+
+	self.data.petId = petId
+	self.callback = callback
+
+    return self
+end
+
+function NetPetVeinSysBase:Send()
+    Net.Send(self)
+end
+
+function NetPetVeinSysBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetVeinSysBase
+

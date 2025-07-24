@@ -1,0 +1,14 @@
+NetSetNickName = {}
+local net = require("Net/Base/NetSetNickNameBase")
+net.__index = net
+
+function NetSetNickName.Create(nick_name,gender,faxing,fase,fushi,fuse,shuxiang,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(nick_name,gender,faxing,fase,fushi,fuse,shuxiang,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

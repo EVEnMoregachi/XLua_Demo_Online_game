@@ -1,0 +1,16 @@
+NetGetTimeLookRanking = {}
+local net = require("Net/Base/NetGetTimeLookRankingBase")
+net.__index = net
+
+function NetGetTimeLookRanking.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+    XunXiaTime.RankData = {} 
+    XunXiaTime.RankData = v.value.data["timeLookRanking"]   
+    
+end

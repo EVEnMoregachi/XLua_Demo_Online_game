@@ -1,0 +1,15 @@
+NetGetTitleInIt = {}
+local net = require("Net/Base/NetGetTitleInItBase")
+net.__index = net
+
+function NetGetTitleInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        master.titleMsg = v.value.data.titleInItList
+         master.nowTitle = v.value.data.nowTitle
+end

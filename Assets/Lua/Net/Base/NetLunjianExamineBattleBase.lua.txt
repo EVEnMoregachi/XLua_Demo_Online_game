@@ -1,0 +1,29 @@
+local NetLunjianExamineBattleBase = {}
+
+--论剑查看阵容
+-- playerID(string): 被查看的玩家id
+function NetLunjianExamineBattleBase:Init(playerID,callback)
+    self.data = {}
+	self.data.msgName = "LunjianExamineBattle"
+
+	self.data.playerID = playerID
+	self.callback = callback
+
+    return self
+end
+
+function NetLunjianExamineBattleBase:Send()
+    Net.Send(self)
+end
+
+function NetLunjianExamineBattleBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetLunjianExamineBattleBase
+

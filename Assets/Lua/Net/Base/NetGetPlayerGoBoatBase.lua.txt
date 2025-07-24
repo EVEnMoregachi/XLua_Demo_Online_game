@@ -1,0 +1,27 @@
+local NetGetPlayerGoBoatBase = {}
+
+--行舟初始化
+function NetGetPlayerGoBoatBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetPlayerGoBoat"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetPlayerGoBoatBase:Send()
+    Net.Send(self)
+end
+
+function NetGetPlayerGoBoatBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetPlayerGoBoatBase
+

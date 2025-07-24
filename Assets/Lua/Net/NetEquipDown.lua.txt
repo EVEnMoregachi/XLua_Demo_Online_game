@@ -1,0 +1,14 @@
+NetEquipDown = {}
+local net = require("Net/Base/NetEquipDownBase")
+net.__index = net
+
+function NetEquipDown.Create(heroId,equipId,equipPos,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,equipId,equipPos,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

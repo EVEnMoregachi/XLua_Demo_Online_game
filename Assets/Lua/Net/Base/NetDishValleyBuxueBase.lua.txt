@@ -1,0 +1,29 @@
+local NetDishValleyBuxueBase = {}
+
+--蝶谷医仙补血
+-- heroId(string): 弟子id
+function NetDishValleyBuxueBase:Init(heroId,callback)
+    self.data = {}
+	self.data.msgName = "DishValleyBuxue"
+
+	self.data.heroId = heroId
+	self.callback = callback
+
+    return self
+end
+
+function NetDishValleyBuxueBase:Send()
+    Net.Send(self)
+end
+
+function NetDishValleyBuxueBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetDishValleyBuxueBase
+

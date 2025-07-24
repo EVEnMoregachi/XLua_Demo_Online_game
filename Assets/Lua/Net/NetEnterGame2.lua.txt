@@ -1,0 +1,14 @@
+NetEnterGame2 = {}
+local net = require("Net/Base/NetEnterGame2Base")
+net.__index = net
+
+function NetEnterGame2.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

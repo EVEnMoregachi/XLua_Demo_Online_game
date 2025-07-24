@@ -1,0 +1,33 @@
+local NetMapNpcFightBase = {}
+
+--切磋/决斗
+-- map_id(string): 地图id
+-- npc_id(string): NPCID
+-- fight_type(int): 1切磋 2决斗
+function NetMapNpcFightBase:Init(map_id,npc_id,fight_type,callback)
+    self.data = {}
+	self.data.msgName = "MapNpcFight"
+
+	self.data.map_id = map_id
+	self.data.npc_id = npc_id
+	self.data.fight_type = fight_type
+	self.callback = callback
+
+    return self
+end
+
+function NetMapNpcFightBase:Send()
+    Net.Send(self)
+end
+
+function NetMapNpcFightBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapNpcFightBase
+

@@ -1,0 +1,31 @@
+local NetTestBase = {}
+
+--测试
+-- ID(string): ID
+-- Num(int): 数量
+function NetTestBase:Init(ID,Num,callback)
+    self.data = {}
+	self.data.msgName = "Test"
+
+	self.data.ID = ID
+	self.data.Num = Num
+	self.callback = callback
+
+    return self
+end
+
+function NetTestBase:Send()
+    Net.Send(self)
+end
+
+function NetTestBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTestBase
+

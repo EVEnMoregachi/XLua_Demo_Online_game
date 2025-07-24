@@ -1,0 +1,14 @@
+NetGamePetFeed = {}
+local net = require("Net/Base/NetGamePetFeedBase")
+net.__index = net
+
+function NetGamePetFeed.Create(petId,feedType,foodId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,feedType,foodId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

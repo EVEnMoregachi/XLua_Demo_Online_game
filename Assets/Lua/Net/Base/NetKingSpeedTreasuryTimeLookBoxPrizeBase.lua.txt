@@ -1,0 +1,29 @@
+local NetKingSpeedTreasuryTimeLookBoxPrizeBase = {}
+
+-- 闯王宝库宝箱领取
+-- boxId(string): 领取宝箱id
+function NetKingSpeedTreasuryTimeLookBoxPrizeBase:Init(boxId,callback)
+    self.data = {}
+	self.data.msgName = "KingSpeedTreasuryTimeLookBoxPrize"
+
+	self.data.boxId = boxId
+	self.callback = callback
+
+    return self
+end
+
+function NetKingSpeedTreasuryTimeLookBoxPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetKingSpeedTreasuryTimeLookBoxPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetKingSpeedTreasuryTimeLookBoxPrizeBase
+

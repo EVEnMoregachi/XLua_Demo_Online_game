@@ -1,0 +1,14 @@
+NetGetDoManInit = {}
+local net = require("Net/Base/NetGetDoManInitBase")
+net.__index = net
+
+function NetGetDoManInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,29 @@
+local NetSetDiaoXiangBase = {}
+
+--设置雕像
+-- dx_id(string): 雕像ID
+function NetSetDiaoXiangBase:Init(dx_id,callback)
+    self.data = {}
+	self.data.msgName = "SetDiaoXiang"
+
+	self.data.dx_id = dx_id
+	self.callback = callback
+
+    return self
+end
+
+function NetSetDiaoXiangBase:Send()
+    Net.Send(self)
+end
+
+function NetSetDiaoXiangBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetSetDiaoXiangBase
+

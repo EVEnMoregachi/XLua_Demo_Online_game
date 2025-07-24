@@ -1,0 +1,24 @@
+NetGetLunJianInit = {}
+local net = require("Net/Base/NetGetLunJianInitBase")
+net.__index = net
+
+function NetGetLunJianInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+    lunjian.backInitInfo = {} 
+    lunjian.backInitInfo = v.value.data["backInitInfo"]  --论剑列表信息
+    lunjian.LunJianNum = v.value.data.lunJianNum  --剩余论剑次数 
+    lunjian.LunJianRank  = v.value.data.lunJianRank  --玩家论剑排名 
+    lunjian.LunJianScore  = v.value.data.lunJianScore  --当前论剑积分 
+    lunjian.DownTime  = v.value.data.downTime  --倒计时  
+    lunjian.RankingGetScore  = v.value.data.rankingGetScore  --保持当前排名获得的积分  
+    lunjian.Nickname  = v.value.data.nickname  --玩家昵称  
+    lunjian.PlayerLevel  = v.value.data.playerLevel  --玩家等级   
+    lunjian.PlayerId = v.value.data.playerId  --玩家等级  
+
+end 

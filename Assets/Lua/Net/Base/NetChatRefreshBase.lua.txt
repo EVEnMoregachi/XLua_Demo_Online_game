@@ -1,0 +1,29 @@
+local NetChatRefreshBase = {}
+
+--刷新聊天信息
+-- Cursor(int): 标志位
+function NetChatRefreshBase:Init(Cursor,callback)
+    self.data = {}
+	self.data.msgName = "ChatRefresh"
+
+	self.data.Cursor = Cursor
+	self.callback = callback
+
+    return self
+end
+
+function NetChatRefreshBase:Send()
+    Net.Send(self)
+end
+
+function NetChatRefreshBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetChatRefreshBase
+

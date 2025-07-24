@@ -1,0 +1,29 @@
+local NetEquipIntensifyBase = {}
+
+--强化
+-- equipId(string): 装备id
+function NetEquipIntensifyBase:Init(equipId,callback)
+    self.data = {}
+	self.data.msgName = "EquipIntensify"
+
+	self.data.equipId = equipId
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipIntensifyBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipIntensifyBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipIntensifyBase
+

@@ -1,0 +1,35 @@
+local NetPetMartialPracticeBase = {}
+
+--宠物武学修炼
+-- petId(string): 宠物id
+-- wuXueLearnType(int): 修炼类型  0乙魂一键修炼  1普通修炼
+-- wuXueLearnExpend(string): 1 使用的是精华 否则使用的是魂魄 传魂魄id
+-- wuXueUseNum(int): 使用数量
+function NetPetMartialPracticeBase:Init(petId,wuXueLearnType,wuXueLearnExpend,wuXueUseNum,callback)
+    self.data = {}
+	self.data.msgName = "PetMartialPractice"
+
+	self.data.petId = petId
+	self.data.wuXueLearnType = wuXueLearnType
+	self.data.wuXueLearnExpend = wuXueLearnExpend
+	self.data.wuXueUseNum = wuXueUseNum
+	self.callback = callback
+
+    return self
+end
+
+function NetPetMartialPracticeBase:Send()
+    Net.Send(self)
+end
+
+function NetPetMartialPracticeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetMartialPracticeBase
+

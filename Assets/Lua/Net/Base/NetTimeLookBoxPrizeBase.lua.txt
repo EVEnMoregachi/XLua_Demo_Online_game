@@ -1,0 +1,29 @@
+local NetTimeLookBoxPrizeBase = {}
+
+-- 限时寻侠宝箱领取
+-- boxId(int): 领取宝箱id
+function NetTimeLookBoxPrizeBase:Init(boxId,callback)
+    self.data = {}
+	self.data.msgName = "TimeLookBoxPrize"
+
+	self.data.boxId = boxId
+	self.callback = callback
+
+    return self
+end
+
+function NetTimeLookBoxPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetTimeLookBoxPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetTimeLookBoxPrizeBase
+

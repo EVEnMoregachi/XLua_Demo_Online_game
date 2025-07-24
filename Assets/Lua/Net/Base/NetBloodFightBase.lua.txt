@@ -1,0 +1,29 @@
+local NetBloodFightBase = {}
+
+--血战战斗请求
+-- arrayId(string): 战斗类型
+function NetBloodFightBase:Init(arrayId,callback)
+    self.data = {}
+	self.data.msgName = "BloodFight"
+
+	self.data.arrayId = arrayId
+	self.callback = callback
+
+    return self
+end
+
+function NetBloodFightBase:Send()
+    Net.Send(self)
+end
+
+function NetBloodFightBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetBloodFightBase
+

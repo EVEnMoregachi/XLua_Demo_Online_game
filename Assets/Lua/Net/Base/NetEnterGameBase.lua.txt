@@ -1,0 +1,27 @@
+local NetEnterGameBase = {}
+
+--进入游戏
+function NetEnterGameBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "EnterGame"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetEnterGameBase:Send()
+    Net.Send(self)
+end
+
+function NetEnterGameBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEnterGameBase
+

@@ -1,0 +1,29 @@
+local NetRemoveBlackListBase = {}
+
+--移出黑名单
+-- playerId(string): 好友id
+function NetRemoveBlackListBase:Init(playerId,callback)
+    self.data = {}
+	self.data.msgName = "RemoveBlackList"
+
+	self.data.playerId = playerId
+	self.callback = callback
+
+    return self
+end
+
+function NetRemoveBlackListBase:Send()
+    Net.Send(self)
+end
+
+function NetRemoveBlackListBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetRemoveBlackListBase
+

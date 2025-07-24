@@ -1,0 +1,33 @@
+local NetChangeEquipBase = {}
+
+--更换装备
+-- heroId(string): 弟子id
+-- equipId(string): 更换的装备ID
+-- equipPos(int): 更换的装备位置
+function NetChangeEquipBase:Init(heroId,equipId,equipPos,callback)
+    self.data = {}
+	self.data.msgName = "ChangeEquip"
+
+	self.data.heroId = heroId
+	self.data.equipId = equipId
+	self.data.equipPos = equipPos
+	self.callback = callback
+
+    return self
+end
+
+function NetChangeEquipBase:Send()
+    Net.Send(self)
+end
+
+function NetChangeEquipBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetChangeEquipBase
+

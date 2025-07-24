@@ -1,0 +1,31 @@
+local NetHeroCultivateBase = {}
+
+--弟子培养请求
+-- heroId(string): 弟子id
+-- trainType(string): 培养类型 (py普通培养 py10培养10次 jxpy精心培养 jxpy10精心培养10次)
+function NetHeroCultivateBase:Init(heroId,trainType,callback)
+    self.data = {}
+	self.data.msgName = "HeroCultivate"
+
+	self.data.heroId = heroId
+	self.data.trainType = trainType
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroCultivateBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroCultivateBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroCultivateBase
+

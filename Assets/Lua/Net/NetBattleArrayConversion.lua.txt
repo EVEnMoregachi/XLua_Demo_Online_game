@@ -1,0 +1,14 @@
+NetBattleArrayConversion = {}
+local net = require("Net/Base/NetBattleArrayConversionBase")
+net.__index = net
+
+function NetBattleArrayConversion.Create(posid,posid2,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(posid,posid2,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

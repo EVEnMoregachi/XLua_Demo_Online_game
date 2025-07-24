@@ -1,0 +1,27 @@
+local NetGetHeroInitBase = {}
+
+--弟子初始化
+function NetGetHeroInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetHeroInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetHeroInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetHeroInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetHeroInitBase
+

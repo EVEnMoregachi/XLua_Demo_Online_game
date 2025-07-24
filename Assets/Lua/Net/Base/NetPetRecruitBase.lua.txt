@@ -1,0 +1,29 @@
+local NetPetRecruitBase = {}
+
+--宠物招募
+-- petId(string): 宠物id
+function NetPetRecruitBase:Init(petId,callback)
+    self.data = {}
+	self.data.msgName = "PetRecruit"
+
+	self.data.petId = petId
+	self.callback = callback
+
+    return self
+end
+
+function NetPetRecruitBase:Send()
+    Net.Send(self)
+end
+
+function NetPetRecruitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetRecruitBase
+

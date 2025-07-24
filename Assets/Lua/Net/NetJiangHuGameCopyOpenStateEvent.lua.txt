@@ -1,0 +1,14 @@
+NetJiangHuGameCopyOpenStateEvent = {}
+local net = require("Net/Base/NetJiangHuGameCopyOpenStateEventBase")
+net.__index = net
+
+function NetJiangHuGameCopyOpenStateEvent.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

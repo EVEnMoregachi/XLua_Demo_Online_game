@@ -1,0 +1,15 @@
+NetChatRefresh = {}
+local net = require("Net/Base/NetChatRefreshBase")
+net.__index = net
+
+function NetChatRefresh.Create(Cursor,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(Cursor,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    a_chat.num = v.value.data.num
+    a_chat.chatList = v.value.data.chatList
+end

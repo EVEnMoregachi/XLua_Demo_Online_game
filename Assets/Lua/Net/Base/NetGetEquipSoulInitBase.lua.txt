@@ -1,0 +1,27 @@
+local NetGetEquipSoulInitBase = {}
+
+--装备碎片初始化
+function NetGetEquipSoulInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetEquipSoulInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetEquipSoulInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetEquipSoulInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetEquipSoulInitBase
+

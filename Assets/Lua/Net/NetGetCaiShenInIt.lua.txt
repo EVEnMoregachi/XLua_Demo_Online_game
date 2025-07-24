@@ -1,0 +1,14 @@
+NetGetCaiShenInIt = {}
+local net = require("Net/Base/NetGetCaiShenInItBase")
+net.__index = net
+
+function NetGetCaiShenInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.CaiShenData = v.value.data
+end

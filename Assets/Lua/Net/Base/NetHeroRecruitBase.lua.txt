@@ -1,0 +1,29 @@
+local NetHeroRecruitBase = {}
+
+--弟子招募
+-- heroId(string): 弟子id
+function NetHeroRecruitBase:Init(heroId,callback)
+    self.data = {}
+	self.data.msgName = "HeroRecruit"
+
+	self.data.heroId = heroId
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroRecruitBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroRecruitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroRecruitBase
+

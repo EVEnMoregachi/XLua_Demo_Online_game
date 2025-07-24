@@ -1,0 +1,14 @@
+NetPlayerUseProp = {}
+local net = require("Net/Base/NetPlayerUsePropBase")
+net.__index = net
+
+function NetPlayerUseProp.Create(propId,propNum,heroId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(propId,propNum,heroId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        backpack.isTip = v.value.data.isTip
+end

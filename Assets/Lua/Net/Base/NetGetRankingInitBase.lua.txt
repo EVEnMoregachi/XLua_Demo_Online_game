@@ -1,0 +1,27 @@
+local NetGetRankingInitBase = {}
+
+--排行榜初始化
+function NetGetRankingInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetRankingInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetRankingInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetRankingInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetRankingInitBase
+

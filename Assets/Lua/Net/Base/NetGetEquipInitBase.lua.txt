@@ -1,0 +1,27 @@
+local NetGetEquipInitBase = {}
+
+--装备初始化
+function NetGetEquipInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetEquipInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetEquipInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetEquipInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetEquipInitBase
+

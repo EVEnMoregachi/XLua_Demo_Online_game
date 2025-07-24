@@ -1,0 +1,25 @@
+userDetail = {} 
+local UITable = require("UI/userDetail/Base/userDetailView") 
+function userDetail.Create()
+	local ui = {}
+	setmetatable(ui, {__index=UITable})	
+	ui:Create()
+    ui.layer = 2
+    UI.LoadUI(ui) 
+	return ui
+end
+function UITable:Awake()   
+	UITable:Start()
+end
+function UITable:Start() 
+	self:Init()   
+end
+  
+
+
+function UITable:ButtonClickHandler(btn)   
+ 
+
+
+ 
+end

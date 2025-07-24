@@ -1,0 +1,31 @@
+local NetFriendAgreeBase = {}
+
+--同意添加好友
+-- playerId(string): 好友id
+-- emailId(string): 邮件id
+function NetFriendAgreeBase:Init(playerId,emailId,callback)
+    self.data = {}
+	self.data.msgName = "FriendAgree"
+
+	self.data.playerId = playerId
+	self.data.emailId = emailId
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendAgreeBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendAgreeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendAgreeBase
+

@@ -1,0 +1,31 @@
+local NetFriendRejectBase = {}
+
+--拒绝添加好友
+-- playerId(string): 好友id
+-- emailId(string): 邮件id
+function NetFriendRejectBase:Init(playerId,emailId,callback)
+    self.data = {}
+	self.data.msgName = "FriendReject"
+
+	self.data.playerId = playerId
+	self.data.emailId = emailId
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendRejectBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendRejectBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendRejectBase
+

@@ -1,0 +1,29 @@
+local NetNetMapTeleporterBase = {}
+
+--开启传送点
+-- map_id(string): 地图id
+function NetNetMapTeleporterBase:Init(map_id,callback)
+    self.data = {}
+	self.data.msgName = "NetMapTeleporter"
+
+	self.data.map_id = map_id
+	self.callback = callback
+
+    return self
+end
+
+function NetNetMapTeleporterBase:Send()
+    Net.Send(self)
+end
+
+function NetNetMapTeleporterBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetNetMapTeleporterBase
+

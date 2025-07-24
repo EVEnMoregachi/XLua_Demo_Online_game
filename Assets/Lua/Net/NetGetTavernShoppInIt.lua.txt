@@ -1,0 +1,14 @@
+NetGetTavernShoppInIt = {}
+local net = require("Net/Base/NetGetTavernShoppInItBase")
+net.__index = net
+
+function NetGetTavernShoppInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

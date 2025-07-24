@@ -1,0 +1,14 @@
+NetTfwuGongCanWu = {}
+local net = require("Net/Base/NetTfwuGongCanWuBase")
+net.__index = net
+
+function NetTfwuGongCanWu.Create(heroId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

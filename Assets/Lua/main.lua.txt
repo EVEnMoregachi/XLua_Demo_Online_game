@@ -1,0 +1,65 @@
+
+require("public")
+require 'ui' 
+
+require 'net'  
+require 'plugin'
+require("tools")  
+require 'list'
+require 'event'
+require 'GameMainData' 
+require 'StaticData/StaticData'
+--math.randomseed(os.time()) 
+ 
+--[[
+   -- 创建携程方法
+	  local util = require 'xlua.util' 
+		local yield_return = (require 'cs_coroutine').yield_return 
+		local co = coroutine.create(function() 
+      for i=1 , 10 ,1  do 
+          print(i )
+          yield_return(CS.UnityEngine.WaitForSeconds(3))
+      end  
+    end)
+   -- 携程方法创建 end  
+		assert(coroutine.resume(co)) --调用 携程
+    ]] 
+
+function Start() 
+    -- print("start*********************")
+   -- UI.OpenUI("Animation") 
+  
+ --UI.OpenUI("UIDemoMulti") 
+ --UI.OpenUI("login")
+--UI.OpenUI("Animation") 
+  --UI.OpenUI("a_chat") 
+--UI.OpenUI("UIScrollDemo") 
+  --UI.OpenUI("a_chat") 
+ UI.OpenUI("DemoEnter") 
+ --UI.OpenUI("mainui")
+ -- UI.OpenUI("login")
+ -- UI.OpenUI("login") 
+ --UI.OpenUI("mainui")  
+--UI.OpenUI("qiyu")
+--UI.OpenUI("LevelUpReward",1112)
+  --  Net.SetAccount("IOS:q1:1:9999")
+   
+ -- UI.OpenUI("a_test")  
+ --UI.OpenUI("login") 
+
+ -- UI.OpenUI("FightMain2")
+  -- UI.OpenUI("map")
+--UI.OpenUI("caiShen")  
+
+require("UI/ui_1")  
+ 
+end 
+
+function update()
+  Event.Call("updateG") 
+end 
+
+function sockerSendMsg(v)
+  print("sockerSendMsg " , v) 
+  Event.Call("sockerSendMsg",v)
+end 

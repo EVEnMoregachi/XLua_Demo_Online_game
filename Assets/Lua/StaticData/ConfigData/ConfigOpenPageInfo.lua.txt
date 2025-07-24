@@ -1,0 +1,390 @@
+ConfigOpenPageInfo  = {}  
+
+ local configName = "ConfigOpenPageInfo"
+local configTable =
+{{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_makename",
+    ["ziPage3"] = "0",
+    ["remakr"] = "起名",
+    ["pageId"] = "1",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 1,
+    ["showLevel"] = 1,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_package",
+    ["ziPage3"] = "0",
+    ["remakr"] = "背包",
+    ["pageId"] = "1",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_equip",
+    ["ziPage3"] = "0",
+    ["remakr"] = "装备",
+    ["pageId"] = "2",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 1,
+    ["showLevel"] = 1,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_mingshan",
+    ["ziPage3"] = "0",
+    ["remakr"] = "名山",
+    ["pageId"] = "14",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 1,
+    ["showLevel"] = 1,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_jiulou",
+    ["ziPage3"] = "0",
+    ["remakr"] = "酒楼",
+    ["pageId"] = "4",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 1,
+    ["showLevel"] = 1,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_jianghu",
+    ["ziPage3"] = "0",
+    ["remakr"] = "江湖",
+    ["pageId"] = "1",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 3,
+    ["showLevel"] = 3,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_qiyu",
+    ["ziPage3"] = "0",
+    ["remakr"] = "奇遇",
+    ["pageId"] = "15",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 4,
+    ["showLevel"] = 4,
+},
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_lunjian",
+    ["ziPage3"] = "0",
+    ["remakr"] = "论剑",
+    ["pageId"] = "7",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 5,
+    ["showLevel"] = 5,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_xiuxing",
+    ["ziPage3"] = "0",
+    ["remakr"] = "修行",
+    ["pageId"] = "3",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 6,
+    ["showLevel"] = 6,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_fightinganimation",
+    ["ziPage3"] = "0",
+    ["remakr"] = "战斗",
+    ["pageId"] = "3",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_blood",
+    ["ziPage3"] = "0",
+    ["remakr"] = "血战",
+    ["pageId"] = "8",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 9,
+    ["showLevel"] = 9,
+},
+ 
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_xingxia",
+    ["ziPage3"] = "0",
+    ["remakr"] = "行侠",
+    ["pageId"] = "18",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 11,
+    ["showLevel"] = 11,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_wulin",
+    ["ziPage3"] = "0",
+    ["remakr"] = "武林大会",
+    ["pageId"] = "16",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 12,
+    ["showLevel"] = 12,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_specialevent",
+    ["ziPage3"] = "0",
+    ["remakr"] = "特殊事件",
+    ["pageId"] = "16",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 1,
+    ["showLevel"] = 1,
+},
+
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_chuanshu",
+    ["ziPage3"] = "0",
+    ["remakr"] = "传书",
+    ["pageId"] = "9",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_juanzhou",
+    ["ziPage3"] = "0",
+    ["remakr"] = "卷轴",
+    ["pageId"] = "9",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_led",
+    ["ziPage3"] = "0",
+    ["remakr"] = "跑马灯",
+    ["pageId"] = "9",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_announcement",
+    ["ziPage3"] = "0",
+    ["remakr"] = "公告",
+    ["pageId"] = "9",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+ 
+
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "B_xunxia",
+    ["ziPage3"] = "0",
+    ["remakr"] = "奇遇/侠客行舟",
+    ["pageId"] = "9",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "B_chiji",
+    ["ziPage3"] = "0",
+    ["remakr"] = "奇遇/吃鸡页面",
+    ["pageId"] = "10",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "B_dieguyixian",
+    ["ziPage3"] = "0",
+    ["remakr"] = "奇遇/蝶谷医仙",
+    ["pageId"] = "11",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 25,
+    ["showLevel"] = 20,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_qianzhuang",
+    ["ziPage3"] = "0",
+    ["remakr"] = "奇遇/钱庄",
+    ["pageId"] = "12",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 25,
+    ["showLevel"] = 20,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_wugong",
+    ["ziPage3"] = "0",
+    ["remakr"] = "武功参悟",
+    ["pageId"] = "5",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_dizi",
+    ["ziPage3"] = "0",
+    ["remakr"] = "培养弟子",
+    ["pageId"] = "6",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_zhenrong",
+    ["ziPage3"] = "0",
+    ["remakr"] = "阵容",
+    ["pageId"] = "6",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_menpai",
+    ["ziPage3"] = "0",
+    ["remakr"] = "门派",
+    ["pageId"] = "13",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_chat",
+    ["ziPage3"] = "0",
+    ["remakr"] = "门派",
+    ["pageId"] = "13",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+},
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "a_company",
+    ["ziPage3"] = "0",
+    ["remakr"] = "拍卖行",
+    ["pageId"] = "17",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 20,
+    ["showLevel"] = 100,
+},
+
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "B_richang",
+    ["ziPage3"] = "0",
+    ["remakr"] = "卷轴/日常",
+    ["pageId"] = "19",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 5,
+    ["showLevel"] = 0,
+},
+
+{
+    ["ziPage1"] = "0",
+    ["pageName"] = "B_qiandao",
+    ["ziPage3"] = "0",
+    ["remakr"] = "卷轴/签到",
+    ["pageId"] = "20",
+    ["ziPage2"] = "0",
+    ["enableLevel"] = 0,
+    ["showLevel"] = 0,
+}
+}
+
+function ConfigOpenPageInfo.getVarByCustom(name, value)
+    for key, var in pairs(configTable) do
+        if var[name] == value then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigOpenPageInfo.getVarById(id)
+    for key, var in pairs(configTable) do
+        if tonumber(var.id) == tonumber(id) then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigOpenPageInfo.getVarByIndex(index)
+    return configTable[tonumber(index)]
+end
+
+function ConfigOpenPageInfo.getSize()
+    return #configTable
+end
+function ConfigOpenPageInfo.getThisTable ()
+  return configTable
+end
+
+function  ConfigOpenPageInfo.IfShowMoudle( name ,playerlevel )
+-- print("name" ,name)
+	local temp = ConfigOpenPageInfo.getVarByCustom("pageName" , name)
+	if temp ~= nil then 
+		if temp.showLevel <= playerlevel  then
+			return true
+		else
+		    return false
+		end 
+
+	end 
+	return false
+end 
+
+function  ConfigOpenPageInfo.unLockNewMoudle(name,playerlevel  ) 
+    local temp = ConfigOpenPageInfo.getVarByCustom("pageName" , name)
+   	if temp ~= nil then 
+        if temp.showLevel >playerlevel-1  and temp.showLevel == playerlevel   then
+             return temp.remakr
+		 else 
+			 return ""
+        end 
+    end 
+	return ""
+end 
+
+return ConfigOpenPageInfo

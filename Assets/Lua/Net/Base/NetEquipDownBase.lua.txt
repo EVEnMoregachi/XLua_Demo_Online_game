@@ -1,0 +1,33 @@
+local NetEquipDownBase = {}
+
+--装备卸下
+-- heroId(string): 弟子id
+-- equipId(string): 装备id
+-- equipPos(int): 装备位置
+function NetEquipDownBase:Init(heroId,equipId,equipPos,callback)
+    self.data = {}
+	self.data.msgName = "EquipDown"
+
+	self.data.heroId = heroId
+	self.data.equipId = equipId
+	self.data.equipPos = equipPos
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipDownBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipDownBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipDownBase
+

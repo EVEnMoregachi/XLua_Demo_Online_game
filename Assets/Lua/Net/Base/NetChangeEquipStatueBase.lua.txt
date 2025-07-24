@@ -1,0 +1,29 @@
+local NetChangeEquipStatueBase = {}
+
+--装备雕像
+-- dx_id(string): 玩家装备的雕像id  
+function NetChangeEquipStatueBase:Init(dx_id,callback)
+    self.data = {}
+	self.data.msgName = "ChangeEquipStatue"
+
+	self.data.dx_id = dx_id
+	self.callback = callback
+
+    return self
+end
+
+function NetChangeEquipStatueBase:Send()
+    Net.Send(self)
+end
+
+function NetChangeEquipStatueBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetChangeEquipStatueBase
+

@@ -1,0 +1,27 @@
+local NetGetMingShanInitBase = {}
+
+--初始化名山
+function NetGetMingShanInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetMingShanInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetMingShanInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetMingShanInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetMingShanInitBase
+

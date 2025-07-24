@@ -1,0 +1,33 @@
+local Render = UI.CreateRenderTable()
+
+local UIBookInfoRender = require("UI/backpack/UIBookInfoRender")
+UIBookInfoRender.__index = UIBookInfoRender 
+
+function Render:Awake()
+	self.BookInfo = {} 
+end  
+
+function Render:SetUICompent(child)
+if child.name == "book1" then
+	self:CreateItemRender(child)
+elseif child.name == "book2" then
+	self:CreateItemRender(child)
+elseif child.name == "book3" then
+	self:CreateItemRender(child)
+elseif child.name == "book4" then
+	self:CreateItemRender(child)
+ 
+end
+end
+
+function Render:CreateItemRender(tempTrans)
+local tempRender = {}
+setmetatable(tempRender,UIBookInfoRender)
+tempRender:Init(tempTrans)
+table.insert(self.BookInfo, tempRender)
+end 
+
+ 
+return Render
+
+ 

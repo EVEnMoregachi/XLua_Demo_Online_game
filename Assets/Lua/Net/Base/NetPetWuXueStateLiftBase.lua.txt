@@ -1,0 +1,29 @@
+local NetPetWuXueStateLiftBase = {}
+
+--宠物武学境界提升
+-- petId(string): 宠物id
+function NetPetWuXueStateLiftBase:Init(petId,callback)
+    self.data = {}
+	self.data.msgName = "PetWuXueStateLift"
+
+	self.data.petId = petId
+	self.callback = callback
+
+    return self
+end
+
+function NetPetWuXueStateLiftBase:Send()
+    Net.Send(self)
+end
+
+function NetPetWuXueStateLiftBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetWuXueStateLiftBase
+

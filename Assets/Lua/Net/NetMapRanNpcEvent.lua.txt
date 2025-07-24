@@ -1,0 +1,14 @@
+NetMapRanNpcEvent = {}
+local net = require("Net/Base/NetMapRanNpcEventBase")
+net.__index = net
+
+function NetMapRanNpcEvent.Create(npc_id,answer_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(npc_id,answer_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

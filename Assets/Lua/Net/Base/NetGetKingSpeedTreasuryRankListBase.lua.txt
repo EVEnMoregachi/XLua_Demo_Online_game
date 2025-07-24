@@ -1,0 +1,27 @@
+local NetGetKingSpeedTreasuryRankListBase = {}
+
+--闯王宝库的排行榜
+function NetGetKingSpeedTreasuryRankListBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetKingSpeedTreasuryRankList"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetKingSpeedTreasuryRankListBase:Send()
+    Net.Send(self)
+end
+
+function NetGetKingSpeedTreasuryRankListBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetKingSpeedTreasuryRankListBase
+

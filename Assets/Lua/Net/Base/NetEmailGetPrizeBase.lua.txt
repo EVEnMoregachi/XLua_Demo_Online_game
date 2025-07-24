@@ -1,0 +1,29 @@
+local NetEmailGetPrizeBase = {}
+
+--邮件领奖
+-- emailId(string): 邮件Id
+function NetEmailGetPrizeBase:Init(emailId,callback)
+    self.data = {}
+	self.data.msgName = "EmailGetPrize"
+
+	self.data.emailId = emailId
+	self.callback = callback
+
+    return self
+end
+
+function NetEmailGetPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetEmailGetPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEmailGetPrizeBase
+

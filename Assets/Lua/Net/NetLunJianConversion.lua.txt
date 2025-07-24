@@ -1,0 +1,16 @@
+NetLunJianConversion = {}
+local net = require("Net/Base/NetLunJianConversionBase")
+net.__index = net
+
+function NetLunJianConversion.Create(convertId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(convertId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    lunjian.ShoppInItInfo = {} 
+    lunjian.ShoppInItInfo = v.value.data["lunJianShopList"]  --论剑列表信息 
+    lunjian.lunJianScore  = v.value.data.lunJianScore  --论剑积分  
+end

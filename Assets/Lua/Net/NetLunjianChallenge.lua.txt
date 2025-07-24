@@ -1,0 +1,18 @@
+NetLunjianChallenge = {}
+local net = require("Net/Base/NetLunjianChallengeBase")
+net.__index = net
+
+function NetLunjianChallenge.Create(checkedId,checkedType,checkedRank,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(checkedId,checkedType,checkedRank,callback)
+    return t
+end 
+
+function net:OnResult(v) 
+
+-- self.fightRslInfoData =   v.value.data.fightRslInfoData.rsl
+-- self.returnbattleDiZiinfo =  v.value.data.returnbattleDiZiinfo
+
+
+end

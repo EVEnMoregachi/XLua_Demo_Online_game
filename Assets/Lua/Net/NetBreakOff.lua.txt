@@ -1,0 +1,14 @@
+NetBreakOff = {}
+local net = require("Net/Base/NetBreakOffBase")
+net.__index = net
+
+function NetBreakOff.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.BiGuanData = v.value.data
+end

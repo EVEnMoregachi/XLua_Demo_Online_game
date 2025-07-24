@@ -1,0 +1,14 @@
+NetPetBreakThrough = {}
+local net = require("Net/Base/NetPetBreakThroughBase")
+net.__index = net
+
+function NetPetBreakThrough.Create(petId,if_useSoulS,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,if_useSoulS,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

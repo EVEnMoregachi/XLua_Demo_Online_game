@@ -1,0 +1,31 @@
+local NetMapNpcGiftsBase = {}
+
+--送礼
+-- map_id(string): 地图id
+-- npc_id(string): NPCID
+function NetMapNpcGiftsBase:Init(map_id,npc_id,callback)
+    self.data = {}
+	self.data.msgName = "MapNpcGifts"
+
+	self.data.map_id = map_id
+	self.data.npc_id = npc_id
+	self.callback = callback
+
+    return self
+end
+
+function NetMapNpcGiftsBase:Send()
+    Net.Send(self)
+end
+
+function NetMapNpcGiftsBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapNpcGiftsBase
+

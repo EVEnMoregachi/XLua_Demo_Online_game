@@ -1,0 +1,31 @@
+local NetGamePetCrossEquipBase = {}
+
+--宠物穿装备
+-- petId(string): 宠物id
+-- equipId(string): 装备id
+function NetGamePetCrossEquipBase:Init(petId,equipId,callback)
+    self.data = {}
+	self.data.msgName = "GamePetCrossEquip"
+
+	self.data.petId = petId
+	self.data.equipId = equipId
+	self.callback = callback
+
+    return self
+end
+
+function NetGamePetCrossEquipBase:Send()
+    Net.Send(self)
+end
+
+function NetGamePetCrossEquipBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGamePetCrossEquipBase
+

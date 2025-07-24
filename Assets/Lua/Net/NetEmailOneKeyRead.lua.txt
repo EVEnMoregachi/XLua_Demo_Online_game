@@ -1,0 +1,14 @@
+NetEmailOneKeyRead = {}
+local net = require("Net/Base/NetEmailOneKeyReadBase")
+net.__index = net
+
+function NetEmailOneKeyRead.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+          social.emailMsgInIt = v.value.data.emailMsgInIt  
+end

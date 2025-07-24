@@ -1,0 +1,15 @@
+NetEnterGame = {}
+local net = require("Net/Base/NetEnterGameBase")
+net.__index = net
+
+function NetEnterGame.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+      self.data = v.value.data.EnterGame
+       self.data.weather = v.value.data.weather 
+end

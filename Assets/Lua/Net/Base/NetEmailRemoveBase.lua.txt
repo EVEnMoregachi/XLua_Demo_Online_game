@@ -1,0 +1,31 @@
+local NetEmailRemoveBase = {}
+
+--邮件删除
+-- emailId(string): 邮件Id
+-- delType(string): 删除类型
+function NetEmailRemoveBase:Init(emailId,delType,callback)
+    self.data = {}
+	self.data.msgName = "EmailRemove"
+
+	self.data.emailId = emailId
+	self.data.delType = delType
+	self.callback = callback
+
+    return self
+end
+
+function NetEmailRemoveBase:Send()
+    Net.Send(self)
+end
+
+function NetEmailRemoveBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEmailRemoveBase
+

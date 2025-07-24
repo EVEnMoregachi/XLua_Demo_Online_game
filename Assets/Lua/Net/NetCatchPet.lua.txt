@@ -1,0 +1,14 @@
+NetCatchPet = {}
+local net = require("Net/Base/NetCatchPetBase")
+net.__index = net
+
+function NetCatchPet.Create(pet_id,win_pr,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(pet_id,win_pr,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

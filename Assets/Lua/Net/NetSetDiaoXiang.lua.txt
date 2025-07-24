@@ -1,0 +1,14 @@
+NetSetDiaoXiang = {}
+local net = require("Net/Base/NetSetDiaoXiangBase")
+net.__index = net
+
+function NetSetDiaoXiang.Create(dx_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(dx_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

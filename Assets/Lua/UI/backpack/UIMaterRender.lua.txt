@@ -1,0 +1,30 @@
+local Render = UI.CreateRenderTable()
+
+local UIMaterInfoRender = require("UI/backpack/UIMaterInfoRender")
+UIMaterInfoRender.__index = UIMaterInfoRender 
+
+function Render:Awake()
+	self.MaterInfo = {} 
+end 
+
+function Render:SetUICompent(child)
+	if child.name == "prop1" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop2" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop3" then
+		self:CreateItemRender(child)
+	elseif child.name == "prop4" then
+		self:CreateItemRender(child)
+	 
+	end
+end
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIMaterInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.MaterInfo, tempRender)
+end 
+ 
+ return Render

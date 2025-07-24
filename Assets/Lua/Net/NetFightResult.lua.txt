@@ -1,0 +1,14 @@
+NetFightResult = {}
+local net = require("Net/Base/NetFightResultBase")
+net.__index = net
+
+function NetFightResult.Create(fight_result,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(fight_result,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

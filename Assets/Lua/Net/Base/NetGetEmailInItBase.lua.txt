@@ -1,0 +1,27 @@
+local NetGetEmailInItBase = {}
+
+--邮件初始化
+function NetGetEmailInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetEmailInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetEmailInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetEmailInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetEmailInItBase
+

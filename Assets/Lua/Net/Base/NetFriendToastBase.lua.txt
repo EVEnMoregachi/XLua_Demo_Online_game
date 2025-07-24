@@ -1,0 +1,29 @@
+local NetFriendToastBase = {}
+
+--敬酒
+-- playerId(string): 好友id
+function NetFriendToastBase:Init(playerId,callback)
+    self.data = {}
+	self.data.msgName = "FriendToast"
+
+	self.data.playerId = playerId
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendToastBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendToastBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendToastBase
+

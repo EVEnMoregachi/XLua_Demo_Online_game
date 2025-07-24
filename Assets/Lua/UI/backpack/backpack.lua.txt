@@ -1,0 +1,1080 @@
+backpack = {}   
+require('StaticData/ConfigData/ConfigPropJson')   
+
+
+
+local save_button = {}  --储存详情页面生成的按钮  
+local saveHero = {} --储存弟子阵容
+local nowPageId =  "" --当前操作的页面
+
+local UITable = require("UI/backpack/Base/backpackView") 
+ 
+local UIPropRender = require("UI/backpack/UIPropRender")
+UIPropRender.__index = UIPropRender
+
+local UIEquipRender = require("UI/backpack/UIEquipRender")
+UIEquipRender.__index = UIEquipRender
+
+local UIBookRender = require("UI/backpack/UIBookRender")
+UIBookRender.__index = UIBookRender 
+
+local UIEquipChipRender = require("UI/backpack/UIEquipChipRender")
+UIEquipChipRender.__index = UIEquipChipRender 
+
+local UIBookChipRender = require("UI/backpack/UIBookChipRender")
+UIBookChipRender.__index = UIBookChipRender 
+
+local UIScrollRender = require("UI/backpack/UIScrollRender")
+UIScrollRender.__index = UIScrollRender 
+
+local UIMaterRender = require("UI/backpack/UIMaterRender")
+UIMaterRender.__index = UIMaterRender 
+ 
+require("Net/NetPlayerUseProp")  --使用道具接口 
+function backpack.Create()
+	local ui = {}
+    setmetatable(ui, {__index=UITable}) 
+	ui:Create()
+    ui.layer = 3
+    UI.LoadUI(ui) 
+	return ui
+end 
+
+ function UITable:Awake()    
+    -- print("backpack  Awake*****************");  
+    self:Init()   
+    nowPageId =  ""
+    -- print("self.name "  , self.name)
+    -- print("self.layer " , self.layer)
+    Public.SetEasyTouch("close")
+    self:RefList()  
+    self:InitData()  
+end   
+
+function UITable:RefList()
+    self.oneLineNum = 4
+    self.PropDataList = {}  --道具
+    self.PropItemList = {}
+    self.propList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelProp(nIndex,tempTransRect,nIndexTrans)
+             end 
+
+    self.EquipDataList = {}  --装备
+    self.EquipItemList = {}
+    self.equipList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelEquip(nIndex,tempTransRect,nIndexTrans)
+             end 
+
+    self.EquipChipDataList = {}  --装备碎片
+    self.EquipChipItemList = {}
+    self.equipChipList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelEquipChip(nIndex,tempTransRect,nIndexTrans)
+             end  
+
+    self.BookDataList = {}  --武功
+    self.BookItemList = {}
+    self.bookList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelBook(nIndex,tempTransRect,nIndexTrans)
+             end 
+
+    self.BookChipDataList = {}  --武功碎片
+    self.BookChipItemList = {}
+    self.wuGongChipList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelBookChip(nIndex,tempTransRect,nIndexTrans)
+             end  
+
+    self.ScrollDataList = {}  --卷轴
+    self.ScrollItemList = {}
+    self.scrollList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelScroll(nIndex,tempTransRect,nIndexTrans)
+             end 
+
+    self.MaterialsDataList = {}  --材料
+    self.MaterialsItemList = {}
+    self.materList.renderHandler = function (nIndex,tempTransRect,nIndexTrans)  
+             self:CrewItemRenderHandelMater(nIndex,tempTransRect,nIndexTrans)
+             end 
+end
+ 
+function UITable:CrewItemRenderHandelProp(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.PropItemList[nIndexTrans] == nil then
+		self.PropItemList[nIndexTrans] = {}
+		setmetatable(self.PropItemList[nIndexTrans] ,UIPropRender)
+		self.PropItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.PropDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.PropItemList[nIndexTrans].PropInfo[i]:SetData(self.PropDataList[nNum])
+ 			self.PropItemList[nIndexTrans].PropInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.PropItemList[nIndexTrans].PropInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end 
+ 
+function UITable:CrewItemRenderHandelEquip(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.EquipItemList[nIndexTrans] == nil then
+		self.EquipItemList[nIndexTrans] = {}
+		setmetatable(self.EquipItemList[nIndexTrans] ,UIEquipRender)
+		self.EquipItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.EquipDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.EquipItemList[nIndexTrans].EquipInfo[i]:SetData(self.EquipDataList[nNum])
+ 			self.EquipItemList[nIndexTrans].EquipInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.EquipItemList[nIndexTrans].EquipInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end
+ 
+function UITable:CrewItemRenderHandelEquipChip(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.EquipChipItemList[nIndexTrans] == nil then
+		self.EquipChipItemList[nIndexTrans] = {}
+		setmetatable(self.EquipChipItemList[nIndexTrans] ,UIEquipChipRender)
+		self.EquipChipItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.EquipChipDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.EquipChipItemList[nIndexTrans].EquipChipInfo[i]:SetData(self.EquipChipDataList[nNum])
+ 			self.EquipChipItemList[nIndexTrans].EquipChipInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.EquipChipItemList[nIndexTrans].EquipChipInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end
+ 
+function UITable:CrewItemRenderHandelBook(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.BookItemList[nIndexTrans] == nil then
+		self.BookItemList[nIndexTrans] = {}
+		setmetatable(self.BookItemList[nIndexTrans] ,UIBookRender)
+		self.BookItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.BookDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.BookItemList[nIndexTrans].BookInfo[i]:SetData(self.BookDataList[nNum])
+ 			self.BookItemList[nIndexTrans].BookInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.BookItemList[nIndexTrans].BookInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end
+ 
+function UITable:CrewItemRenderHandelBookChip(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.BookChipItemList[nIndexTrans] == nil then
+		self.BookChipItemList[nIndexTrans] = {}
+		setmetatable(self.BookChipItemList[nIndexTrans] ,UIBookChipRender)
+		self.BookChipItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.BookChipDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.BookChipItemList[nIndexTrans].BookChipInfo[i]:SetData(self.BookChipDataList[nNum])
+ 			self.BookChipItemList[nIndexTrans].BookChipInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.BookChipItemList[nIndexTrans].BookChipInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end
+
+function UITable:CrewItemRenderHandelScroll(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.ScrollItemList[nIndexTrans] == nil then
+		self.ScrollItemList[nIndexTrans] = {}
+		setmetatable(self.ScrollItemList[nIndexTrans] ,UIScrollRender)
+		self.ScrollItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.ScrollDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.ScrollItemList[nIndexTrans].ScrollInfo[i]:SetData(self.ScrollDataList[nNum])
+ 			self.ScrollItemList[nIndexTrans].ScrollInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.ScrollItemList[nIndexTrans].ScrollInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end
+
+function UITable:CrewItemRenderHandelMater(nIndex,tempTransRect,nIndexTrans) 
+	local nDataTotal = 0
+	local nNum = 0
+	if self.MaterialsItemList[nIndexTrans] == nil then
+		self.MaterialsItemList[nIndexTrans] = {}
+		setmetatable(self.MaterialsItemList[nIndexTrans] ,UIMaterRender)
+		self.MaterialsItemList[nIndexTrans]:Init(tempTransRect)
+	end
+
+	nDataTotal = #self.MaterialsDataList
+ 	for i=1,self.oneLineNum do
+		nNum = nIndex * self.oneLineNum + i
+ 		if nNum <= nDataTotal then
+            self.MaterialsItemList[nIndexTrans].MaterInfo[i]:SetData(self.MaterialsDataList[nNum])
+ 			self.MaterialsItemList[nIndexTrans].MaterInfo[i].transform.gameObject:SetActive(true)
+		else
+			self.MaterialsItemList[nIndexTrans].MaterInfo[i].transform.gameObject:SetActive(false)
+		end
+	end
+end 
+ 
+
+--刷新背包列表 
+function UITable:RefreshCrewList()   
+    self.DetailPage:SetActive(false)  
+    -- print("刷新背包列表sssssssssssssssssssssssssssssssssss")
+    for i = 1, #self.saveList do
+        self.saveList[i]:SetActive(true)
+     end 
+    self.equipChipListObj:SetActive(true)
+    self.wuGongChipListObj:SetActive(true) 
+	self.PropDataList = GameMainData.PropModelData.PropData  -- 道具主数据
+	local nTotal = #self.PropDataList
+	local nLine = nTotal/4
+    self.propList:SetCount(math.ceil(nLine)) 
+ 
+    
+    self.MaterialsDataList = GameMainData.PropModelData.MaterData   -- 道具主数据 材料
+	local nTotal = #self.MaterialsDataList
+	local nLine = nTotal/4
+    self.materList:SetCount(math.ceil(nLine)) 
+
+    if nowPageId == "" then --页面刷新
+        self:PageCut(1)
+      else
+        self:PageCut(nowPageId) 
+      end 
+ 
+end  
+ 
+function UITable:InitData()   
+    self:heroMsg() --初始化弟子信息
+    self:RefreshCrewList()
+end   
+
+ --控制页面切换及按钮状态
+ function UITable:PageCut(pageId) 
+    nowPageId = pageId
+    self.equipChipListObj:SetActive(false)  --pageId 5
+    self.wuGongChipListObj:SetActive(false)  --pageId 6
+    for i = 1, #self.saveButton do
+        self.saveButton[i]:GetComponent("Image").sprite = self.huibuttondi  
+        -- self.saveButton[i]:GetComponent("RectTransform").anchoredPosition3D = CS.UnityEngine.Vector3( 862,self.saveButton[i]:GetComponent("RectTransform").anchoredPosition3D.y,0)
+        self.saveList[i]:SetActive(false)
+    end
+
+    self.equipB2Obj:SetActive(false)  
+    self.equipChipBObj:SetActive(false)  
+    self.wugongB2Obj:SetActive(false)  
+    self.wuGongChipBObj:SetActive(false) 
+    if pageId <=5 then
+        self.saveList[pageId]:SetActive(true)  
+        self.saveButton[pageId]:GetComponent("Image").sprite = self.huangbuttondi  
+        -- self.saveButton[pageId]:GetComponent("RectTransform").anchoredPosition3D = CS.UnityEngine.Vector3(910,self.saveButton[pageId]:GetComponent("RectTransform").anchoredPosition3D.y,0)
+   end
+  
+
+    if pageId == 2 then  --装备
+        UITable:ButtonClickHandler(self.equipB2) 
+        self.equipB2Obj:SetActive(true)  
+        self.equipChipBObj:SetActive(true)  
+     elseif pageId == 3 then  --武功
+        UITable:ButtonClickHandler(self.wugongB2) 
+        self.wugongB2Obj:SetActive(true)  
+        self.wuGongChipBObj:SetActive(true)    
+    elseif pageId == 7 then  --装备碎片
+        self.saveList[2]:SetActive(true)  
+        self.saveButton[2]:GetComponent("Image").sprite = self.huangbuttondi  
+        -- self.saveButton[2]:GetComponent("RectTransform").anchoredPosition3D = CS.UnityEngine.Vector3(910,self.saveButton[2]:GetComponent("RectTransform").anchoredPosition3D.y,0)
+        UITable:ButtonClickHandler(self.equipChipB) 
+        self.equipB2Obj:SetActive(true)  
+        self.equipChipBObj:SetActive(true)    
+    elseif pageId == 6 then  --武功碎片
+        self.saveList[3]:SetActive(true)  
+        self.saveButton[3]:GetComponent("Image").sprite = self.huangbuttondi  
+        -- self.saveButton[3]:GetComponent("RectTransform").anchoredPosition3D = CS.UnityEngine.Vector3(910,self.saveButton[3]:GetComponent("RectTransform").anchoredPosition3D.y,0)
+        UITable:ButtonClickHandler(self.wuGongChip) 
+        self.wugongB2Obj:SetActive(true)  
+        self.wuGongChipBObj:SetActive(true)    
+     end 
+    
+ end  
+ local nowHeroId = "" --记录当前操作的弟子id
+
+function UITable:ButtonClickHandler(btn)   
+ LuaTools.PlaySound("btnsound") 
+    if btn == self.closeB then    
+        -- print("self.name "  , self.name)
+    -- print("self.layer "  , self.layer)
+      Public.SetEasyTouch("open")
+       self:Close()
+     elseif  btn == self.yuanbaoAddB then 
+        
+     elseif  btn == self.silverAddB then 
+
+     elseif  btn == self.goldLeafAddB then 
+
+     elseif  btn == self.heroDetailB then  
+         UI.OpenUI("heroDetail",nowHeroId)
+     elseif  btn == self.closeResolve then  
+        self.useProp:SetActive(false) 
+         self.trueResolvePage:SetActive(false) 
+    elseif  btn == self.resolveShader then  
+        self.resolve:SetActive(false)
+    elseif  btn == self.resoleTrueB then  
+        self.resolve:SetActive(false)
+     elseif  btn == self.propB then 
+        self:PageCut(1)
+     elseif  btn == self.equipB then 
+        self:PageCut(2)
+     elseif  btn == self.wugongB then 
+        self:PageCut(3)
+    elseif  btn == self.scrollB then 
+        self:PageCut(4)
+    elseif  btn == self.materB then 
+        self:PageCut(5)
+    elseif  btn == self.equipChipB then 
+         self.equipB2Obj:GetComponent("Image").sprite = self.unselect 
+        self.equipChipBObj:GetComponent("Image").sprite = self.select  
+        self.equipListObj:SetActive(false)
+        self.equipChipListObj:SetActive(true) 
+    elseif  btn == self.equipB2 then  
+        self.equipB2Obj:GetComponent("Image").sprite = self.select 
+        self.equipChipBObj:GetComponent("Image").sprite = self.unselect 
+        self.equipListObj:SetActive(true)
+        self.equipChipListObj:SetActive(false) 
+    elseif  btn == self.wugongB2 then 
+        self.wugongB2Obj:GetComponent("Image").sprite = self.select 
+        self.wuGongChipBObj:GetComponent("Image").sprite = self.unselect 
+        self.bookListObj:SetActive(true)
+        self.wuGongChipListObj:SetActive(false) 
+    elseif  btn == self.wuGongChip then  
+        self.wugongB2Obj:GetComponent("Image").sprite = self.unselect 
+        self.wuGongChipBObj:GetComponent("Image").sprite = self.select 
+        self.bookListObj:SetActive(false)
+        self.wuGongChipListObj:SetActive(true) 
+    elseif  btn == self.shaderPage then 
+        self.DetailPage:SetActive(false)
+        self.det_button:SetActive(false) 
+    elseif  btn == self.trueB then  
+
+        NetPlayerUseProp.Create(usePropId,nowNum,nowHeroId,function(rpc) 
+            self:UseTip()
+            UI.OpenUI("rewardshow") 
+            self:RefList()  
+            self:RefreshCrewList()
+            self.useProp:SetActive(false)
+      end):Send() 
+
+     elseif  btn == self.falseB then  
+        self.useProp:SetActive(false)
+    elseif  btn == self.TrueBresole then  
+        self.trueResolvePage:SetActive(false) 
+    
+    
+    elseif  btn == self.zdB then  
+        self.num.text = canMax 
+        nowNum = canMax
+    elseif  btn == self.jiaB then 
+        if nowNum < canMax then   
+           nowNum = nowNum + 1
+        self.num.text = nowNum 
+        else
+         --已达到最大值了  
+        end
+     elseif  btn == self.jianB then 
+        if nowNum > 1 then
+            nowNum = nowNum - 1  
+            self.num.text = nowNum  
+        else
+            --已达到最小值了 
+        end 
+    end   
+ end
+
+ function UITable:UseTip()
+    if usePropId == "1017" then
+        Public.warning("元气 +"..nowNum*15)
+    elseif usePropId == "1018" then     
+        Public.warning("体力 +"..nowNum*10) 
+    elseif usePropId == "1090" then     
+        Public.warning("功力点 +"..nowNum*10) 
+    elseif usePropId == "1091" then     
+        Public.warning("功力点 +"..nowNum*100) 
+    elseif usePropId == "1092" then     
+        Public.warning("功力点 +"..nowNum*1000) 
+    elseif usePropId == "1096" then     
+        Public.warning("精力 +"..nowNum*10)  
+    elseif usePropId == "1096" then     
+        Public.warning("精力 +"..nowNum*10) 
+    elseif Split(usePropId,"_")[2] == "YeGuo" then     
+        Public.warning(backpack.isTip) 
+    end 
+    
+ end
+ 
+
+function UITable:heroMsg()  
+    
+  end
+ 
+function UITable:yuanFenShow(yuanfenStr) 
+  
+
+end
+
+--选中效果框
+function UITable:heroKuang() 
+   end
+ 
+
+local savePrefab = {}
+ function UITable:heroConrol(heroId) 
+ 
+
+   
+ 
+ end 
+
+ --弹出天赋武功详情
+ function backpack.TianFuWGInfo(tfwg_id)
+      
+ end 
+
+ --装备和武功的分解获得展示
+ local saveResolveObj = {}
+function backpack.resolve_InfoShow(info)
+     
+  
+end
+-----------------------背包界面--装备--处理
+
+ --弹出装备详情
+function backpack.equipDetail(equipId) 
+  
+
+end
+
+--装备穿戴事件
+function UITable:EquipUp(equipId)
+    
+
+end
+--装备卸下事件 (装备id发-1)
+function UITable:EquipDown(equipId)
+    
+end 
+
+--装备分解事件
+function UITable:EquipResolve(equipId)
+   
+end
+
+
+ --弹出装备碎片详情
+ function backpack.equipChipDetail(equipId) 
+  
+
+end 
+
+--装备合成事件
+function UITable:EquipCompound(equipId)
+  
+end
+
+function UITable:BackPos(equipId)
+   
+end
+ 
+--装备.武功分解提示板调用
+function UITable:ResolveTip(type,id,name) --分解的类型，id  名字
+    
+end
+
+
+
+-----------------------背包界面--武功--处理
+
+--弹出武功详情
+function backpack.wuGongDetail(wuGongId) 
+   
+
+end
+
+
+  
+
+--武功穿戴事件
+function UITable:wuGongUp(wuGongId)
+   
+end
+--武功卸下事件  
+function UITable:wuGongDown(wuGongId)
+    
+end
+
+--武功分解事件
+function UITable:wuGongResolve(wuGongId) 
+   
+end
+
+
+--弹出武功碎片详情
+function backpack.wuGongChipDetail(wuGongId) 
+    
+end 
+
+--武功合成事件
+function UITable:wuGongCompound(wuGongId)
+   
+end
+ 
+--弹出卷轴详情 
+ function backpack.ScrollDetail(scrollId) 
+    
+ end 
+
+
+-----------------------背包界面--道具--处理
+
+ --弹出道具详情 
+function backpack.propDetail(propId) 
+    -- print("弹出道具详情",propId) 
+    -- print("道具数量",GameMainData.PropModelData:QueryPropNum(propId))
+    for i = 1, #save_button do
+        CS.UnityEngine.GameObject.Destroy(save_button[i])  -- 清理创建的预制体
+    end
+    save_button = {} 
+    local propMsg = ConfigPropJson.getVarByCustom("prop_id",propId) 
+    if propMsg == nil then
+        return 
+    end
+    UITable.det_picture.sprite = Public.ResMeg.GetSpritePath(propId,"backpack") 
+    UITable.det_name.text = propMsg.prop_name  
+    UITable.det_type.text = UITable:BackPropType(propMsg.prop_type)
+    UITable.det_info.text = propMsg.prop_info
+    UITable.get_path.text =  propMsg.get_way
+    UITable.det_wearer.text=""
+    if UITable:BackButtonName(propMsg.prop_btname) ~= ""  then --  按钮对应的功能不同
+        local button  = UI.Instantiate(UITable.det_buttonPrefab,UITable.btn_Content,propId)   
+        button:GetComponent("Button").onClick:AddListener(function() backpack.UseProps(propId)   end)  
+        local buttonname = button.transform:Find("name").gameObject:GetComponent("Text")  --按钮名字 
+        buttonname.text = UITable:BackButtonName(propMsg.prop_btname) 
+        save_button[1] =  button
+        UITable.det_button:SetActive(true)  
+    end 
+    UITable.DetailPage:SetActive(true)  
+end  
+
+--返回按钮Text
+function UITable:BackButtonName(btnType) 
+	if btnType=="1" then
+	   return "使用"
+	elseif btnType=="2" then
+	   return "打开"
+	elseif btnType=="3" then
+	   return "开启"
+	elseif btnType=="4" then
+	   return "传功"		
+	elseif btnType=="5" then
+	   return "培养"		
+	elseif btnType=="6" then
+       return "合成" 
+    elseif btnType=="7" then
+        return "查看" 
+	else 
+	   return ""		
+	end	   
+end  
+
+--返回道具类型  (（1物品，2食物，3补品， 4材料 5礼包 6 侠名令）)
+function UITable:BackPropType(propType) 
+	if propType=="1" then
+	   return "物品"
+	elseif propType=="2" then
+	   return "食物"
+	elseif propType=="3" then
+	   return "补品"
+	elseif propType=="4" then
+	   return "材料"		
+	elseif propType=="5" then
+	   return "礼包"		
+	elseif propType=="6" then
+	   return "侠名令" 
+	else 
+	   return ""		
+	end	   
+end  
+
+-- 需弹出道具的使用页面 显示道具总数、道具名字  用于金箱子，银箱子等
+function UITable:UsrPropPage(propId,propNum) 
+    self.title2.text = ConfigPropJson.getVarByCustom("prop_id", propId).prop_name 
+    self.numAll.text = "总数量：<color=#13ff01>"..propNum.."</color>"
+    self.num.text = "1"  
+    self.useProp:SetActive(true)   --  使用页面
+    self.DetailPage:SetActive(false)
+    self.det_button:SetActive(false) 
+end
+ 
+usePropId = ""
+canMax = 0 --最大值
+nowNum = 0 --当前值
+ --使用道具
+ function backpack.UseProps(prop_Id) 
+
+    print("使用道具id=",prop_Id) 
+   local propNum = GameMainData.PropModelData:QueryPropNum(prop_Id)
+     print("数量=",propNum)   
+   if   propNum <=0 then  --道具数量不足 
+    Public.warning("道具数量不足") 
+        return 
+   end
+   usePropId = prop_Id
+   local switch = { 
+    ["1002"] = function()    --金钥匙
+        local propNum2 = GameMainData.PropModelData:QueryPropNum("1003") 
+        if propNum2>0 then 
+            UITable:UsrPropPage(prop_Id,propNum)  
+            if propNum - propNum2 >= 0 then
+                canMax = propNum2
+                else
+                canMax = propNum
+            end
+            nowNum = 1
+        else
+            Public.warning("需要金箱子才能开启") 
+        end 
+    end,
+    ["1003"] = function()    --金箱子 
+        local propNum2 = GameMainData.PropModelData:QueryPropNum("1002") 
+        if propNum2>0 then 
+            UITable:UsrPropPage(prop_Id,propNum)  
+            if propNum - propNum2 >= 0 then
+                canMax = propNum2
+                else
+                canMax = propNum
+            end
+            nowNum = 1 
+        else
+            Public.warning("需要金钥匙才能开启")  
+        end 
+    end,
+	["1004"] = function()    --银钥匙  
+        local propNum2 = GameMainData.PropModelData:QueryPropNum("1005") 
+        if propNum2>0 then 
+            UITable:UsrPropPage(prop_Id,propNum)  
+            if propNum - propNum2 >= 0 then
+                canMax = propNum2
+                else
+                canMax = propNum
+            end
+            nowNum = 1
+        else
+            Public.warning("需要银箱子才能开启") 
+        end 
+    end,
+    ["1005"] = function()    --银箱子  
+        local propNum2 = GameMainData.PropModelData:QueryPropNum("1004") 
+        if propNum2>0 then 
+            UITable:UsrPropPage(prop_Id,propNum)  
+            if propNum - propNum2 >= 0 then
+                canMax = propNum2
+                else
+                canMax = propNum
+            end
+            nowNum = 1
+        else
+            Public.warning("需要银钥匙才能开启") 
+        end 
+    end,
+	["1095"] = function()    --玄兵机甲盒  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  
+     end,
+    ["1016"] = function()    --黑木宝匣  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  
+    end,	 
+    ["1017"] = function()    --补元丹  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  	 
+	end,
+	["1018"] = function()    --叫花鸡  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  
+	end,	
+    ["1020"] = function()    --九转碎片   30个合成1个九转散功丹  
+        if  propNum >= 30 then
+            NetPlayerUseProp.Create(usePropId,30,nowHeroId,function(rpc) 
+                 UI.OpenUI("rewardshow") 
+                 UITable:RefList()   
+                 UITable:RefreshCrewList()  
+            end):Send()   
+        end 	  
+	end,	  
+    ["1068"] = function()    --新手礼包  
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()   		 
+	end,
+    ["1101"] = function()    --5新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 5  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()  
+	end,
+    ["1102"] = function()    --10新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 10  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()  
+	end,
+    ["1103"] = function()    --15新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 15  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()  
+	end,			  				 
+    ["1104"] = function()    --20新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 20  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()  
+	end,
+    ["1105"] = function()    --25新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 25  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()   
+	end,
+    ["1106"] = function()    --30新手礼包  
+        if GameMainData.PlayerInfoModel:Level() < 30  then
+            Public.warning("等级不足")
+            return 
+        end
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()     
+    end,	
+    ["1070"] = function()    --秘境宝箱  
+        NetPlayerUseProp.Create(usePropId,1,nowHeroId,function(rpc) 
+            UI.OpenUI("rewardshow")
+            UITable:RefList()   
+            UITable:RefreshCrewList()  
+       end):Send()     
+	end,			 		 
+	["1090"] = function()    --十年玄蛇胆  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  	  
+	end,	
+	["1091"] = function()    --百年玄蛇胆  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1   
+	end,
+	["1092"] = function()    --千年玄蛇胆  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  		  
+	end,	
+	["1096"] = function()    --精力丹  
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  		  
+	end,					 
+	["1006"] = function()    --1006-1014  1级到9级精炼物 可开出玄铁、蚕丝、荧粉中的一种
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  		  
+	end,
+	["1007"] = function()     
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1   
+	end,			  				 
+	["1008"] = function()     
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  	  
+	end,
+	["1009"] = function()      
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1   
+	end,
+	["1010"] = function()       
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  
+	end,				 
+	["1011"] = function()       
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  	  
+	end,	
+	["1012"] = function()       
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1    
+	end,
+	["1013"] = function()       
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  		  
+	end,	
+	["1014"] = function()      
+        UITable:UsrPropPage(prop_Id,propNum)  
+        canMax = propNum
+        nowNum = 1  			  
+	end,					 
+---------------------------------------------------------------以下是跳转界面			 
+	["1001"] = function()    --培养丹 跳转弟子培养界面
+        UI.OpenUI("dizi2",nowHeroId)
+     end, 
+    ["1062"] = function()    --九转散功丹 跳散功界面 
+        UI.OpenUI("dizi2",nowHeroId)
+    end,
+    ["1025"] = function()    --门派更名令  
+        UI.OpenUI("makename") 
+    end,
+	["1063"] = function()    --一碗美酒 跳抽卡
+         Public.warning("请前去酒馆使用")
+    end,
+	["1064"] = function()    --一壶美酒  
+        Public.warning("请前去酒馆使用") 
+    end,
+    ["1065"] = function()    --一坛美酒  
+        Public.warning("请前去酒馆使用") 
+    end,
+	["1066"] = function()    --千里传音  江湖信鸽   打开主页面  
+        Public.warning("此道具暂未开放,敬请期待！") 		
+    end,
+    ["1069"] = function()    --江湖信鸽   
+        Public.warning("此道具暂未开放,敬请期待！") 
+    end,	 
+    ["1022"] = function()    --行舟令  跳奇遇行舟 
+          
+	end,
+	["1024"] = function()    --行舟金令  跳奇遇行舟  
+         
+    end,	
+    ["1034"] = function()    --行舟金令   
+        
+	end,	
+	["1032"] = function()    --甲级魂魄精华  跳弟子突破      
+         
+	end,	  
+    ["1033"] = function()    --七星旗  跳阳阵容解锁    
+       
+    end, 
+	["1079"] = function()    --散功丹 跳弟子散功     
+       
+	end,
+	["1085"] = function()    --闭关卷轴 跳奇遇闭关   
+         
+	end,
+	["1093"] = function()    --仙桃 跳健体补血   
+     
+	end,			  				 
+	["1094"] = function()    --人参   
+		   
+	end,
+	["1026"] = function()    --金气进阶石  跳装备进阶   
+        Public.warning("请前往铁匠处使用") 
+	end,
+	["1078"] = function()    --紫气进阶石   
+        Public.warning("请前往铁匠处使用")
+	end,			 
+	["1117"] = function()    --武功残页 跳参悟   
+        Public.warning("参悟武功时消耗")
+	end,	
+	["1072"] = function()    --甲级武器进阶图纸  跳进阶 
+        Public.warning("请前往铁匠处使用")
+	end,
+	["1073"] = function()    --甲级服装进阶图纸   
+        Public.warning("请前往铁匠处使用")
+	end,	
+	["1074"] = function()    --甲级饰品进阶图纸   
+        Public.warning("请前往铁匠处使用")
+	end,					 
+	["1075"] = function()    --武器精炼材料值  跳精炼
+        Public.warning("请前往铁匠处使用")
+	end,
+	["1076"] = function()    --服装精炼材料值 
+        Public.warning("请前往铁匠处使用")
+	end,			  				 
+	["1077"] = function()    --饰品精炼材料值 
+        Public.warning("请前往铁匠处使用")
+	end,
+	["1080"] = function()    --弟子经验卷  
+        
+	end,
+	["1081"] = function()    --武学精华   
+       
+	end,				 
+	["1087"] = function()    --境界提升卷   
+        
+	end,	
+	["1088"] = function()    --修为精华   
+        
+	end,
+	["1083"] = function()    --功力点   
+         
+	end,	
+	["1029"] = function()    --淬精金   跳铸炼
+        Public.warning("请前往铁匠处使用")
+	end,					 
+    ["1030"] = function()    --锻意钢   
+        Public.warning("请前往铁匠处使用")
+	end,	
+	["1031"] = function()    --炼形铁    
+        Public.warning("请前往铁匠处使用")  
+    end,	 
+    ["1110"] = function()    --密码函
+       
+	end,	
+	  
+} 
+local f = switch[prop_Id]
+if(f) then
+    f()
+else     	
+
+    -- print(tonumber("222"))
+    -- 222
+    -- > print(tonumber("222a"))
+    -- nil
+
+	if tonumber(prop_Id) ~= nil then   --  
+        if tonumber(prop_Id)>tonumber(1034) and tonumber(prop_Id)<tonumber(1062) then   -- 一级到九级玄铁/1级到9级蚕丝/一级到九级荧粉/跳铸炼
+            Public.warning("请前往铁匠处使用")
+        end
+    elseif Split(prop_Id,"_")[2] == "YeGuo"  then  --Item_YeGuo_01
+        local propNum2 = GameMainData.PropModelData:QueryPropNum(prop_Id) 
+        if propNum2>0 then 
+            UITable:UsrPropPage(prop_Id,propNum)  
+            if propNum - propNum2 >= 0 then
+                canMax = propNum2
+             else
+                canMax = propNum
+            end
+            nowNum = 1
+        end 
+
+    else
+         
+
+		Public.warning("此道具暂未开放,敬请期待！");
+	 
+	end		 
+end 
+end
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

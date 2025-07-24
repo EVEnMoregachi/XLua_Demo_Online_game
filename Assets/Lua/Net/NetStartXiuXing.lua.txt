@@ -1,0 +1,14 @@
+NetStartXiuXing = {}
+local net = require("Net/Base/NetStartXiuXingBase")
+net.__index = net
+
+function NetStartXiuXing.Create(xiuXingType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(xiuXingType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.data = v.value.data
+end

@@ -1,0 +1,14 @@
+NetTest = {}
+local Net = require("Net/Base/NetTestBase")
+Net.__index = Net
+
+function NetTest.Create(ID,Num,callback)
+    local t = {}
+	setmetatable(t, Net)
+    t:Init(ID,Num,callback)
+    return t
+end 
+
+function Net:OnResult(v)
+        
+end

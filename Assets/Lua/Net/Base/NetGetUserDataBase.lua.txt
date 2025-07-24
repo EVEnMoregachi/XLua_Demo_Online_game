@@ -1,0 +1,27 @@
+local NetGetUserDataBase = {}
+
+--登录获取玩家数据
+function NetGetUserDataBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "getUserData"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetUserDataBase:Send()
+    Net.Send(self)
+end
+
+function NetGetUserDataBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetUserDataBase
+

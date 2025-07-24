@@ -1,0 +1,14 @@
+NetGetTavernShoppBuy = {}
+local net = require("Net/Base/NetGetTavernShoppBuyBase")
+net.__index = net
+
+function NetGetTavernShoppBuy.Create(buyShoppId,buyNum,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(buyShoppId,buyNum,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

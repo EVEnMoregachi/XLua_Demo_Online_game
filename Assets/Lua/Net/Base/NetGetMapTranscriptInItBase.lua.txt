@@ -1,0 +1,27 @@
+local NetGetMapTranscriptInItBase = {}
+
+--副本初始化
+function NetGetMapTranscriptInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetMapTranscriptInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetMapTranscriptInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetMapTranscriptInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetMapTranscriptInItBase
+

@@ -1,0 +1,14 @@
+NetPetHashFun = {}
+local net = require("Net/Base/NetPetHashFunBase")
+net.__index = net
+
+function NetPetHashFun.Create(petId,hashType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,hashType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        petTrain.refSG()
+end

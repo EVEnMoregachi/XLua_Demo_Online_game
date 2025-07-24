@@ -1,0 +1,29 @@
+local NetJiangHuGameCopyChatBase = {}
+
+--江湖副本:交谈
+-- npc_id(string): 弟子id
+function NetJiangHuGameCopyChatBase:Init(npc_id,callback)
+    self.data = {}
+	self.data.msgName = "JiangHuGameCopyChat"
+
+	self.data.npc_id = npc_id
+	self.callback = callback
+
+    return self
+end
+
+function NetJiangHuGameCopyChatBase:Send()
+    Net.Send(self)
+end
+
+function NetJiangHuGameCopyChatBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJiangHuGameCopyChatBase
+

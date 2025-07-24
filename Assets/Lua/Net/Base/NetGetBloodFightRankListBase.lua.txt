@@ -1,0 +1,27 @@
+local NetGetBloodFightRankListBase = {}
+
+--血战排行榜列表（天榜、地榜）
+function NetGetBloodFightRankListBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetBloodFightRankList"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetBloodFightRankListBase:Send()
+    Net.Send(self)
+end
+
+function NetGetBloodFightRankListBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetBloodFightRankListBase
+

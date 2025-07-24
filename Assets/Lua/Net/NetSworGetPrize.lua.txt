@@ -1,0 +1,14 @@
+NetSworGetPrize = {}
+local net = require("Net/Base/NetSworGetPrizeBase")
+net.__index = net
+
+function NetSworGetPrize.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.XiakeDaoData = v.value.data
+end

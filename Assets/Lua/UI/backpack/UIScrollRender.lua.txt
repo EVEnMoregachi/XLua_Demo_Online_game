@@ -1,0 +1,29 @@
+local Render = UI.CreateRenderTable()
+
+local UIScrollInfoRender = require("UI/backpack/UIScrollInfoRender")
+UIScrollInfoRender.__index = UIScrollInfoRender 
+
+function Render:Awake()
+	self.ScrollInfo = {} 
+end 
+
+function Render:SetUICompent(child)
+	if child.name == "scroll1" then
+		self:CreateItemRender(child)
+	elseif child.name == "scroll2" then
+		self:CreateItemRender(child)
+	elseif child.name == "scroll3" then
+		self:CreateItemRender(child)
+	elseif child.name == "scroll4" then
+		self:CreateItemRender(child) 
+ 	end
+end
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIScrollInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.ScrollInfo, tempRender)
+end 
+ 
+ return Render

@@ -1,0 +1,32 @@
+local Render = UI.CreateRenderTable()
+
+local UIEquipInfoRender = require("UI/backpack/UIEquipInfoRender")
+UIEquipInfoRender.__index = UIEquipInfoRender 
+
+function Render:Awake()
+	self.EquipInfo = {} 
+end 
+
+function Render:SetUICompent(child)
+	if child.name == "equip1" then
+		self:CreateItemRender(child)
+	elseif child.name == "equip2" then
+		self:CreateItemRender(child)
+	elseif child.name == "equip3" then
+		self:CreateItemRender(child)
+	elseif child.name == "equip4" then
+		self:CreateItemRender(child)
+	 
+	end
+end 
+
+function Render:CreateItemRender(tempTrans)
+	local tempRender = {}
+	setmetatable(tempRender,UIEquipInfoRender)
+	tempRender:Init(tempTrans)
+	table.insert(self.EquipInfo, tempRender)
+end 
+ 
+return Render
+
+ 

@@ -1,0 +1,29 @@
+local NetEquipResolveBase = {}
+
+--熔炼
+-- smeltId(string): 装备熔炼id
+function NetEquipResolveBase:Init(smeltId,callback)
+    self.data = {}
+	self.data.msgName = "EquipResolve"
+
+	self.data.smeltId = smeltId
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipResolveBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipResolveBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipResolveBase
+

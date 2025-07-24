@@ -1,0 +1,16 @@
+NetGetGreenHandGuideInIt = {}
+local net = require("Net/Base/NetGetGreenHandGuideInItBase")
+net.__index = net
+
+function NetGetGreenHandGuideInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        guide.Next_guide_id = v.value.data.next_guide_id   
+        GameMainData.GuideModel.guide_ID = v.value.data.now_guide_id 
+        --当前引导id
+end

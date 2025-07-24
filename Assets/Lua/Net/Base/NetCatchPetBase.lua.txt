@@ -1,0 +1,31 @@
+local NetCatchPetBase = {}
+
+--捕捉宠物
+-- pet_id(string): 宠物id
+-- win_pr(int): 成功几率
+function NetCatchPetBase:Init(pet_id,win_pr,callback)
+    self.data = {}
+	self.data.msgName = "CatchPet"
+
+	self.data.pet_id = pet_id
+	self.data.win_pr = win_pr
+	self.callback = callback
+
+    return self
+end
+
+function NetCatchPetBase:Send()
+    Net.Send(self)
+end
+
+function NetCatchPetBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetCatchPetBase
+

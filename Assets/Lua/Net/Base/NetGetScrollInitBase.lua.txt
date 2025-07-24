@@ -1,0 +1,27 @@
+local NetGetScrollInitBase = {}
+
+--初始化玩家卷轴
+function NetGetScrollInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetScrollInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetScrollInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetScrollInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetScrollInitBase
+

@@ -1,0 +1,29 @@
+local NetLevelGetPrizeBase = {}
+
+--等级奖励领取
+-- prize_id(string): 奖励id
+function NetLevelGetPrizeBase:Init(prize_id,callback)
+    self.data = {}
+	self.data.msgName = "LevelGetPrize"
+
+	self.data.prize_id = prize_id
+	self.callback = callback
+
+    return self
+end
+
+function NetLevelGetPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetLevelGetPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetLevelGetPrizeBase
+

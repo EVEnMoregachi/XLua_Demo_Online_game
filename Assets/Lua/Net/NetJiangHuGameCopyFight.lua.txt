@@ -1,0 +1,14 @@
+NetJiangHuGameCopyFight = {}
+local net = require("Net/Base/NetJiangHuGameCopyFightBase")
+net.__index = net
+
+function NetJiangHuGameCopyFight.Create(npc_id,fightType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(npc_id,fightType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

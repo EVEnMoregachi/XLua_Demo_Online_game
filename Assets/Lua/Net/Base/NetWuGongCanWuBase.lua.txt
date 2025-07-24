@@ -1,0 +1,29 @@
+local NetWuGongCanWuBase = {}
+
+--武功参悟
+-- wuGongId(string): 武功id
+function NetWuGongCanWuBase:Init(wuGongId,callback)
+    self.data = {}
+	self.data.msgName = "WuGongCanWu"
+
+	self.data.wuGongId = wuGongId
+	self.callback = callback
+
+    return self
+end
+
+function NetWuGongCanWuBase:Send()
+    Net.Send(self)
+end
+
+function NetWuGongCanWuBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetWuGongCanWuBase
+

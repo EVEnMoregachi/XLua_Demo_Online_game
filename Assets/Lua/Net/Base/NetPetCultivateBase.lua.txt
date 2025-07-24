@@ -1,0 +1,31 @@
+local NetPetCultivateBase = {}
+
+--宠物培养请求
+-- petId(string): 宠物id
+-- trainType(string): 培养类型
+function NetPetCultivateBase:Init(petId,trainType,callback)
+    self.data = {}
+	self.data.msgName = "PetCultivate"
+
+	self.data.petId = petId
+	self.data.trainType = trainType
+	self.callback = callback
+
+    return self
+end
+
+function NetPetCultivateBase:Send()
+    Net.Send(self)
+end
+
+function NetPetCultivateBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetCultivateBase
+

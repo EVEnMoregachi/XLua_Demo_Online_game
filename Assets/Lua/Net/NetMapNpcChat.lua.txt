@@ -1,0 +1,14 @@
+NetMapNpcChat = {}
+local net = require("Net/Base/NetMapNpcChatBase")
+net.__index = net
+
+function NetMapNpcChat.Create(map_id,npc_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,npc_id,callback)
+    return t
+end 
+
+function net:OnResult(v) 
+    self.datav = v.value.data
+end

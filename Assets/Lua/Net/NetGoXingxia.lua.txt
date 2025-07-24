@@ -1,0 +1,14 @@
+NetGoXingxia = {}
+local net = require("Net/Base/NetGoXingxiaBase")
+net.__index = net
+
+function NetGoXingxia.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

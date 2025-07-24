@@ -1,0 +1,27 @@
+local NetDishValleySureBase = {}
+
+--蝶谷医仙投掷确认
+function NetDishValleySureBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "DishValleySure"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetDishValleySureBase:Send()
+    Net.Send(self)
+end
+
+function NetDishValleySureBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetDishValleySureBase
+

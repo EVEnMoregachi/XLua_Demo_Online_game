@@ -1,0 +1,29 @@
+local NetGetRewardLevelUpBase = {}
+
+--升级页面领奖请求
+-- level(int): 奖项等级
+function NetGetRewardLevelUpBase:Init(level,callback)
+    self.data = {}
+	self.data.msgName = "GetRewardLevelUp"
+
+	self.data.level = level
+	self.callback = callback
+
+    return self
+end
+
+function NetGetRewardLevelUpBase:Send()
+    Net.Send(self)
+end
+
+function NetGetRewardLevelUpBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetRewardLevelUpBase
+

@@ -1,0 +1,27 @@
+local NetCanBaiInitBase = {}
+
+--参拜初始化
+function NetCanBaiInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "CanBaiInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetCanBaiInitBase:Send()
+    Net.Send(self)
+end
+
+function NetCanBaiInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetCanBaiInitBase
+

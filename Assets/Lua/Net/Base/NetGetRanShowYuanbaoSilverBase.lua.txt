@@ -1,0 +1,29 @@
+local NetGetRanShowYuanbaoSilverBase = {}
+
+--领取随机出现的元宝或银两
+-- prize_id(string): 奖励id
+function NetGetRanShowYuanbaoSilverBase:Init(prize_id,callback)
+    self.data = {}
+	self.data.msgName = "GetRanShowYuanbaoSilver"
+
+	self.data.prize_id = prize_id
+	self.callback = callback
+
+    return self
+end
+
+function NetGetRanShowYuanbaoSilverBase:Send()
+    Net.Send(self)
+end
+
+function NetGetRanShowYuanbaoSilverBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetRanShowYuanbaoSilverBase
+

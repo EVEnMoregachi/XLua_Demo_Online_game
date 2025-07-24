@@ -1,0 +1,1009 @@
+ConfigAccount  = {}  
+
+ local configName = "ConfigAccount"
+local configTable ={
+{
+    ["serial"] = "1",
+    ["account"] = "GMwwbk21",
+},
+
+{
+    ["serial"] = "2",
+    ["account"] = "GMwwbk89",
+},
+
+{
+    ["serial"] = "3",
+    ["account"] = "GMwwbk157",
+},
+
+{
+    ["serial"] = "4",
+    ["account"] = "GMwwbk225",
+},
+
+{
+    ["serial"] = "5",
+    ["account"] = "GMwwbk293",
+},
+
+{
+    ["serial"] = "6",
+    ["account"] = "GMwwbk361",
+},
+
+{
+    ["serial"] = "7",
+    ["account"] = "GMwwbk429",
+},
+
+{
+    ["serial"] = "8",
+    ["account"] = "GMwwbk497",
+},
+
+{
+    ["serial"] = "9",
+    ["account"] = "GMwwbk565",
+},
+
+{
+    ["serial"] = "10",
+    ["account"] = "GMwwbk633",
+},
+
+{
+    ["serial"] = "11",
+    ["account"] = "GMwwbk701",
+},
+
+{
+    ["serial"] = "12",
+    ["account"] = "GMwwbk769",
+},
+
+{
+    ["serial"] = "13",
+    ["account"] = "GMwwbk837",
+},
+
+{
+    ["serial"] = "14",
+    ["account"] = "GMwwbk905",
+},
+
+{
+    ["serial"] = "15",
+    ["account"] = "GMwwbk973",
+},
+
+{
+    ["serial"] = "16",
+    ["account"] = "GMwwbk1041",
+},
+
+{
+    ["serial"] = "17",
+    ["account"] = "GMwwbk1109",
+},
+
+{
+    ["serial"] = "18",
+    ["account"] = "GMwwbk1177",
+},
+
+{
+    ["serial"] = "19",
+    ["account"] = "GMwwbk1245",
+},
+
+{
+    ["serial"] = "20",
+    ["account"] = "GMwwbk1313",
+},
+
+{
+    ["serial"] = "21",
+    ["account"] = "GMwwbk1381",
+},
+
+{
+    ["serial"] = "22",
+    ["account"] = "GMwwbk1449",
+},
+
+{
+    ["serial"] = "23",
+    ["account"] = "GMwwbk1517",
+},
+
+{
+    ["serial"] = "24",
+    ["account"] = "GMwwbk1585",
+},
+
+{
+    ["serial"] = "25",
+    ["account"] = "GMwwbk1653",
+},
+
+{
+    ["serial"] = "26",
+    ["account"] = "GMwwbk1721",
+},
+
+{
+    ["serial"] = "27",
+    ["account"] = "GMwwbk1789",
+},
+
+{
+    ["serial"] = "28",
+    ["account"] = "GMwwbk1857",
+},
+
+{
+    ["serial"] = "29",
+    ["account"] = "GMwwbk1925",
+},
+
+{
+    ["serial"] = "30",
+    ["account"] = "GMwwbk1993",
+},
+
+{
+    ["serial"] = "31",
+    ["account"] = "GMwwbk2061",
+},
+
+{
+    ["serial"] = "32",
+    ["account"] = "GMwwbk2129",
+},
+
+{
+    ["serial"] = "33",
+    ["account"] = "GMwwbk2197",
+},
+
+{
+    ["serial"] = "34",
+    ["account"] = "GMwwbk2265",
+},
+
+{
+    ["serial"] = "35",
+    ["account"] = "GMwwbk2333",
+},
+
+{
+    ["serial"] = "36",
+    ["account"] = "GMwwbk2401",
+},
+
+{
+    ["serial"] = "37",
+    ["account"] = "GMwwbk2469",
+},
+
+{
+    ["serial"] = "38",
+    ["account"] = "GMwwbk2537",
+},
+
+{
+    ["serial"] = "39",
+    ["account"] = "GMwwbk2605",
+},
+
+{
+    ["serial"] = "40",
+    ["account"] = "GMwwbk2673",
+},
+
+{
+    ["serial"] = "41",
+    ["account"] = "GMwwbk2741",
+},
+
+{
+    ["serial"] = "42",
+    ["account"] = "GMwwbk2809",
+},
+
+{
+    ["serial"] = "43",
+    ["account"] = "GMwwbk2877",
+},
+
+{
+    ["serial"] = "44",
+    ["account"] = "GMwwbk2945",
+},
+
+{
+    ["serial"] = "45",
+    ["account"] = "GMwwbk3013",
+},
+
+{
+    ["serial"] = "46",
+    ["account"] = "GMwwbk3081",
+},
+
+{
+    ["serial"] = "47",
+    ["account"] = "GMwwbk3149",
+},
+
+{
+    ["serial"] = "48",
+    ["account"] = "GMwwbk3217",
+},
+
+{
+    ["serial"] = "49",
+    ["account"] = "GMwwbk3285",
+},
+
+{
+    ["serial"] = "50",
+    ["account"] = "GMwwbk3353",
+},
+
+{
+    ["serial"] = "51",
+    ["account"] = "GMwwbk3421",
+},
+
+{
+    ["serial"] = "52",
+    ["account"] = "GMwwbk3489",
+},
+
+{
+    ["serial"] = "53",
+    ["account"] = "GMwwbk3557",
+},
+
+{
+    ["serial"] = "54",
+    ["account"] = "GMwwbk3625",
+},
+
+{
+    ["serial"] = "55",
+    ["account"] = "GMwwbk3693",
+},
+
+{
+    ["serial"] = "56",
+    ["account"] = "GMwwbk3761",
+},
+
+{
+    ["serial"] = "57",
+    ["account"] = "GMwwbk3829",
+},
+
+{
+    ["serial"] = "58",
+    ["account"] = "GMwwbk3897",
+},
+
+{
+    ["serial"] = "59",
+    ["account"] = "GMwwbk3965",
+},
+
+{
+    ["serial"] = "60",
+    ["account"] = "GMwwbk4033",
+},
+
+{
+    ["serial"] = "61",
+    ["account"] = "GMwwbk4101",
+},
+
+{
+    ["serial"] = "62",
+    ["account"] = "GMwwbk4169",
+},
+
+{
+    ["serial"] = "63",
+    ["account"] = "GMwwbk4237",
+},
+
+{
+    ["serial"] = "64",
+    ["account"] = "GMwwbk4305",
+},
+
+{
+    ["serial"] = "65",
+    ["account"] = "GMwwbk4373",
+},
+
+{
+    ["serial"] = "66",
+    ["account"] = "GMwwbk4441",
+},
+
+{
+    ["serial"] = "67",
+    ["account"] = "GMwwbk4509",
+},
+
+{
+    ["serial"] = "68",
+    ["account"] = "GMwwbk4577",
+},
+
+{
+    ["serial"] = "69",
+    ["account"] = "GMwwbk4645",
+},
+
+{
+    ["serial"] = "70",
+    ["account"] = "GMwwbk4713",
+},
+
+{
+    ["serial"] = "71",
+    ["account"] = "GMwwbk4781",
+},
+
+{
+    ["serial"] = "72",
+    ["account"] = "GMwwbk4849",
+},
+
+{
+    ["serial"] = "73",
+    ["account"] = "GMwwbk4917",
+},
+
+{
+    ["serial"] = "74",
+    ["account"] = "GMwwbk4985",
+},
+
+{
+    ["serial"] = "75",
+    ["account"] = "GMwwbk5053",
+},
+
+{
+    ["serial"] = "76",
+    ["account"] = "GMwwbk5121",
+},
+
+{
+    ["serial"] = "77",
+    ["account"] = "GMwwbk5189",
+},
+
+{
+    ["serial"] = "78",
+    ["account"] = "GMwwbk5257",
+},
+
+{
+    ["serial"] = "79",
+    ["account"] = "GMwwbk5325",
+},
+
+{
+    ["serial"] = "80",
+    ["account"] = "GMwwbk5393",
+},
+
+{
+    ["serial"] = "81",
+    ["account"] = "GMwwbk5461",
+},
+
+{
+    ["serial"] = "82",
+    ["account"] = "GMwwbk5529",
+},
+
+{
+    ["serial"] = "83",
+    ["account"] = "GMwwbk5597",
+},
+
+{
+    ["serial"] = "84",
+    ["account"] = "GMwwbk5665",
+},
+
+{
+    ["serial"] = "85",
+    ["account"] = "GMwwbk5733",
+},
+
+{
+    ["serial"] = "86",
+    ["account"] = "GMwwbk5801",
+},
+
+{
+    ["serial"] = "87",
+    ["account"] = "GMwwbk5869",
+},
+
+{
+    ["serial"] = "88",
+    ["account"] = "GMwwbk5937",
+},
+
+{
+    ["serial"] = "89",
+    ["account"] = "GMwwbk6005",
+},
+
+{
+    ["serial"] = "90",
+    ["account"] = "GMwwbk6073",
+},
+
+{
+    ["serial"] = "91",
+    ["account"] = "GMwwbk6141",
+},
+
+{
+    ["serial"] = "92",
+    ["account"] = "GMwwbk6209",
+},
+
+{
+    ["serial"] = "93",
+    ["account"] = "GMwwbk6277",
+},
+
+{
+    ["serial"] = "94",
+    ["account"] = "GMwwbk6345",
+},
+
+{
+    ["serial"] = "95",
+    ["account"] = "GMwwbk6413",
+},
+
+{
+    ["serial"] = "96",
+    ["account"] = "GMwwbk6481",
+},
+
+{
+    ["serial"] = "97",
+    ["account"] = "GMwwbk6549",
+},
+
+{
+    ["serial"] = "98",
+    ["account"] = "GMwwbk6617",
+},
+
+{
+    ["serial"] = "99",
+    ["account"] = "wwbk32",
+},
+
+{
+    ["serial"] = "100",
+    ["account"] = "wwbk73",
+},
+
+{
+    ["serial"] = "101",
+    ["account"] = "wwbk114",
+},
+
+{
+    ["serial"] = "102",
+    ["account"] = "wwbk155",
+},
+
+{
+    ["serial"] = "103",
+    ["account"] = "wwbk196",
+},
+
+{
+    ["serial"] = "104",
+    ["account"] = "wwbk237",
+},
+
+{
+    ["serial"] = "105",
+    ["account"] = "wwbk278",
+},
+
+{
+    ["serial"] = "106",
+    ["account"] = "wwbk319",
+},
+
+{
+    ["serial"] = "107",
+    ["account"] = "wwbk360",
+},
+
+{
+    ["serial"] = "108",
+    ["account"] = "wwbk401",
+},
+
+{
+    ["serial"] = "109",
+    ["account"] = "wwbk442",
+},
+
+{
+    ["serial"] = "110",
+    ["account"] = "wwbk483",
+},
+
+{
+    ["serial"] = "111",
+    ["account"] = "wwbk524",
+},
+
+{
+    ["serial"] = "112",
+    ["account"] = "wwbk565",
+},
+
+{
+    ["serial"] = "113",
+    ["account"] = "wwbk606",
+},
+
+{
+    ["serial"] = "114",
+    ["account"] = "wwbk647",
+},
+
+{
+    ["serial"] = "115",
+    ["account"] = "wwbk688",
+},
+
+{
+    ["serial"] = "116",
+    ["account"] = "wwbk729",
+},
+
+{
+    ["serial"] = "117",
+    ["account"] = "wwbk770",
+},
+
+{
+    ["serial"] = "118",
+    ["account"] = "wwbk811",
+},
+
+{
+    ["serial"] = "119",
+    ["account"] = "wwbk852",
+},
+
+{
+    ["serial"] = "120",
+    ["account"] = "wwbk893",
+},
+
+{
+    ["serial"] = "121",
+    ["account"] = "wwbk934",
+},
+
+{
+    ["serial"] = "122",
+    ["account"] = "wwbk975",
+},
+
+{
+    ["serial"] = "123",
+    ["account"] = "wwbk1016",
+},
+
+{
+    ["serial"] = "124",
+    ["account"] = "wwbk1057",
+},
+
+{
+    ["serial"] = "125",
+    ["account"] = "wwbk1098",
+},
+
+{
+    ["serial"] = "126",
+    ["account"] = "wwbk1139",
+},
+
+{
+    ["serial"] = "127",
+    ["account"] = "wwbk1180",
+},
+
+{
+    ["serial"] = "128",
+    ["account"] = "wwbk1221",
+},
+
+{
+    ["serial"] = "129",
+    ["account"] = "wwbk1262",
+},
+
+{
+    ["serial"] = "130",
+    ["account"] = "wwbk1303",
+},
+
+{
+    ["serial"] = "131",
+    ["account"] = "wwbk1344",
+},
+
+{
+    ["serial"] = "132",
+    ["account"] = "wwbk1385",
+},
+
+{
+    ["serial"] = "133",
+    ["account"] = "wwbk1426",
+},
+
+{
+    ["serial"] = "134",
+    ["account"] = "wwbk1467",
+},
+
+{
+    ["serial"] = "135",
+    ["account"] = "wwbk1508",
+},
+
+{
+    ["serial"] = "136",
+    ["account"] = "wwbk1549",
+},
+
+{
+    ["serial"] = "137",
+    ["account"] = "wwbk1590",
+},
+
+{
+    ["serial"] = "138",
+    ["account"] = "wwbk1631",
+},
+
+{
+    ["serial"] = "139",
+    ["account"] = "wwbk1672",
+},
+
+{
+    ["serial"] = "140",
+    ["account"] = "wwbk1713",
+},
+
+{
+    ["serial"] = "141",
+    ["account"] = "wwbk1754",
+},
+
+{
+    ["serial"] = "142",
+    ["account"] = "wwbk1795",
+},
+
+{
+    ["serial"] = "143",
+    ["account"] = "wwbk1836",
+},
+
+{
+    ["serial"] = "144",
+    ["account"] = "wwbk1877",
+},
+
+{
+    ["serial"] = "145",
+    ["account"] = "wwbk1918",
+},
+
+{
+    ["serial"] = "146",
+    ["account"] = "wwbk1959",
+},
+
+{
+    ["serial"] = "147",
+    ["account"] = "wwbk2000",
+},
+
+{
+    ["serial"] = "148",
+    ["account"] = "wwbk2041",
+},
+
+{
+    ["serial"] = "149",
+    ["account"] = "wwbk2082",
+},
+
+{
+    ["serial"] = "150",
+    ["account"] = "wwbk2123",
+},
+
+{
+    ["serial"] = "151",
+    ["account"] = "wwbk2164",
+},
+
+{
+    ["serial"] = "152",
+    ["account"] = "wwbk2205",
+},
+
+{
+    ["serial"] = "153",
+    ["account"] = "wwbk2246",
+},
+
+{
+    ["serial"] = "154",
+    ["account"] = "wwbk2287",
+},
+
+{
+    ["serial"] = "155",
+    ["account"] = "wwbk2328",
+},
+
+{
+    ["serial"] = "156",
+    ["account"] = "wwbk2369",
+},
+
+{
+    ["serial"] = "157",
+    ["account"] = "wwbk2410",
+},
+
+{
+    ["serial"] = "158",
+    ["account"] = "wwbk2451",
+},
+
+{
+    ["serial"] = "159",
+    ["account"] = "wwbk2492",
+},
+
+{
+    ["serial"] = "160",
+    ["account"] = "wwbk2533",
+},
+
+{
+    ["serial"] = "161",
+    ["account"] = "wwbk2574",
+},
+
+{
+    ["serial"] = "162",
+    ["account"] = "wwbk2615",
+},
+
+{
+    ["serial"] = "163",
+    ["account"] = "wwbk2656",
+},
+
+{
+    ["serial"] = "164",
+    ["account"] = "wwbk2697",
+},
+
+{
+    ["serial"] = "165",
+    ["account"] = "wwbk2738",
+},
+
+{
+    ["serial"] = "166",
+    ["account"] = "wwbk2779",
+},
+
+{
+    ["serial"] = "167",
+    ["account"] = "wwbk2820",
+},
+
+{
+    ["serial"] = "168",
+    ["account"] = "wwbk2861",
+},
+
+{
+    ["serial"] = "169",
+    ["account"] = "wwbk2902",
+},
+
+{
+    ["serial"] = "170",
+    ["account"] = "wwbk2943",
+},
+
+{
+    ["serial"] = "171",
+    ["account"] = "wwbk2984",
+},
+
+{
+    ["serial"] = "172",
+    ["account"] = "wwbk3025",
+},
+
+{
+    ["serial"] = "173",
+    ["account"] = "wwbk3066",
+},
+
+{
+    ["serial"] = "174",
+    ["account"] = "wwbk3107",
+},
+
+{
+    ["serial"] = "175",
+    ["account"] = "wwbk3148",
+},
+
+{
+    ["serial"] = "176",
+    ["account"] = "wwbk3189",
+},
+
+{
+    ["serial"] = "177",
+    ["account"] = "wwbk3230",
+},
+
+{
+    ["serial"] = "178",
+    ["account"] = "wwbk3271",
+},
+
+{
+    ["serial"] = "179",
+    ["account"] = "wwbk3312",
+},
+
+{
+    ["serial"] = "180",
+    ["account"] = "wwbk3353",
+},
+
+{
+    ["serial"] = "181",
+    ["account"] = "wwbk3394",
+},
+
+{
+    ["serial"] = "182",
+    ["account"] = "wwbk3435",
+},
+
+{
+    ["serial"] = "183",
+    ["account"] = "wwbk3476",
+},
+
+{
+    ["serial"] = "184",
+    ["account"] = "wwbk3517",
+},
+
+{
+    ["serial"] = "185",
+    ["account"] = "wwbk3558",
+},
+
+{
+    ["serial"] = "186",
+    ["account"] = "wwbk3599",
+},
+
+{
+    ["serial"] = "187",
+    ["account"] = "wwbk3640",
+},
+
+{
+    ["serial"] = "188",
+    ["account"] = "wwbk3681",
+},
+
+{
+    ["serial"] = "189",
+    ["account"] = "wwbk3722",
+},
+
+{
+    ["serial"] = "190",
+    ["account"] = "wwbk3763",
+},
+
+{
+    ["serial"] = "191",
+    ["account"] = "wwbk3804",
+},
+
+{
+    ["serial"] = "192",
+    ["account"] = "wwbk3845",
+},
+
+{
+    ["serial"] = "193",
+    ["account"] = "wwbk3886",
+},
+
+{
+    ["serial"] = "194",
+    ["account"] = "wwbk3927",
+},
+
+{
+    ["serial"] = "195",
+    ["account"] = "wwbk3968",
+},
+
+{
+    ["serial"] = "196",
+    ["account"] = "wwbk4009",
+},
+}
+function ConfigAccount.getVarByCustom(name, value)
+    for key, var in pairs(configTable) do
+        if var[name] == value then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigAccount.getVarById(id)
+    for key, var in pairs(configTable) do
+        if tonumber(var.id) == tonumber(id) then
+            return var
+        end
+    end
+    return nil
+end
+
+function ConfigAccount.getVarByIndex(index)
+    return configTable[tonumber(index)]
+end
+
+function ConfigAccount.getSize()
+    return #configTable
+end

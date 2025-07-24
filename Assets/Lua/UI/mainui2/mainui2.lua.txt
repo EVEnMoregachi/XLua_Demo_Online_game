@@ -1,0 +1,55 @@
+mainui2 = {} 
+local UITable = require("UI/mainui2/Base/mainui2View") 
+function mainui2.Create()
+	local ui = {}
+	setmetatable(ui, {__index=UITable})	
+	ui:Create()
+    ui.layer = 1
+    UI.LoadUI(ui) 
+	return ui
+end
+-- require("Net/NetGetUserData")   
+-- require("Net/NetGetMoveYuanBaoSilverInIt")   
+-- require("Net/NetGetRanShowYuanbaoSilver")    
+-- require("Net/NetPlayerMsgRef")    
+
+
+function UITable:callback(ii)   
+	-- NetGetMoveYuanBaoSilverInIt.Create(function(rpc) 
+	-- 	self["time"] = CreateLuaAntTimer(self,self.yuanBaoSilverText, self.callback,1) 
+	-- 	self["time"]:SetTime( mainui2.nextTime+5 )
+	-- 	self:CreatMoveMany()
+	-- end):Send() 
+end
+
+function UITable:Awake()   
+	 
+	self:Init()    
+	 
+ 	   
+   
+
+	 
+
+end 
+
+ 
+  
+function UITable:ButtonClickHandler(btn)   
+ 
+ 
+	 if btn == self.ButtonBeiBao then   --背包
+		UI.OpenUI("backpack") 
+  
+	 
+	end
+
+
+
+ 
+end
+  
+
+
+
+ 

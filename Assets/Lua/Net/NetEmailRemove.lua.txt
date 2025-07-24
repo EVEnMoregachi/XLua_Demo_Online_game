@@ -1,0 +1,14 @@
+NetEmailRemove = {}
+local net = require("Net/Base/NetEmailRemoveBase")
+net.__index = net
+
+function NetEmailRemove.Create(emailId,delType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(emailId,delType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+          social.emailMsgInIt = v.value.data.emailMsgInIt  
+end

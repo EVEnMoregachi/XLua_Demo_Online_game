@@ -1,0 +1,31 @@
+local NetHeroBreakThroughBase = {}
+
+--弟子突破
+-- heroId(string): 弟子id
+-- if_useSoulS(int): 弟子突破是否优先使用甲级魂魄精华（0不优先，1优先）
+function NetHeroBreakThroughBase:Init(heroId,if_useSoulS,callback)
+    self.data = {}
+	self.data.msgName = "HeroBreakThrough"
+
+	self.data.heroId = heroId
+	self.data.if_useSoulS = if_useSoulS
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroBreakThroughBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroBreakThroughBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroBreakThroughBase
+

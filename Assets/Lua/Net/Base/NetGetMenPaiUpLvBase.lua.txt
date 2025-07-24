@@ -1,0 +1,27 @@
+local NetGetMenPaiUpLvBase = {}
+
+--门派升级领取奖励
+function NetGetMenPaiUpLvBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetMenPaiUpLv"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetMenPaiUpLvBase:Send()
+    Net.Send(self)
+end
+
+function NetGetMenPaiUpLvBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetMenPaiUpLvBase
+

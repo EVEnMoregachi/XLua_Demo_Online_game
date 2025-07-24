@@ -1,0 +1,27 @@
+local NetGetKneelInItBase = {}
+
+--参拜初始化
+function NetGetKneelInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetKneelInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetKneelInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetKneelInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetKneelInItBase
+

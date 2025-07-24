@@ -1,0 +1,14 @@
+NetPetVeinSys = {}
+local net = require("Net/Base/NetPetVeinSysBase")
+net.__index = net
+
+function NetPetVeinSys.Create(petId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

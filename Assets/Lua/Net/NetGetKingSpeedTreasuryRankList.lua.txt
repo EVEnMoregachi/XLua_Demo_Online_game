@@ -1,0 +1,15 @@
+NetGetKingSpeedTreasuryRankList = {}
+local net = require("Net/Base/NetGetKingSpeedTreasuryRankListBase")
+net.__index = net
+
+function NetGetKingSpeedTreasuryRankList.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        ChuangWang.RankData = {} 
+       ChuangWang.RankData = v.value.data["kingSpeedTreasuryRank"]    
+end

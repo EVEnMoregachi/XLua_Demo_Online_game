@@ -1,0 +1,29 @@
+local NetJingYanBase = {}
+
+--精研
+-- wuGongId(string): 装备id
+function NetJingYanBase:Init(wuGongId,callback)
+    self.data = {}
+	self.data.msgName = "JingYan"
+
+	self.data.wuGongId = wuGongId
+	self.callback = callback
+
+    return self
+end
+
+function NetJingYanBase:Send()
+    Net.Send(self)
+end
+
+function NetJingYanBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetJingYanBase
+

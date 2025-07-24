@@ -1,0 +1,867 @@
+fileFormatVersion: 2
+guid: 8be133b07e8df3f4189519ddc0d6593d
+timeCreated: 1534063651
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: faa140f5587fe3bd36513b1640df10c6079916_0
+    21300002: faa140f5587fe3bd36513b1640df10c6079916_1
+    21300004: faa140f5587fe3bd36513b1640df10c6079916_2
+    21300006: faa140f5587fe3bd36513b1640df10c6079916_3
+    21300008: faa140f5587fe3bd36513b1640df10c6079916_4
+    21300010: faa140f5587fe3bd36513b1640df10c6079916_5
+    21300012: faa140f5587fe3bd36513b1640df10c6079916_6
+    21300014: faa140f5587fe3bd36513b1640df10c6079916_7
+    21300016: faa140f5587fe3bd36513b1640df10c6079916_8
+    21300018: faa140f5587fe3bd36513b1640df10c6079916_9
+    21300020: faa140f5587fe3bd36513b1640df10c6079916_10
+    21300022: faa140f5587fe3bd36513b1640df10c6079916_11
+    21300024: faa140f5587fe3bd36513b1640df10c6079916_12
+    21300026: faa140f5587fe3bd36513b1640df10c6079916_13
+    21300028: faa140f5587fe3bd36513b1640df10c6079916_14
+    21300030: faa140f5587fe3bd36513b1640df10c6079916_15
+    21300032: faa140f5587fe3bd36513b1640df10c6079916_16
+    21300034: faa140f5587fe3bd36513b1640df10c6079916_17
+    21300036: faa140f5587fe3bd36513b1640df10c6079916_18
+    21300038: faa140f5587fe3bd36513b1640df10c6079916_19
+    21300040: faa140f5587fe3bd36513b1640df10c6079916_20
+    21300042: faa140f5587fe3bd36513b1640df10c6079916_21
+    21300044: faa140f5587fe3bd36513b1640df10c6079916_22
+    21300046: faa140f5587fe3bd36513b1640df10c6079916_23
+    21300048: faa140f5587fe3bd36513b1640df10c6079916_24
+    21300050: faa140f5587fe3bd36513b1640df10c6079916_25
+    21300052: faa140f5587fe3bd36513b1640df10c6079916_26
+    21300054: faa140f5587fe3bd36513b1640df10c6079916_27
+    21300056: faa140f5587fe3bd36513b1640df10c6079916_28
+    21300058: faa140f5587fe3bd36513b1640df10c6079916_29
+    21300060: faa140f5587fe3bd36513b1640df10c6079916_30
+    21300062: faa140f5587fe3bd36513b1640df10c6079916_31
+    21300064: faa140f5587fe3bd36513b1640df10c6079916_32
+    21300066: faa140f5587fe3bd36513b1640df10c6079916_33
+    21300068: faa140f5587fe3bd36513b1640df10c6079916_34
+    21300070: faa140f5587fe3bd36513b1640df10c6079916_35
+    21300072: faa140f5587fe3bd36513b1640df10c6079916_36
+    21300074: faa140f5587fe3bd36513b1640df10c6079916_37
+    21300076: faa140f5587fe3bd36513b1640df10c6079916_38
+    21300078: faa140f5587fe3bd36513b1640df10c6079916_39
+    21300080: faa140f5587fe3bd36513b1640df10c6079916_40
+    21300082: faa140f5587fe3bd36513b1640df10c6079916_41
+    21300084: faa140f5587fe3bd36513b1640df10c6079916_42
+    21300086: faa140f5587fe3bd36513b1640df10c6079916_43
+    21300088: faa140f5587fe3bd36513b1640df10c6079916_44
+    21300090: faa140f5587fe3bd36513b1640df10c6079916_45
+    21300092: faa140f5587fe3bd36513b1640df10c6079916_46
+    21300094: faa140f5587fe3bd36513b1640df10c6079916_47
+    21300096: faa140f5587fe3bd36513b1640df10c6079916_48
+    21300098: faa140f5587fe3bd36513b1640df10c6079916_49
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 1
+    overridden: 1
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 604
+        width: 546
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_1
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 660
+        width: 420
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_2
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 848
+        width: 144
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_3
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 688
+        width: 140
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 520
+        width: 172
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_5
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 610
+        width: 91
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_6
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 612
+        width: 62
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_7
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 622
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_8
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 599
+        width: 48
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_9
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 500
+        width: 168
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_10
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 595
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_11
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 602
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 501
+        width: 124
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_13
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 539
+        width: 25
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_14
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 570
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_15
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 546
+        width: 36
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_16
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 566
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_17
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 509
+        width: 50
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_18
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 537
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_19
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 498
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_20
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 520
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_21
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 505
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_22
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 514
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_23
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 498
+        width: 5
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_24
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 498
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_25
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 438
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 116
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_27
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 369
+        width: 126
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_28
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 372
+        width: 117
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_29
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 421
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_30
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 469
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_31
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 447
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_32
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 353
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_33
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 344
+        width: 82
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_34
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 410
+        width: 57
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_35
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 396
+        width: 20
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_36
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 342
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_37
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 276
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_38
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 180
+        width: 133
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_39
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 216
+        width: 119
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 212
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_41
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 18
+        width: 131
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_42
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 162
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_43
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 158
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_44
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 157
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_45
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 151
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_46
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_47
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 50
+        width: 92
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_48
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 31
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: faa140f5587fe3bd36513b1640df10c6079916_49
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 18
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: TX
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

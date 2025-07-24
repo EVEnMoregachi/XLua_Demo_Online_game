@@ -1,0 +1,29 @@
+local NetGameCopySettleBase = {}
+
+--副本结算
+-- ectype(string): 副本id
+function NetGameCopySettleBase:Init(ectype,callback)
+    self.data = {}
+	self.data.msgName = "GameCopySettle"
+
+	self.data.ectype = ectype
+	self.callback = callback
+
+    return self
+end
+
+function NetGameCopySettleBase:Send()
+    Net.Send(self)
+end
+
+function NetGameCopySettleBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGameCopySettleBase
+

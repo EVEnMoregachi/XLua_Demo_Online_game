@@ -1,0 +1,14 @@
+NetClientInItData = {}
+local net = require("Net/Base/NetClientInItDataBase")
+net.__index = net
+
+function NetClientInItData.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

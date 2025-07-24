@@ -1,0 +1,14 @@
+NetMapTeleporter = {}
+local net = require("Net/Base/NetMapTeleporterBase")
+net.__index = net
+
+function NetMapTeleporter.Create(map_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

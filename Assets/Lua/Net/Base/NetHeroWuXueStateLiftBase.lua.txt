@@ -1,0 +1,29 @@
+local NetHeroWuXueStateLiftBase = {}
+
+--弟子武学境界提升
+-- heroId(string): 弟子id
+function NetHeroWuXueStateLiftBase:Init(heroId,callback)
+    self.data = {}
+	self.data.msgName = "HeroWuXueStateLift"
+
+	self.data.heroId = heroId
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroWuXueStateLiftBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroWuXueStateLiftBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroWuXueStateLiftBase
+

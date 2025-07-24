@@ -1,0 +1,14 @@
+NetGetMenPaiUpLv = {}
+local net = require("Net/Base/NetGetMenPaiUpLvBase")
+net.__index = net
+
+function NetGetMenPaiUpLv.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+            menpaiUplevel.prizeStr = v.value.data.prizeStr
+end

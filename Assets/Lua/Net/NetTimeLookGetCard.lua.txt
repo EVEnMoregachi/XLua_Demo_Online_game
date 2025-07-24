@@ -1,0 +1,16 @@
+NetTimeLookGetCard = {}
+local net = require("Net/Base/NetTimeLookGetCardBase")
+net.__index = net
+
+function NetTimeLookGetCard.Create(cardType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(cardType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+        XunXiaTime.BoxData = {} 
+       XunXiaTime.BoxData = v.value.data["timeLookBoxState"]  
+end

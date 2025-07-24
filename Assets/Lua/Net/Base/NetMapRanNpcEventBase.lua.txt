@@ -1,0 +1,31 @@
+local NetMapRanNpcEventBase = {}
+
+--随机NPC事件的交互（回答问题，帮送物品  带路)
+-- npc_id(string): NPCID
+-- answer_id(string): 答案id
+function NetMapRanNpcEventBase:Init(npc_id,answer_id,callback)
+    self.data = {}
+	self.data.msgName = "MapRanNpcEvent"
+
+	self.data.npc_id = npc_id
+	self.data.answer_id = answer_id
+	self.callback = callback
+
+    return self
+end
+
+function NetMapRanNpcEventBase:Send()
+    Net.Send(self)
+end
+
+function NetMapRanNpcEventBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapRanNpcEventBase
+

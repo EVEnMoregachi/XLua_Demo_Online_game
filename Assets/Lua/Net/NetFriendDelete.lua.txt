@@ -1,0 +1,14 @@
+NetFriendDelete = {}
+local net = require("Net/Base/NetFriendDeleteBase")
+net.__index = net
+
+function NetFriendDelete.Create(playerId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(playerId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        social.friendInfo = v.value.data["friendInit"] 
+end

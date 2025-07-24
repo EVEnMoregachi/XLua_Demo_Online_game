@@ -1,0 +1,20 @@
+NetGetWelfareInIt = {}
+local net = require("Net/Base/NetGetWelfareInItBase")
+net.__index = net
+
+function NetGetWelfareInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        welfare.WelfareMsg = v.value.data.welfareMsg 
+        welfare.WelfareOnlineInIt = v.value.data.welfareOnlineInIt
+        welfare.WelfareAddLogInIt = v.value.data.welfareAddLogInIt 
+        welfare.WelfareLevelInIt = v.value.data.welfareLevelInIt
+        welfare.TaskStateInfo = v.value.data.taskStateInfo
+ 
+end
+ 

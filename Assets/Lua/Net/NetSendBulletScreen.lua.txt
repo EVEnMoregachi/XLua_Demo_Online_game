@@ -1,0 +1,14 @@
+NetSendBulletScreen = {}
+local net = require("Net/Base/NetSendBulletScreenBase")
+net.__index = net
+
+function NetSendBulletScreen.Create(chat_info,boss_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(chat_info,boss_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

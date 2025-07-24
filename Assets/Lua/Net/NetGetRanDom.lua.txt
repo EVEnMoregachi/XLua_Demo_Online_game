@@ -1,0 +1,14 @@
+NetGetRanDom = {}
+local net = require("Net/Base/NetGetRanDomBase")
+net.__index = net
+
+function NetGetRanDom.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        makename.datav = v.value.data
+end

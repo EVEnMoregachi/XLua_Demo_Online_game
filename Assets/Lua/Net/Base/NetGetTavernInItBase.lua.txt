@@ -1,0 +1,27 @@
+local NetGetTavernInItBase = {}
+
+--酒馆初始化
+function NetGetTavernInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetTavernInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetTavernInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetTavernInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetTavernInItBase
+

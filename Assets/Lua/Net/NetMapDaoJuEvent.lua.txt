@@ -1,0 +1,16 @@
+NetMapDaoJuEvent = {}
+local net = require("Net/Base/NetMapDaoJuEventBase")
+net.__index = net
+
+function NetMapDaoJuEvent.Create(map_id,daoju_id,secretKey,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,daoju_id,secretKey,callback)
+    return t
+end 
+
+function net:OnResult(v)
+      if v.value.data.delMapItem ~= nil then
+         GameMainData.MapDaoJuModelData:RefreshRemoveData(v.value.data.delMapItem.item_id)
+      end 
+end

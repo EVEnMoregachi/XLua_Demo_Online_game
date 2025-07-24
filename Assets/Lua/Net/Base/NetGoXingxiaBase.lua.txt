@@ -1,0 +1,27 @@
+local NetGoXingxiaBase = {}
+
+--开始行侠
+function NetGoXingxiaBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GoXingxia"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGoXingxiaBase:Send()
+    Net.Send(self)
+end
+
+function NetGoXingxiaBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGoXingxiaBase
+

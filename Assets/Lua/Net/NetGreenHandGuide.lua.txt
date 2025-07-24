@@ -1,0 +1,14 @@
+NetGreenHandGuide = {}
+local net = require("Net/Base/NetGreenHandGuideBase")
+net.__index = net
+
+function NetGreenHandGuide.Create(guide_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(guide_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        guide.Next_guide_id = v.value.data.next_guide_id    
+end

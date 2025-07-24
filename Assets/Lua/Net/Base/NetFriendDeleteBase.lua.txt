@@ -1,0 +1,29 @@
+local NetFriendDeleteBase = {}
+
+--删除好友
+-- playerId(string): 好友id
+function NetFriendDeleteBase:Init(playerId,callback)
+    self.data = {}
+	self.data.msgName = "FriendDelete"
+
+	self.data.playerId = playerId
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendDeleteBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendDeleteBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendDeleteBase
+

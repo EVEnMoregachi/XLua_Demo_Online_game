@@ -1,0 +1,14 @@
+NetCanBai = {}
+local net = require("Net/Base/NetCanBaiBase")
+net.__index = net
+
+function NetCanBai.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

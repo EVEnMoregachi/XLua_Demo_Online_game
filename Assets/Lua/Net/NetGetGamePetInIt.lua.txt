@@ -1,0 +1,14 @@
+NetGetGamePetInIt = {}
+local net = require("Net/Base/NetGetGamePetInItBase")
+net.__index = net
+
+function NetGetGamePetInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

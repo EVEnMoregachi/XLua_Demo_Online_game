@@ -1,0 +1,14 @@
+NetMapRanEvent = {}
+local net = require("Net/Base/NetMapRanEventBase")
+net.__index = net
+
+function NetMapRanEvent.Create(ran_eventId,secretKey,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(ran_eventId,secretKey,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,15 @@
+NetGetOpenQiyuPage = {}
+local net = require("Net/Base/NetGetOpenQiyuPageBase")
+net.__index = net
+
+function NetGetOpenQiyuPage.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        -- print("OnResult ************************************************** ",v.value.data)
+        self.qiyuOpenList = v.value.data.qiyuOpenList
+end

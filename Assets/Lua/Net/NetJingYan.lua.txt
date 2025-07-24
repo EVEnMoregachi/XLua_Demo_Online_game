@@ -1,0 +1,14 @@
+NetJingYan = {}
+local net = require("Net/Base/NetJingYanBase")
+net.__index = net
+
+function NetJingYan.Create(wuGongId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(wuGongId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

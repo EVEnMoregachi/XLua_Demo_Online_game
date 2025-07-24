@@ -1,0 +1,29 @@
+local NetGamePetUpGoBase = {}
+
+--宠物上阵
+-- petId(string): 宠物id
+function NetGamePetUpGoBase:Init(petId,callback)
+    self.data = {}
+	self.data.msgName = "GamePetUpGo"
+
+	self.data.petId = petId
+	self.callback = callback
+
+    return self
+end
+
+function NetGamePetUpGoBase:Send()
+    Net.Send(self)
+end
+
+function NetGamePetUpGoBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGamePetUpGoBase
+

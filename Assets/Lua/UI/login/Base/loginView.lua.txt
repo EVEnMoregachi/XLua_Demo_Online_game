@@ -1,0 +1,36 @@
+local loginView = {}
+setmetatable(loginView, {__index=UIBase})
+
+function loginView:Create()
+    self.name = "login"
+    self.path = "login"
+end
+function loginView:SetUICompent(child)  
+	if child.name == "buttonYes" then 
+		loginView.buttonYes = child:GetComponent("Button") 
+		  
+	elseif child.name == "buttonEnter" then 
+		loginView.buttonEnter = child:GetComponent("Button")
+	elseif child.name == "namePage" then 
+		-- print("namePage")
+		loginView.namePage = child.gameObject 
+	elseif child.name == "choosePage" then 
+		-- print("choosePage")
+		loginView.choosePage = child.gameObject 
+	elseif child.name == "account" then  
+		loginView.account = child:GetComponent("InputField")  
+	elseif child.name == "ip" then  
+		loginView.ip = child:GetComponent("InputField")  
+	end
+    
+end
+function loginView:Init()  
+
+	loginView.buttonYes.onClick:AddListener(function() self:ButtonClickHandler(loginView.buttonYes) end) 
+	loginView.buttonEnter.onClick:AddListener(function() self:ButtonClickHandler(loginView.buttonEnter) end) 
+end
+
+
+
+return loginView
+

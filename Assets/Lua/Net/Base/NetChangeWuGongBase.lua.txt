@@ -1,0 +1,33 @@
+local NetChangeWuGongBase = {}
+
+--更换武功
+-- heroId(string): 弟子id
+-- wuGongId(string): 更换的武功ID
+-- wuGongPos(int): 更换的武功位置
+function NetChangeWuGongBase:Init(heroId,wuGongId,wuGongPos,callback)
+    self.data = {}
+	self.data.msgName = "ChangeWuGong"
+
+	self.data.heroId = heroId
+	self.data.wuGongId = wuGongId
+	self.data.wuGongPos = wuGongPos
+	self.callback = callback
+
+    return self
+end
+
+function NetChangeWuGongBase:Send()
+    Net.Send(self)
+end
+
+function NetChangeWuGongBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetChangeWuGongBase
+

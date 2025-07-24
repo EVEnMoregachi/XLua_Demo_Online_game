@@ -1,0 +1,31 @@
+local NetMapRanEventBase = {}
+
+--地图随机事件
+-- ran_eventId(string): 随机道具id
+-- secretKey(string): 密钥
+function NetMapRanEventBase:Init(ran_eventId,secretKey,callback)
+    self.data = {}
+	self.data.msgName = "MapRanEvent"
+
+	self.data.ran_eventId = ran_eventId
+	self.data.secretKey = secretKey
+	self.callback = callback
+
+    return self
+end
+
+function NetMapRanEventBase:Send()
+    Net.Send(self)
+end
+
+function NetMapRanEventBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapRanEventBase
+

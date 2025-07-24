@@ -1,0 +1,29 @@
+local NetEquipRompoundBase = {}
+
+--合成
+-- compoundChipId(string): 合成装备碎片id
+function NetEquipRompoundBase:Init(compoundChipId,callback)
+    self.data = {}
+	self.data.msgName = "EquipRompound"
+
+	self.data.compoundChipId = compoundChipId
+	self.callback = callback
+
+    return self
+end
+
+function NetEquipRompoundBase:Send()
+    Net.Send(self)
+end
+
+function NetEquipRompoundBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEquipRompoundBase
+

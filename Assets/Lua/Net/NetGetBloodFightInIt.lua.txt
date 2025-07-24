@@ -1,0 +1,51 @@
+NetGetBloodFightInIt = {}
+local net = require("Net/Base/NetGetBloodFightInItBase")
+net.__index = net
+
+function NetGetBloodFightInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v) 
+    bloodfight.bloodcurrentDefendTime = v.value.data.bloodBattle.bloodcurrentDefendTime
+    bloodfight.bloodMaxLevel = v.value.data.bloodBattle.bloodMaxLevel
+    bloodfight.bloodMaxStar = v.value.data.bloodBattle.bloodMaxStar
+    bloodfight.bloodGetStarAmo = v.value.data.bloodBattle.bloodGetStarAmo
+    bloodfight.bloodRangking = v.value.data.bloodBattle.bloodRangking
+    bloodfight.bloodCurrentLevel = v.value.data.bloodBattle.bloodCurrentLevel
+    bloodfight.bloodLeftStarAmo = v.value.data.bloodBattle.bloodLeftStarAmo
+    bloodfight.bloodXueJiaCheng = v.value.data.bloodBattle.bloodXueJiaCheng
+    bloodfight.bloodGongJiaCheng = v.value.data.bloodBattle.bloodGongJiaCheng
+    bloodfight.bloodFangJiaCheng = v.value.data.bloodBattle.bloodFangJiaCheng
+    bloodfight.bloodNeiJiaCheng = v.value.data.bloodBattle.bloodNeiJiaCheng
+    bloodfight.xueZhanTeam = v.value.data.bloodBattle.xueZhanTeam
+    bloodfight.liZhanTeam = v.value.data.bloodBattle.liZhanTeam
+    bloodfight.zhanTeam = v.value.data.bloodBattle.zhanTeam
+    bloodfight.bloodCurrentState = v.value.data.bloodBattle.bloodCurrentState
+    bloodfight.bloodFourValueFirstNum = v.value.data.bloodBattle.bloodFourValueFirstNum
+    bloodfight.bloodResult = v.value.data.bloodBattle.bloodResult
+    bloodfight.roundNum = v.value.data.bloodBattle.roundNum 
+
+    -- BloodcurrentDefendTime  int32    `json:"bloodcurrentDefendTime"`   //守卫次数
+	-- BloodmaxLevel   int32    `json:"bloodMaxLevel"`//最大闯关数
+	-- BloodmaxStar   int32    `json:"bloodMaxStar"`//最大得星数
+	-- BloodGetStarAmo    int32     `json:"bloodGetStarAmo"` //得星数
+	-- Bloodrangking   int64    `json:"bloodRangking"`   //排名
+	-- BloodCurrentLevel   int32    `json:"bloodCurrentLevel"`   //当前关卡
+	-- BloodLeftStarAmo  int32    `json:"bloodLeftStarAmo"`//剩星
+	-- BloodXueJiaCheng   int32    `json:"bloodXueJiaCheng"`  //血加成
+	-- BloodGongJiaCheng   int32    `json:"bloodGongJiaCheng"`//攻加成
+	-- BloodFangJiaCheng    int32       `json:"bloodFangJiaCheng"`   //防加成
+	-- BloodNeiJiaCheng   int32     `json:"bloodNeiJiaCheng"`//内加成 
+	-- XueZhanTeam   int32    `json:"xueZhanTeam"`//敌方出战的组合编号:血战
+	-- LiZhanTeam    int32      `json:"liZhanTeam"`  //敌方出战的组合编号:力战
+	-- ZhanTeam   int32     `json:"zhanTeam"`    //敌方出战的组合编号:战 
+	-- BloodCurrentState   int32    `json:"bloodCurrentState"`//血战当前状态，0为未开始，1为开始，2为结束
+	-- BloodFourValueFirstNum   int32       `json:"bloodFourValueFirstNum"`//血攻防内四个值，0为血攻防，1为攻防内，2为防内血，3为内血攻
+	-- BloodResult  int32    `json:"bloodResult"`  //血战结果，3为大胜，2为胜利，1为险胜，-1为失败，-2为惜败，-3为惨败
+	-- RoundNum  int32    `json:"roundNum"`//回合数
+ 
+end

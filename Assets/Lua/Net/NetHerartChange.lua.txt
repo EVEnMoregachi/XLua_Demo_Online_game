@@ -1,0 +1,15 @@
+NetHerartChange = {}
+local net = require("Net/Base/NetHerartChangeBase")
+net.__index = net
+
+function NetHerartChange.Create(headId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(headId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+      herart.PetHeadList = v.value.data.herartCardList
+
+end

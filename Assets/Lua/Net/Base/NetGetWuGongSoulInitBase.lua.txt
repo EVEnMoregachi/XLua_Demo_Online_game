@@ -1,0 +1,27 @@
+local NetGetWuGongSoulInitBase = {}
+
+--武功碎片初始化
+function NetGetWuGongSoulInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetWuGongSoulInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetWuGongSoulInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetWuGongSoulInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetWuGongSoulInitBase
+

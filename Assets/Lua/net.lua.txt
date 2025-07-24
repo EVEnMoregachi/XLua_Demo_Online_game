@@ -1,0 +1,217 @@
+Net = {}
+---- print("load lua Net")
+local boxRpc = {}
+local index = 0
+local count = 0
+
+local socketReconnetTimer = 0
+
+local session = ""
+local account = ""
+local address = ""
+local loginAddress = ""
+local chatAddress = ""
+
+local pvpAddress = "127.0.0.1"
+local pvpport = "10001"
+
+function Net.GetAddress()
+	   
+	return pvpAddress
+end
+
+function Net.SetAddress(v)
+pvpAddress = v
+	address = "http://"..v.."/SceneServer"
+end
+
+function Net.SetLoginAddress(v)
+	loginAddress = "http://"..v.."/LoginServer"
+end
+
+function Net.SetSession(v)
+	session = v
+end
+
+function Net.SetAccount(v)
+	account = v
+end
+
+function Net.SetChatAddress(v)
+	chatAddress = v
+end
+
+function Net.SetPvpAddress(v)
+	pvpAddress = v
+end
+
+local function GetIndex()
+	index = index+1
+	return index
+end
+
+local function SetCount(v)
+	count = v
+	UI.SetLoading(count > 0)
+end
+function callBack(v)
+-- print("callBack ******8  ",v)
+	Net.Receive(v)
+end
+function Net.Receive(v)
+	SetCount(count-1)
+
+	local rpcData = ToJsonTable(v)
+	
+	--print(rpcData)
+	if rpcData == nil then
+		error("ToJsonTable Error")
+		return
+	end
+
+	local data = rpcData.value.data
+	---- print("data == ",data)
+	if data == nil then
+		return 
+	end
+	for k,v in pairs(data) do 
+		---- print("net.lua  SetModuleData  k == "  ,  k)
+		if k ~= "data" then
+			GameMainData.SetModuleData(k,v)
+		end
+	end
+	---- print("net   msgID = ",rpcData.msgID, "  boxRpc[rpcData.msgID] = " ,boxRpc[rpcData.msgID])
+	if boxRpc[rpcData.msgID] ~= nil then
+		if rpcData.errCode == 0 or rpcData.errCode == nil then
+			boxRpc[rpcData.msgID]:OnReceive(rpcData)
+		elseif boxRpc[rpcData.msgID].ErrorHandler ~= nil then
+			boxRpc[rpcData.msgID]:ErrorHandler(rpcData.errCode)
+		end
+		boxRpc[rpcData.msgID] = nil
+	end
+
+	if rpcData.errCode ~= 0 and  rpcData.errCode ~= nil then
+
+		local strError = ""
+		if StaticData.errorData[rpcData.errCode] ~= nil then
+			strError = StaticData.errorData[rpcData.errCode]
+		else
+			strError = "未知错误 "..rpcData.errCode
+		end
+         Public.warning(strError)
+		--UI.OpenUI("UIError",strError)
+	end
+end
+
+function Net.SignData(data)
+	data.account = account
+	data.session = session
+	data.msgID = GetIndex()
+end
+
+function Net.SendLogin(rpc) 
+	if loginAddress == "" then  
+		loginAddress =  "http://" .. "127.0.0.1" .."/LoginServer"  
+ 
+	end 
+	print("loginAddress  ============" ,loginAddress)
+	Net.SendTo(rpc,loginAddress)
+end
+
+function Net.Send(rpc)
+	Net.SendTo(rpc,address)
+end
+
+function Net.SendTo(rpc,url)
+	Net.SignData(rpc.data)
+	boxRpc[rpc.data.msgID] = rpc
+	---- print("net set   msgID = ",rpc.data.msgID)
+	LuaTools.Http(url,ToJsonString(rpc.data),Net.Receive)
+	SetCount(count+1)
+end
+
+function Net.Error(error,sendData)
+	local sendData = ToJsonTable(sendData)
+
+	if boxRpc[sendData.msgID] ~= nil and boxRpc[sendData.msgID].ErrorHandler ~= nil then
+		boxRpc[sendData.msgID].ErrorHandler(0)
+	end
+
+	boxRpc[sendData.msgID] = nil
+	SetCount(count-1)
+	UI.OpenUI("UIMessageBox","","网络错误")
+end
+
+function Net.ReceiveSocket(v)
+	--Socket的回调
+	--print(v)
+	local rpcData = ToJsonTable(v)
+	if rpcData == nil then
+		error("ToJsonTable Error")
+		return
+	end
+	GameMainData.ChatData:ReceiveMsg(rpcData)
+end
+
+function Net.SocketStateChanged(v)
+	if v == 1 then
+		
+		if socketReconnetTimer ~= 0 then
+
+			LuaTimer.Delete(socketReconnetTimer)
+
+			socketReconnetTimer = LuaTimer.Add(3000,function (id)
+				socketReconnetTimer = 0
+
+				local msg = {}
+				msg.msgType = 1
+				Net.SocketSend(msg)
+			end)
+		else
+
+			local msg = {}
+			msg.msgType = 1
+			Net.SocketSend(msg)
+
+		end
+
+	end
+end
+
+
+
+function Net.SocketError(v)
+	if socketReconnetTimer == 0 then
+		socketReconnetTimer = LuaTimer.Add(10000,function (id)
+			socketReconnetTimer = 0
+			Net.SocketConnet()
+		end)
+	end
+end
+
+function Net.SocketConnet()
+	local t = Split(chatAddress,":")
+	LuaTools.SocketConnet(t[1],tonumber(t[2]))
+end
+
+function Net.SocketSend(msg)
+	if socketReconnetTimer ~= 0 then
+		LuaTimer.Delete(socketReconnetTimer)
+		socketReconnetTimer = 0
+		Net.SocketConnet()
+	end
+
+	msg.UserID = account
+	msg.Session = session
+	LuaTools.SendMessage(ToJsonString(msg))
+end
+
+function Net.ReceivePvpSocket(msg)
+	local arrMsg = Split(msg,"|")
+	Event.Call("ReceivePvpSocket",arrMsg)
+end
+
+function Net.PvpSocketConnet()
+	local t = Split(pvpAddress,":")
+	LuaTools.PvpConnectSocket(t[1],tonumber(t[2]))
+end

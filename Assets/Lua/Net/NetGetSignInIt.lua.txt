@@ -1,0 +1,30 @@
+NetGetSignInIt = {}
+local net = require("Net/Base/NetGetSignInItBase")
+net.__index = net
+
+function NetGetSignInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+ 
+
+function net:OnResult(v)  
+    sign.allSignDayMsg = { }     --签到信息
+    sign.signBoxStateInfo = v.value.data["signBoxStateInfo"]  --签到箱子信息
+    sign.toDayIsSign = v.value.data.toDayIsSign  --今天普通是否签到(0未签到 1已签到)
+    sign.toDayBoldIsSign = v.value.data.toDayBoldIsSign  --今天豪华是否签到 (0未签到 1已签到)
+    sign.toDaySignNumber = v.value.data.toDaySignNumber   --今天要签到的天数是 
+    sign.canRepairSignDayNum = v.value.data.canRepairSignDayNum   --可以补签的天数是 
+    sign.addSignDayNum = v.value.data.addSignDayNum   --累计签到  
+ 
+    for i,v1 in ipairs(v.value.data["allSignDayMsg"]) do   --30天的签到信息 
+        sign.allSignDayMsg[v1.day] = v1.state
+    end
+    
+   
+end
+
+ 

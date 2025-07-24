@@ -1,0 +1,15 @@
+NetGetDayTaskPrize = {}
+local net = require("Net/Base/NetGetDayTaskPrizeBase")
+net.__index = net
+
+function NetGetDayTaskPrize.Create(taskId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(taskId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    welfare.TaskStateInfo = v.value.data.taskStateInfo
+
+end

@@ -1,0 +1,14 @@
+NetGamePetUpGo = {}
+local net = require("Net/Base/NetGamePetUpGoBase")
+net.__index = net
+
+function NetGamePetUpGo.Create(petId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

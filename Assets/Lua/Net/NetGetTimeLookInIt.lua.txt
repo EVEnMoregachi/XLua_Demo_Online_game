@@ -1,0 +1,17 @@
+NetGetTimeLookInIt = {}
+
+local net = require("Net/Base/NetGetTimeLookInItBase")
+net.__index = net
+
+function NetGetTimeLookInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+       XunXiaTime.BoxData = {} 
+       XunXiaTime.BoxData = v.value.data["timeLookBoxState"]  
+       self.datav = v.value.data
+end

@@ -1,0 +1,29 @@
+local NetGetMapDaoJuInItBase = {}
+
+--初始化地图道具信息
+-- map_id(string): 地图id
+function NetGetMapDaoJuInItBase:Init(map_id,callback)
+    self.data = {}
+	self.data.msgName = "GetMapDaoJuInIt"
+
+	self.data.map_id = map_id
+	self.callback = callback
+
+    return self
+end
+
+function NetGetMapDaoJuInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetMapDaoJuInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetMapDaoJuInItBase
+

@@ -1,0 +1,19 @@
+NetGetBloodFightRankList = {}
+local net = require("Net/Base/NetGetBloodFightRankListBase")
+net.__index = net
+
+function NetGetBloodFightRankList.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v) 
+    bloodfight.bloodBattleSkyRank = {}  
+    bloodfight.bloodBattleLandRank = {}  
+
+    bloodfight.bloodBattleSkyRank = v.value.data.bloodBattleSkyRank
+    bloodfight.bloodBattleLandRank = v.value.data.bloodBattleLandRank 
+
+end

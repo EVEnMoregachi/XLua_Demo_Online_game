@@ -1,0 +1,32 @@
+local NetPlayerUsePropBase = {}
+
+--客户端使用道具
+-- propId(string): 道具id
+-- propNum(string): 数量
+-- heroId(string): 弟子id
+function NetPlayerUsePropBase:Init(propId,propNum,heroId,callback)
+    self.data = {}
+	self.data.msgName = "PlayerUseProp" 
+	self.data.propId = propId
+	self.data.propNum = propNum
+	self.data.heroId = heroId
+	self.callback = callback
+
+    return self
+end
+
+function NetPlayerUsePropBase:Send()
+    Net.Send(self)
+end
+
+function NetPlayerUsePropBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPlayerUsePropBase
+

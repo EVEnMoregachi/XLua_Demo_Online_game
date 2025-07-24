@@ -1,0 +1,14 @@
+NetGetMapTranscriptInIt = {}
+local net = require("Net/Base/NetGetMapTranscriptInItBase")
+net.__index = net
+
+function NetGetMapTranscriptInIt.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

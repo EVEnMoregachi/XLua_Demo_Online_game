@@ -1,0 +1,222 @@
+loginDemo = {}
+local UITable = require("UI/login/Base/loginDemoView") 
+function loginDemo.Create()
+	local ui = {}
+	setmetatable(ui, {__index=UITable})	
+	ui:Create()
+    ui.layer = 1
+    UI.LoadUI(ui) 
+	return ui
+
+end
+
+
+function UITable:Awake()    
+ 	 
+	self:Init()  
+	self.atest =  "111222333444" 
+	self:Start1()  
+	self:InItClientData()
+end
+
+loginDemo.clientData = {}
+--读取本地记录的数据（玩家账号及设置等信息）
+function UITable:InItClientData()
+	local str =  Public.ResourceManager.GetPlayerData() 
+	  print("读取本地txt记录的数据=",str)
+	--储存格式： 玩家账号|音乐|音效|是否跟随|是否显示聊天|同屏玩家
+	 loginDemo.clientData["account"] = Split(str,"|")[1]
+	 loginDemo.clientData["music"] = Split(str,"|")[2] 
+	 loginDemo.clientData["sound"] = Split(str,"|")[3]  
+	 loginDemo.clientData["isMoveCam"] = Split(str,"|")[4]  
+	 loginDemo.clientData["showChat"] = Split(str,"|")[5]  
+	 loginDemo.clientData["showPlayerNum"] = Split(str,"|")[6]  
+	 loginDemo.clientData["serverIp"] = Split(str,"|")[7]   
+	 
+ 	 if loginDemo.clientData["account"] ~= " " then
+		self.account.text = loginDemo.clientData["account"]  --为账号TEXT赋值
+	  end  
+
+	  if loginDemo.clientData["serverIp"] ~= "ip" then
+		self.ip.text = loginDemo.clientData["serverIp"]  --赋值IP
+	  end  
+ 
+	  --初始化是否跟随
+	  if loginDemo.clientData["isMoveCam"] == "1" then
+		 GameMainData.viewFollowPlayer =true
+	  end  
+    
+	  --初始化是否显示聊天
+
+	  --初始化音乐和音效的设置
+ end 
+ 
+ --写入   
+function loginDemo.appendFile(content,mold)  
+ 	if mold == "account" then  --存账号
+		loginDemo.clientData["account"] = content
+	elseif mold == "music" then  --存音乐设置
+		loginDemo.clientData["music"] =  content
+	elseif mold == "sound" then  --音效设置
+		loginDemo.clientData["sound"] = content
+	elseif mold == "isMoveCam" then  --是否跟随
+		loginDemo.clientData["isMoveCam"] = content
+	elseif mold == "showChat" then  --是否显示聊天
+		loginDemo.clientData["showChat"] = content
+	elseif mold == "showPlayerNum" then  --同屏玩家(1不显示 2少量 3中等 4大量)
+		loginDemo.clientData["showPlayerNum"] = content
+	elseif mold == "serverIp" then  --IP
+		loginDemo.clientData["serverIp"] = content
+	end
+	 local str = loginDemo.clientData["account"].."|"..loginDemo.clientData["music"].."|"..loginDemo.clientData["sound"].."|"..loginDemo.clientData["isMoveCam"].."|"..loginDemo.clientData["showChat"].."|"..loginDemo.clientData["showPlayerNum"].."|"..loginDemo.clientData["serverIp"]    
+	  print("储存=",str)
+	  Public.ResourceManager.SetPlayerData(str) 
+ 
+end  
+  
+function UITable:handetest(evtName,data)
+
+	 -- print("handetest &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",data)
+
+	 -- print("atest == " ,self.atest)
+end 
+
+
+function UITable:Start1()  
+
+
+	-- print("atest  Start == " ,self.atest)
+
+end
+ 
+function UITable:GetServerList(callback)
+	RpcServerSelect.Create(function (rpc)
+		callback(rpc.listServer)
+	end):Send()
+end
+
+
+require("Net/NetRegisterOrLogin")
+require("Net/NetEnterGame2")
+require("Net/NetEnterGame")
+
+
+function UITable:ButtonClickHandler(btn) 
+   LuaTools.PlaySound("btnsound") 
+	if btn == self.buttonYes then
+		if self.account.text =="" then
+			Public.warning("账号不能为空")
+			return 
+		end
+
+		if self.ip.text =="" then
+			self.ip.text = "182.61.29.126"
+		--	 Public.warning("请输入IP地址")
+			--return 
+		end
+	    --Event.Call("handle","55")
+		-- print("buttonYes")
+	  -- print("  " ,  self.ip.text)
+	  -- 测试用 begin
+		 Net.SetLoginAddress(self.ip.text)
+		 Net.SetAddress(self.ip.text)
+		 Net.SetAccount("IOS:q1:"..self.account.text )
+      -- 测试用 end
+      
+		 Net.SendLogin(NetRegisterOrLogin.Create(self.account.text , function(rpc)  
+			-- print("223123123 2  " ,  self.layer)
+			Net.SetAccount("IOS:q1:"..self.account.text )
+			loginDemo.appendFile(self.account.text,"account" ) 
+			loginDemo.appendFile(self.ip.text,"serverIp")  
+			self.namePage:SetActive(false)
+			self.choosePage:SetActive(true)
+		end) )
+		 
+	elseif  btn == self.buttonEnter then 
+		NetEnterGame.Create( function(rpc)
+			-- UITable:registerAccount() 
+ 				 self:InitPreData(rpc)
+				 GameMainData.Weaher= rpc.data.weather
+ 		  end):Send()
+		  
+	end
+end
+
+
+--注册账号------------------------
+require('StaticData/ConfigData/ConfigAccount')   
+local nowSerial = 1
+ function UITable:registerAccount() 
+	 if ConfigAccount.getVarByCustom("serial",tostring(nowSerial)).account == nil  then
+		Public.warning("账号注册完毕")
+		 return 
+	 end
+ 	 local warnInfo= self.namePage	
+ 	  local tween=  warnInfo:GetComponent("RectTransform"):DOAnchorPos(CS.UnityEngine.Vector2(0,0), 3):OnComplete(
+		 function ()
+			Net.SetAccount("IOS:q1:"..ConfigAccount.getVarByCustom("serial",tostring(nowSerial)).account) 
+			NetEnterGame.Create( function(rpc)
+				nowSerial = nowSerial +1
+				UITable:registerAccount() 
+			  end):Send()
+		   end
+		 )	 
+end
+
+-- require("Net/NetGetBigMapInIt")   
+-- require("Net/NetGetScrollInit")   
+-- require("Net/NetGetGamePetInIt")   
+-- require("Net/NetGetWuGongSoulInit")   
+-- require("Net/NetGetPublicMsgInit")   
+  require("Net/NetClientInItData")   
+  require("Net/NetGetPackageInit")  
+
+function UITable:InitPreData(rpc)
+	  
+	local boxRpc = {}
+	
+	table.insert(boxRpc,NetClientInItData.Create()) 
+    table.insert(boxRpc,NetGetPackageInit.Create())  
+ 
+
+  self:DoSendRpc(boxRpc,function ()	self:LoginSuccuss() end,function ()	self:failCallback() end ) 
+end 
+
+
+function UITable.failCallback()	
+ 	 Public.warning("进入游戏失败，掌门请退出重试")
+end 
+
+function UITable:LoginSuccuss()	
+	
+   
+	self:Close() 
+	UI.OpenUI("mainui2")
+end 
+	 
+
+
+  function UITable:DoSendRpc(boxRpc,succussCallback,failCallback)
+	
+	if #boxRpc == 0 then
+		succussCallback()
+		return
+	end
+
+	local rpc = boxRpc[1]
+	table.remove(boxRpc,1)
+
+	local rpcCallback = rpc.callback
+	rpc.callback = function ()
+		-- print("发送请求返回一次")
+		if rpcCallback ~= nil then
+			rpcCallback(rpc)
+		end
+		self:DoSendRpc(boxRpc,succussCallback,failCallback)
+	end
+	rpc.ErrorHandler = function ()
+		failCallback()
+	end
+	-- print("发送请求一次")
+	rpc:Send()
+end

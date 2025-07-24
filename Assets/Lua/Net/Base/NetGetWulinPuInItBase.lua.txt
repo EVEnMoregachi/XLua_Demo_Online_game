@@ -1,0 +1,27 @@
+local NetGetWulinPuInItBase = {}
+
+--武林普初始化
+function NetGetWulinPuInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetWulinPuInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetWulinPuInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetWulinPuInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetWulinPuInItBase
+

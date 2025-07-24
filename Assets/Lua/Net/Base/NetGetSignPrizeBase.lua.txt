@@ -1,0 +1,31 @@
+local NetGetSignPrizeBase = {}
+
+--签到领取
+-- signType(int): 1普通签到   2补签   3豪华签到  4签到宝箱领取
+-- signBoxId(int): 宝箱id
+function NetGetSignPrizeBase:Init(signType,signBoxId,callback)
+    self.data = {}
+	self.data.msgName = "GetSignPrize"
+
+	self.data.signType = signType
+	self.data.signBoxId = signBoxId
+	self.callback = callback
+
+    return self
+end
+
+function NetGetSignPrizeBase:Send()
+    Net.Send(self)
+end
+
+function NetGetSignPrizeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetSignPrizeBase
+

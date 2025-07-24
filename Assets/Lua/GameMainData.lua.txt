@@ -1,0 +1,266 @@
+GameMainData = {}
+
+
+---- print("load lua GameMainData") 
+GameMainData.PlayerInfoModel = require("Model/PlayerInfoModel") 
+
+   GameMainData.PropModelData = require("Model/PropModelData")      
+GameMainData.NowmapId = "" 
+GameMainData.IsReward = false 
+GameMainData.isGuideClick = true
+GameMainData.mingshan_id = "1"  
+GameMainData.biguan_id = ""
+GameMainData.Weaher = ""
+GameMainData.zhengrongChooseId = ""
+GameMainData.PetChooseId = ""
+GameMainData.equipChooseId = "" 
+GameMainData.PetShiWuChooseId = ""
+GameMainData.canSteps = 3
+GameMainData.nowChooseHeroPic = nil
+GameMainData.nowChoosePetPic = nil
+GameMainData.nowChoosePetFoodPic = nil
+GameMainData.canCreatRandom = false
+GameMainData.viewFollowPlayer = false
+GameMainData.JoinBangPai = false --创建了帮派为true 未创建帮派为false
+GameMainData.JoinLianMeng = false --加入了联盟为true 未加入联盟为false
+GameMainData.FightState = ""
+GameMainData.challengerName = ""
+GameMainData.challengerHeadId = ""
+GameMainData.addLeaderExp = 0  --Add掌门经验
+GameMainData.addHeroExp = 0  --Add弟子经验
+GameMainData.catchPetNum = 0  --捕捉宠物数量
+GameMainData.catchPetBaoNum = 0  --捕捉宝宝数量
+GameMainData.juqingFight = ""
+GameMainData.IsCadr_petId = "" --是否抽到整怪 如果是 播放动画 （怪物id或者""）
+GameMainData.nowMount = 0
+GameMainData.danmuData = {}
+ 
+-- 公共数据，无论任何接口，如果需要更新，则整个客户端的公共数据都会发生更新。一般以moudle结束
+ GameMainData.ReturnbattleDiZiinfo = {}
+ function GameMainData.SetModuleData(key,data)
+	
+
+		if data == nil then
+			return
+		end
+		 
+	  if key == "PlayerInfoModel" then  
+		GameMainData.PlayerInfoModel:SetData(data)
+		
+		-- print("vit " , GameMainData.PlayerInfoModel.data.vit)
+		-- print("silver " , GameMainData.PlayerInfoModel.data.silver) 
+ 
+			
+	 elseif key == "playerPropInIt" then
+	-- print("GameMainData *****playerPropInIt  " , #data)
+		 if #data > 0  then
+			GameMainData.PropModelData:SetData(data) 	 
+		 end
+ 
+    elseif key == "rewardResponse" then  
+		 -- print("rewardResponse *****rewardResponse  " , #data)
+		  GameMainData.IsReward = false
+		  if #data > 0  then
+			GameMainData.IsReward = true
+	 		GameMainData.RewardShowModel:SetData(data) 	
+		  end 
+
+
+		  
+	elseif key == "playerBaseData" then 
+		GameMainData.PlayerInfoModel:SetData(data) 
+ 	 
+	 
+		 
+	end 
+end
+
+
+--检查功能是否开启
+function GameMainData.CheckModuleActive(id)
+	return false
+end
+
+
+function MergeData(to,from)
+	 ----print(ToJsonString(to),"\n",ToJsonString(from))
+
+	------ print("to.isLis " , to.isList)
+	if to.isList == true then
+		MergeListData(to,from,to.metatable)
+	else
+		MergeTableData(to,from)
+	end
+
+end
+
+function MergeListData(to,from,metatable)
+	if #from == 0 then
+		return
+	end
+	for i,v in ipairs(from) do
+		setmetatable(v, metatable)
+		MergeDataToList(to,v)
+	end
+
+end
+
+function MergeDataToList(to,data)
+	for i,v in ipairs(to) do
+--	---- print("v:GetKey() " ,v:GetKey())
+--	---- print("data:GetKey() " ,data:GetKey())
+		if v:GetKey() == data:GetKey() then
+			MergeData(v,data)
+			return
+		end
+	end
+	table.insert(to,data)
+end
+
+function MergeTableData(to,from)
+
+	for k,v in pairs(from) do
+		t = type(v)
+		if t == "table" and to[k] ~= nil then
+			MergeData(to[k],from[k])
+		else
+			to[k] = from[k]
+		end
+
+	end
+
+end 
+
+
+
+
+
+GameMainData.EquipData = {} 
+temp = {}
+ 
+temp.ID = "1"
+temp.Name = "武器1"
+temp.Info = "武器1介绍"
+temp.atk = 5
+table.insert(GameMainData.EquipData,temp)
+tempp = {}
+tempp.ID = "2"
+tempp.Name = "武器2"
+tempp.Info = "武器2介绍"
+tempp.atk = 15
+table.insert(GameMainData.EquipData,tempp)
+ temppp = {}
+temppp.ID = "3"
+temppp.Name = "武器3"
+temppp.Info = "武器3介绍"
+temppp.atk = 25
+table.insert(GameMainData.EquipData,temppp)
+ tempppp = {}
+tempppp.ID = "4"
+tempppp.Name = "武器4"
+tempppp.Info = "武器4介绍"
+tempppp.atk = 35
+table.insert(GameMainData.EquipData,tempppp)
+ temppppp = {}
+temppppp.ID = "5"
+temppppp.Name = "武器5"
+temppppp.Info = "武器5介绍"
+temppppp.atk = 45
+table.insert(GameMainData.EquipData,temppppp)
+
+GameMainData.nowequipId =  ""
+
+function GameMainData.getWuqiByID(equipId) 
+	for i,v1 in ipairs(GameMainData.EquipData) do  
+		if v1.ID == equipId then
+		    return v1
+		end
+	end 
+	return 0
+end 
+
+
+
+--商店
+GameMainData.ShopData = {} 
+shoptemp = {}
+shoptemp.ID = "1"
+shoptemp.Name = "商品1"
+shoptemp.Info = "商品1介绍"
+shoptemp.price = 30
+shoptemp.num = 10 
+table.insert(GameMainData.ShopData,shoptemp)
+shoptemp1 = {}
+shoptemp1.ID = "2"
+shoptemp1.Name = "商品2"
+shoptemp1.Info = "商品2介绍"
+shoptemp1.price = 60
+shoptemp1.num = 10 
+table.insert(GameMainData.ShopData,shoptemp1)
+shoptemp2 = {}
+shoptemp2.ID = "3"
+shoptemp2.Name = "商品3"
+shoptemp2.Info = "商品3介绍"
+shoptemp2.price = 70
+shoptemp2.num = 10 
+table.insert(GameMainData.ShopData,shoptemp2)
+shoptemp3 = {}
+shoptemp3.ID = "4"
+shoptemp3.Name = "商品4"
+shoptemp3.Info = "商品4介绍"
+shoptemp3.price = 80
+shoptemp3.num = 10 
+table.insert(GameMainData.ShopData,shoptemp3)
+shoptemp4 = {}
+shoptemp4.ID = "5"
+shoptemp4.Name = "商品5"
+shoptemp4.Info = "商品5介绍"
+shoptemp4.price = 90
+shoptemp4.num = 10 
+table.insert(GameMainData.ShopData,shoptemp4)  
+shoptemp5 = {}
+shoptemp5.ID = "6"
+shoptemp5.Name = "商品6"
+shoptemp5.Info = "商品6介绍"
+shoptemp5.price = 100
+shoptemp5.num = 10 
+table.insert(GameMainData.ShopData,shoptemp5)  
+shoptemp6 = {}
+shoptemp6.ID = "7"
+shoptemp6.Name = "商品7"
+shoptemp6.Info = "商品7介绍"
+shoptemp6.price = 110
+shoptemp6.num = 10 
+table.insert(GameMainData.ShopData,shoptemp6)  
+shoptemp7 = {}
+shoptemp7.ID = "8"
+shoptemp7.Name = "商品8"
+shoptemp7.Info = "商品8介绍"
+shoptemp7.price = 120
+shoptemp7.num = 10 
+table.insert(GameMainData.ShopData,shoptemp7)  
+shoptemp8 = {}
+shoptemp8.ID = "9"
+shoptemp8.Name = "商品9"
+shoptemp8.Info = "商品9介绍"
+shoptemp8.price = 130
+shoptemp8.num = 10 
+table.insert(GameMainData.ShopData,shoptemp8)  
+
+function GameMainData.getshopByID(shopId) 
+	for i,v1 in ipairs(GameMainData.ShopData) do  
+		if v1.ID == shopId then
+		    return v1
+		end
+	end 
+	return 0
+end 
+function GameMainData.buyShop(shopId) 
+	for i,v1 in ipairs(GameMainData.ShopData) do  
+		if v1.ID == shopId then
+		    v1.num = v1.num - 1
+		end
+	end 
+	return 0
+end 
+

@@ -1,0 +1,27 @@
+local NetBreakOffBase = {}
+
+--破关
+function NetBreakOffBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "BreakOff"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetBreakOffBase:Send()
+    Net.Send(self)
+end
+
+function NetBreakOffBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetBreakOffBase
+

@@ -1,0 +1,27 @@
+local NetClientInItDataBase = {}
+
+--初始化数据
+function NetClientInItDataBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "ClientInItData"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetClientInItDataBase:Send()
+    Net.Send(self)
+end
+
+function NetClientInItDataBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetClientInItDataBase
+

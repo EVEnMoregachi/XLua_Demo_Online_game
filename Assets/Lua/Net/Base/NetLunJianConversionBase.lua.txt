@@ -1,0 +1,29 @@
+local NetLunJianConversionBase = {}
+
+--论剑商店兑换
+-- convertId(string): 兑换商品id
+function NetLunJianConversionBase:Init(convertId,callback)
+    self.data = {}
+	self.data.msgName = "LunJianConversion"
+
+	self.data.convertId = convertId
+	self.callback = callback
+
+    return self
+end
+
+function NetLunJianConversionBase:Send()
+    Net.Send(self)
+end
+
+function NetLunJianConversionBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetLunJianConversionBase
+

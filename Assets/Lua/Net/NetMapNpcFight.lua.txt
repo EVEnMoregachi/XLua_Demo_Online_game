@@ -1,0 +1,14 @@
+NetMapNpcFight = {}
+local net = require("Net/Base/NetMapNpcFightBase")
+net.__index = net
+
+function NetMapNpcFight.Create(map_id,npc_id,fight_type,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(map_id,npc_id,fight_type,callback)
+    return t
+end 
+
+function net:OnResult(v)
+     
+end

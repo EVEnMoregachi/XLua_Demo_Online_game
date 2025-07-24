@@ -1,0 +1,17 @@
+NetGetKingSpeedTreasuryInit = {}
+local net = require("Net/Base/NetGetKingSpeedTreasuryInitBase")
+net.__index = net
+
+function NetGetKingSpeedTreasuryInit.Create(callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(callback)
+    return t
+end 
+
+function net:OnResult(v)
+ 
+       ChuangWang.BoxData = {} 
+       ChuangWang.BoxData = v.value.data["kingSpeedTreasuryBoxState"]  
+       self.datav = v.value.data
+end

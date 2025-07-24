@@ -1,0 +1,17 @@
+NetKingSpeedTreasuryGetRush = {}
+local net = require("Net/Base/NetKingSpeedTreasuryGetRushBase")
+net.__index = net
+
+function NetKingSpeedTreasuryGetRush.Create(cardType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(cardType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+ChuangWang.RankData = {} 
+       ChuangWang.RankData = {} 
+       ChuangWang.RankData = v.value.data["kingSpeedTreasuryRank"]    
+        self.datav = v.value.data
+end

@@ -1,0 +1,14 @@
+NetGetMapShopList = {}
+local net = require("Net/Base/NetGetMapShopListBase")
+net.__index = net
+
+function NetGetMapShopList.Create(person_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(person_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

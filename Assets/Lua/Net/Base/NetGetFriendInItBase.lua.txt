@@ -1,0 +1,27 @@
+local NetGetFriendInItBase = {}
+
+--好友初始化
+function NetGetFriendInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetFriendInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetFriendInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetFriendInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetFriendInItBase
+

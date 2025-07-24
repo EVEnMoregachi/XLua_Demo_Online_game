@@ -1,0 +1,29 @@
+local NetGiveUpBranchTaskBase = {}
+
+--放弃任务
+-- task_id(string): 任务id
+function NetGiveUpBranchTaskBase:Init(task_id,callback)
+    self.data = {}
+	self.data.msgName = "GiveUpBranchTask"
+
+	self.data.task_id = task_id
+	self.callback = callback
+
+    return self
+end
+
+function NetGiveUpBranchTaskBase:Send()
+    Net.Send(self)
+end
+
+function NetGiveUpBranchTaskBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGiveUpBranchTaskBase
+

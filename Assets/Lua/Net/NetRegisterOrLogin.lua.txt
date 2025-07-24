@@ -1,0 +1,14 @@
+NetRegisterOrLogin = {}
+local net = require("Net/Base/NetRegisterOrLoginBase")
+net.__index = net
+
+function NetRegisterOrLogin.Create(account,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(account,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

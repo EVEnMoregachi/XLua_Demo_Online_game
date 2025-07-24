@@ -1,0 +1,14 @@
+NetGameCopySettle = {}
+local net = require("Net/Base/NetGameCopySettleBase")
+net.__index = net
+
+function NetGameCopySettle.Create(ectype,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(ectype,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,14 @@
+NetEquipRefine = {}
+local net = require("Net/Base/NetEquipRefineBase")
+net.__index = net
+
+function NetEquipRefine.Create(equipId,equipRefineExpend,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(equipId,equipRefineExpend,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

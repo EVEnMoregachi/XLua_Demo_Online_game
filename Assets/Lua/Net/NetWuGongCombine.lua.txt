@@ -1,0 +1,14 @@
+NetWuGongCombine = {}
+local net = require("Net/Base/NetWuGongCombineBase")
+net.__index = net
+
+function NetWuGongCombine.Create(chipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(chipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

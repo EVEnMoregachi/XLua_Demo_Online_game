@@ -1,0 +1,29 @@
+local NetEnterTheCopyBase = {}
+
+--进入副本
+-- map_id(string): 副本id
+function NetEnterTheCopyBase:Init(map_id,callback)
+    self.data = {}
+	self.data.msgName = "EnterTheCopy"
+
+	self.data.map_id = map_id
+	self.callback = callback
+
+    return self
+end
+
+function NetEnterTheCopyBase:Send()
+    Net.Send(self)
+end
+
+function NetEnterTheCopyBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEnterTheCopyBase
+

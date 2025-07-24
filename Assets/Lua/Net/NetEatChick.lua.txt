@@ -1,0 +1,14 @@
+NetEatChick = {}
+local net = require("Net/Base/NetEatChickBase")
+net.__index = net
+
+function NetEatChick.Create(mold,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(mold,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

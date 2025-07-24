@@ -1,0 +1,14 @@
+NetMingShanTenFight = {}
+local net = require("Net/Base/NetMingShanTenFightBase")
+net.__index = net
+
+function NetMingShanTenFight.Create(mingshanId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(mingshanId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

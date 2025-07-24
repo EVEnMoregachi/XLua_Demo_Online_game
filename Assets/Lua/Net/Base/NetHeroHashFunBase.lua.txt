@@ -1,0 +1,31 @@
+local NetHeroHashFunBase = {}
+
+--弟子散功
+-- heroId(string): 弟子id
+-- hashType(int): 散功类型（0 普通散工 1九转散功）
+function NetHeroHashFunBase:Init(heroId,hashType,callback)
+    self.data = {}
+	self.data.msgName = "HeroHashFun"
+
+	self.data.heroId = heroId
+	self.data.hashType = hashType
+	self.callback = callback
+
+    return self
+end
+
+function NetHeroHashFunBase:Send()
+    Net.Send(self)
+end
+
+function NetHeroHashFunBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetHeroHashFunBase
+

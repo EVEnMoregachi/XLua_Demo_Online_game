@@ -1,0 +1,29 @@
+local NetCalldrawcardBase = {}
+
+--召唤抽卡
+-- card_mold(string): 抽卡mold
+function NetCalldrawcardBase:Init(card_mold,callback)
+    self.data = {}
+	self.data.msgName = "Calldrawcard"
+
+	self.data.card_mold = card_mold
+	self.callback = callback
+
+    return self
+end
+
+function NetCalldrawcardBase:Send()
+    Net.Send(self)
+end
+
+function NetCalldrawcardBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetCalldrawcardBase
+

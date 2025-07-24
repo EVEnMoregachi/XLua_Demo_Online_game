@@ -1,0 +1,14 @@
+NetRetreat = {}
+local net = require("Net/Base/NetRetreatBase")
+net.__index = net
+
+function NetRetreat.Create(heroId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+         self.BiGuanData = v.value.data
+end

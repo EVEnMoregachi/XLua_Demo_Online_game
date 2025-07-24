@@ -1,0 +1,14 @@
+NetEquipRecover = {}
+local net = require("Net/Base/NetEquipRecoverBase")
+net.__index = net
+
+function NetEquipRecover.Create(equipId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(equipId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,14 @@
+NetGiveUpBranchTask = {}
+local net = require("Net/Base/NetGiveUpBranchTaskBase")
+net.__index = net
+
+function NetGiveUpBranchTask.Create(task_id,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(task_id,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

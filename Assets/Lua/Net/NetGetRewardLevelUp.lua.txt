@@ -1,0 +1,15 @@
+NetGetRewardLevelUp = {}
+local net = require("Net/Base/NetGetRewardLevelUpBase")
+net.__index = net
+
+function NetGetRewardLevelUp.Create(level,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(level,callback)
+    return t
+end 
+
+function net:OnResult(v)
+      --  self.vip =  v.value.data.vip
+        PlayerInfoModel:SetOneData("vip", v.value.data.vip )
+end

@@ -1,0 +1,30 @@
+local Render = UI.CreateRenderTable()
+
+function Render:SetUICompent(child) 
+    -- print("装备child",child.name)
+    if child.name == "pic" then   
+        self.picB = child:GetComponent("Button")  
+        self.picB.onClick:RemoveAllListeners()   
+        self.picB.onClick:AddListener(function() self:doSome() end) 
+        self.picImage = child:GetComponent("Image") 
+    end
+end
+
+function Render:SetData(v) 
+    self.EquipData = v 
+	self:RefreshEquipItem()
+end
+
+function Render:RefreshEquipItem() 
+    -- print("self.EquipData.metaID=",self.EquipData.metaID ) 
+	self.picImage.sprite = Public.ResMeg.GetSpritePath(self.EquipData.metaID,"equip")  
+end 
+
+function Render:doSome()
+    -- print("点击了装备id=",self.EquipData.equipID)
+  	backpack.equipDetail(self.EquipData.equipID)
+
+end 
+ 
+
+return Render

@@ -1,0 +1,14 @@
+NetPetRecruit = {}
+local net = require("Net/Base/NetPetRecruitBase")
+net.__index = net
+
+function NetPetRecruit.Create(petId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

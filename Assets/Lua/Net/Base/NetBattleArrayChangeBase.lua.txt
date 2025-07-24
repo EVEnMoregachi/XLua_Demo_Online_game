@@ -1,0 +1,31 @@
+local NetBattleArrayChangeBase = {}
+
+--阵容更换
+-- heroId(string): 弟子id
+-- posid(int): 上阵位置id
+function NetBattleArrayChangeBase:Init(heroId,posid,callback)
+    self.data = {}
+	self.data.msgName = "BattleArrayChange"
+
+	self.data.heroId = heroId
+	self.data.posid = posid
+	self.callback = callback
+
+    return self
+end
+
+function NetBattleArrayChangeBase:Send()
+    Net.Send(self)
+end
+
+function NetBattleArrayChangeBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetBattleArrayChangeBase
+

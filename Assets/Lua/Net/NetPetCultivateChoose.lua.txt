@@ -1,0 +1,15 @@
+NetPetCultivateChoose = {}
+local net = require("Net/Base/NetPetCultivateChooseBase")
+net.__index = net
+
+function NetPetCultivateChoose.Create(trainChoose,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(trainChoose,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+
+end

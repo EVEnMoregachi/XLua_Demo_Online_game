@@ -1,0 +1,29 @@
+local NetPlotStateRenewalBase = {}
+
+--剧情状态更新
+-- plot_id(string): 剧情id
+function NetPlotStateRenewalBase:Init(plot_id,callback)
+    self.data = {}
+	self.data.msgName = "PlotStateRenewal"
+
+	self.data.plot_id = plot_id
+	self.callback = callback
+
+    return self
+end
+
+function NetPlotStateRenewalBase:Send()
+    Net.Send(self)
+end
+
+function NetPlotStateRenewalBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPlotStateRenewalBase
+

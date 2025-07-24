@@ -1,0 +1,14 @@
+NetDishValleyJianti = {}
+local net = require("Net/Base/NetDishValleyJiantiBase")
+net.__index = net
+
+function NetDishValleyJianti.Create(heroId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(heroId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

@@ -1,0 +1,14 @@
+NetFriendMessgage = {}
+local net = require("Net/Base/NetFriendMessgageBase")
+net.__index = net
+
+function NetFriendMessgage.Create(playerId,msgInfo,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(playerId,msgInfo,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

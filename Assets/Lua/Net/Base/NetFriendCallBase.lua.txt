@@ -1,0 +1,29 @@
+local NetFriendCallBase = {}
+
+--邀请好友
+-- playerId(string): 好友id
+function NetFriendCallBase:Init(playerId,callback)
+    self.data = {}
+	self.data.msgName = "FriendCall"
+
+	self.data.playerId = playerId
+	self.callback = callback
+
+    return self
+end
+
+function NetFriendCallBase:Send()
+    Net.Send(self)
+end
+
+function NetFriendCallBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetFriendCallBase
+

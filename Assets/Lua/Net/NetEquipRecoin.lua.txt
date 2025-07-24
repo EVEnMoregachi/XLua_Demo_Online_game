@@ -1,0 +1,14 @@
+NetEquipRecoin = {}
+local net = require("Net/Base/NetEquipRecoinBase")
+net.__index = net
+
+function NetEquipRecoin.Create(equipId,recastType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(equipId,recastType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+    self.datav = v.value.data
+end

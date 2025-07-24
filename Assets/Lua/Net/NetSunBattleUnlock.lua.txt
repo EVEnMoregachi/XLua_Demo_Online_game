@@ -1,0 +1,14 @@
+NetSunBattleUnlock = {}
+local net = require("Net/Base/NetSunBattleUnlockBase")
+net.__index = net
+
+function NetSunBattleUnlock.Create(unlockId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(unlockId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        self.datav = v.value.data
+end

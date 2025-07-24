@@ -1,0 +1,27 @@
+local NetEmailOneKeyReadBase = {}
+
+--邮件一键读取,提取所有附件
+function NetEmailOneKeyReadBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "EmailOneKeyRead"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetEmailOneKeyReadBase:Send()
+    Net.Send(self)
+end
+
+function NetEmailOneKeyReadBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetEmailOneKeyReadBase
+

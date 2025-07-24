@@ -1,0 +1,29 @@
+local NetMapLightenBase = {}
+
+--点亮地图
+-- map_id(string): 地图id
+function NetMapLightenBase:Init(map_id,callback)
+    self.data = {}
+	self.data.msgName = "MapLighten"
+
+	self.data.map_id = map_id
+	self.callback = callback
+
+    return self
+end
+
+function NetMapLightenBase:Send()
+    Net.Send(self)
+end
+
+function NetMapLightenBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetMapLightenBase
+

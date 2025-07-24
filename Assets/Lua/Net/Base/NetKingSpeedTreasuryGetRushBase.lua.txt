@@ -1,0 +1,29 @@
+local NetKingSpeedTreasuryGetRushBase = {}
+
+--闯王宝库抽取
+-- cardType(string): 抽卡类型 1单抽  10十连抽
+function NetKingSpeedTreasuryGetRushBase:Init(cardType,callback)
+    self.data = {}
+	self.data.msgName = "KingSpeedTreasuryGetRush"
+
+	self.data.cardType = cardType
+	self.callback = callback
+
+    return self
+end
+
+function NetKingSpeedTreasuryGetRushBase:Send()
+    Net.Send(self)
+end
+
+function NetKingSpeedTreasuryGetRushBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetKingSpeedTreasuryGetRushBase
+

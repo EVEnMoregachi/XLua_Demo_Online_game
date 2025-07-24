@@ -1,0 +1,27 @@
+local NetGetDoManInitBase = {}
+
+--初始化行侠
+function NetGetDoManInitBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetDoManInit"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetDoManInitBase:Send()
+    Net.Send(self)
+end
+
+function NetGetDoManInitBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetDoManInitBase
+

@@ -1,0 +1,27 @@
+local NetGetPersonMsgBase = {}
+
+--获取个人信息
+function NetGetPersonMsgBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetPersonMsg"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetPersonMsgBase:Send()
+    Net.Send(self)
+end
+
+function NetGetPersonMsgBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetPersonMsgBase
+

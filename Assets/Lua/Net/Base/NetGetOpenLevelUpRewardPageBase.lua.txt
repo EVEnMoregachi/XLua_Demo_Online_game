@@ -1,0 +1,27 @@
+local NetGetOpenLevelUpRewardPageBase = {}
+
+--升级页面初始化
+function NetGetOpenLevelUpRewardPageBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetOpenLevelUpRewardPage"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetOpenLevelUpRewardPageBase:Send()
+    Net.Send(self)
+end
+
+function NetGetOpenLevelUpRewardPageBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetOpenLevelUpRewardPageBase
+

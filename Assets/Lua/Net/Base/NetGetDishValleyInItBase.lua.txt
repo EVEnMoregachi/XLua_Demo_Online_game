@@ -1,0 +1,27 @@
+local NetGetDishValleyInItBase = {}
+
+--蝶谷医仙初始化
+function NetGetDishValleyInItBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetDishValleyInIt"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetDishValleyInItBase:Send()
+    Net.Send(self)
+end
+
+function NetGetDishValleyInItBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetDishValleyInItBase
+

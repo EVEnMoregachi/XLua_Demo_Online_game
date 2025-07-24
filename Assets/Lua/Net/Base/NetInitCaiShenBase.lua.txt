@@ -1,0 +1,27 @@
+local NetInitCaiShenBase = {}
+
+--财神到初始化
+function NetInitCaiShenBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "InitCaiShen"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetInitCaiShenBase:Send()
+    Net.Send(self)
+end
+
+function NetInitCaiShenBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetInitCaiShenBase
+

@@ -1,0 +1,27 @@
+local NetGetRanDomBase = {}
+
+--随机起名
+function NetGetRanDomBase:Init(callback)
+    self.data = {}
+	self.data.msgName = "GetRanDom"
+
+	self.callback = callback
+
+    return self
+end
+
+function NetGetRanDomBase:Send()
+    Net.Send(self)
+end
+
+function NetGetRanDomBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetGetRanDomBase
+

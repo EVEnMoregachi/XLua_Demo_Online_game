@@ -1,0 +1,14 @@
+NetMapShopBuy = {}
+local net = require("Net/Base/NetMapShopBuyBase")
+net.__index = net
+
+function NetMapShopBuy.Create(person_id,shop_id,shop_num,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(person_id,shop_id,shop_num,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

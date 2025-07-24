@@ -1,0 +1,209 @@
+DemoEnter = {}
+local UITable = require("UI/login/Base/DemoEnterView") 
+
+
+function DemoEnter.Create()
+	local ui = {}
+	setmetatable(ui, {__index=UITable})	
+	ui:Create()
+    ui.layer = 1
+    UI.LoadUI(ui) 
+	return ui
+
+end
+
+
+function UITable:Awake()    
+ 	 
+	self:Init() 
+	  
+	self:InItClientData()
+end
+
+DemoEnter.clientData = {}
+--读取本地记录的数据（玩家账号及设置等信息）
+function UITable:InItClientData()
+ 			
+ 			local  data = {}   
+ 			data.money =  55
+ 			data.level = 1  
+ 			data.exp = 0
+ 			data.hp = 100
+ 			data.atk = 10
+ 			data.atkdis = 2
+ 			GameMainData.DemoPlayerModel:SetData(data) 
+ 			
+			local EquipData = {} 
+			local temp = {} 
+			temp.ID = "1"
+			temp.Name = "武器1"
+			temp.Info = "武器1介绍"
+			temp.atk = 5
+			table.insert( EquipData,temp)
+			tempp = {}
+			tempp.ID = "2"
+			tempp.Name = "武器2"
+			tempp.Info = "武器2介绍"
+			tempp.atk = 15
+			table.insert( EquipData,tempp)
+			 temppp = {}
+			temppp.ID = "3"
+			temppp.Name = "武器3"
+			temppp.Info = "武器3介绍"
+			temppp.atk = 25
+			table.insert( EquipData,temppp)
+			 tempppp = {}
+			tempppp.ID = "4"
+			tempppp.Name = "武器4"
+			tempppp.Info = "武器4介绍"
+			tempppp.atk = 35
+			table.insert( EquipData,tempppp)
+			 temppppp = {}
+			temppppp.ID = "5"
+			temppppp.Name = "武器5"
+			temppppp.Info = "武器5介绍"
+			temppppp.atk = 45
+			table.insert( EquipData,temppppp)
+
+			GameMainData.DemoPlayerModel:SetEquipData(EquipData)
+
+			GameMainData.Skill1 = "1"	
+			GameMainData.Skill2= "3"	
+			GameMainData.Skill3 = "5"	
+
+
+ 			print(GameMainData.DemoPlayerModel:GetEquipData())
+ end 
+
+ 
+ function UITable:ButtonClickHandler(btn) 
+   -- LuaTools.PlaySound("btnsound") 
+	 if  btn == self.buttonEnter then 
+
+	        print("click  buttonEnter") 
+		 	UI.OpenUI("DemoMain")
+		    self:Close()
+	end
+end
+
+ 
+ 
+ 
+function UITable:GetServerList(callback)
+	RpcServerSelect.Create(function (rpc)
+		callback(rpc.listServer)
+	end):Send()
+end
+
+
+require("Net/NetRegisterOrLogin")
+require("Net/NetEnterGame2")
+require("Net/NetEnterGame")
+
+
+
+
+--注册账号------------------------
+require('StaticData/ConfigData/ConfigAccount')   
+local nowSerial = 1
+ function UITable:registerAccount() 
+	 if ConfigAccount.getVarByCustom("serial",tostring(nowSerial)).account == nil  then
+		Public.warning("账号注册完毕")
+		 return 
+	 end
+ 	 local warnInfo= self.namePage	
+ 	  local tween=  warnInfo:GetComponent("RectTransform"):DOAnchorPos(CS.UnityEngine.Vector2(0,0), 3):OnComplete(
+		 function ()
+			Net.SetAccount("IOS:q1:"..ConfigAccount.getVarByCustom("serial",tostring(nowSerial)).account) 
+			NetEnterGame.Create( function(rpc)
+				nowSerial = nowSerial +1
+				UITable:registerAccount() 
+			  end):Send()
+		   end
+		 )	 
+end
+
+-- require("Net/NetGetBigMapInIt")   
+-- require("Net/NetGetScrollInit")   
+-- require("Net/NetGetGamePetInIt")   
+-- require("Net/NetGetWuGongSoulInit")   
+-- require("Net/NetGetPublicMsgInit")   
+  require("Net/NetClientInItData")   
+
+function UITable:InitPreData(rpc)
+	 
+	self.isNewPlayer = rpc.data.isNewPlayer
+	local boxRpc = {}
+	
+	table.insert(boxRpc,NetClientInItData.Create()) 
+
+		-- table.insert(boxRpc,NetGetBigMapInIt.Create()) 
+		-- table.insert(boxRpc,NetGetPackageInit.Create()) 
+		-- table.insert(boxRpc,NetGetHeroInit.Create()) 
+		-- table.insert(boxRpc,NetGetHeroSoulInit.Create()) 
+		-- table.insert(boxRpc,NetGetEquipInit.Create()) 
+		-- table.insert(boxRpc,NetGetEquipSoulInit.Create()) 
+		-- table.insert(boxRpc,NetGetWuGongInit.Create()) 
+		-- table.insert(boxRpc,NetGetWuGongSoulInit.Create()) 
+		-- table.insert(boxRpc,NetGetGamePetInIt.Create()) 
+		-- table.insert(boxRpc,NetGetBattleArrayInit.Create()) 
+		-- table.insert(boxRpc,NetGetSunBattleInit.Create())   
+		-- table.insert(boxRpc,NetGetScrollInit.Create())   
+		-- table.insert(boxRpc,NetGetPublicMsgInit.Create()) 
+ 
+
+  self:DoSendRpc(boxRpc,function ()	self:LoginSuccuss() end,function ()	self:failCallback() end ) 
+end 
+
+
+function UITable.failCallback()	
+ 	 Public.warning("进入游戏失败，掌门请退出重试")
+end 
+
+function UITable:LoginSuccuss()	
+	
+  	if self.isNewPlayer or GameMainData.PlayerInfoModel:getNickName() == ""    then 
+  		self:Close() 
+
+ --	UI.OpenUI("mainui")
+		
+-- 		UI.OpenUI("makename")
+print("DemoEnter ***************************************************1121")
+ 	 UI.OpenUI("Beginning2")
+  else   
+ 	 --	UI.OpenUI("mainui") 
+--  	end  
+  --UI.OpenUI("JiangHu2") 
+--   UI.OpenUI("equip2") 
+
+	self:Close() 
+	UI.OpenUI("map")
+end 
+	
+end
+
+
+  function UITable:DoSendRpc(boxRpc,succussCallback,failCallback)
+	
+	if #boxRpc == 0 then
+		succussCallback()
+		return
+	end
+
+	local rpc = boxRpc[1]
+	table.remove(boxRpc,1)
+
+	local rpcCallback = rpc.callback
+	rpc.callback = function ()
+		-- print("发送请求返回一次")
+		if rpcCallback ~= nil then
+			rpcCallback(rpc)
+		end
+		self:DoSendRpc(boxRpc,succussCallback,failCallback)
+	end
+	rpc.ErrorHandler = function ()
+		failCallback()
+	end
+	-- print("发送请求一次")
+	rpc:Send()
+end

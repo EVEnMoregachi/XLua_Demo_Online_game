@@ -1,0 +1,14 @@
+NetGamePetRename = {}
+local net = require("Net/Base/NetGamePetRenameBase")
+net.__index = net
+
+function NetGamePetRename.Create(petId,newName,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(petId,newName,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end

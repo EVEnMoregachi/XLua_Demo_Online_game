@@ -1,0 +1,29 @@
+local NetSunBattleUnlockBase = {}
+
+--阳七星阵容槽解锁
+-- unlockId(int): 阳七星解锁位置id
+function NetSunBattleUnlockBase:Init(unlockId,callback)
+    self.data = {}
+	self.data.msgName = "SunBattleUnlock"
+
+	self.data.unlockId = unlockId
+	self.callback = callback
+
+    return self
+end
+
+function NetSunBattleUnlockBase:Send()
+    Net.Send(self)
+end
+
+function NetSunBattleUnlockBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetSunBattleUnlockBase
+

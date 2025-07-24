@@ -1,0 +1,242 @@
+local backpackView = {} 
+setmetatable(backpackView, {__index=UIBase})
+
+function backpackView:Create()
+    self.name = "backpack"
+	self.path = "backpack"
+	
+end  
+backpackView.saveButton ={}
+backpackView.saveList ={}
+
+function backpackView:Init()  
+
+	 backpackView.closeB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.closeB) end)  
+	 backpackView.yuanbaoAddB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.yuanbaoAddB) end)  
+	 backpackView.silverAddB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.silverAddB) end)  
+	 backpackView.goldLeafAddB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.goldLeafAddB) end)  
+	 backpackView.propB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.propB) end)  
+  	 backpackView.equipB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.equipB) end)  
+	 backpackView.wugongB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.wugongB) end)  
+	 backpackView.equipChipB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.equipChipB) end)  
+	 backpackView.wuGongChip.onClick:AddListener(function() self:ButtonClickHandler(backpackView.wuGongChip) end)  
+
+	 backpackView.shaderPage.onClick:AddListener(function() self:ButtonClickHandler(backpackView.shaderPage) end)  
+	 backpackView.falseB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.falseB) end) 
+	 backpackView.trueB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.trueB) end) 
+ 	 backpackView.zdB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.zdB) end) 
+	 backpackView.jiaB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.jiaB) end) 
+	 backpackView.jianB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.jianB) end)  
+	 backpackView.closeResolve.onClick:AddListener(function() self:ButtonClickHandler(backpackView.closeResolve) end)  
+	 backpackView.resolveShader.onClick:AddListener(function() self:ButtonClickHandler(backpackView.resolveShader) end)  
+	 backpackView.resoleTrueB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.resoleTrueB) end)   
+	backpackView.wugongB2.onClick:AddListener(function() self:ButtonClickHandler(backpackView.wugongB2) end)  
+	backpackView.equipB2.onClick:AddListener(function() self:ButtonClickHandler(backpackView.equipB2) end)  
+	backpackView.scrollB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.scrollB) end)  
+ 	backpackView.heroDetailB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.heroDetailB) end)  
+	  	backpackView.heroDetB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.heroDetailB) end)  
+
+	backpackView.materB.onClick:AddListener(function() self:ButtonClickHandler(backpackView.materB) end)  
+
+	
+	 backpackView.huangbuttondi =  self.propBObj:GetComponent("Image").sprite    
+	 backpackView.huibuttondi =   self.equipBObj:GetComponent("Image").sprite       
+	 backpackView.select =  self.equipB2Obj:GetComponent("Image").sprite      
+	 backpackView.unselect =   self.equipChipBObj:GetComponent("Image").sprite      
+	 
+	 backpackView.herohead = Public.ResMeg.GetPrefabPath("herohead","backpack")       --弟子头像预制体 
+	 backpackView.det_buttonPrefab = Public.ResMeg.GetPrefabPath("det_button","backpack")  --详情按钮预制体
+
+	 backpackView.resolveText = Public.ResMeg.GetPrefabPath("resolveText","backpack")   
+
+	  
+end
+
+function backpackView:SetUICompent(child)
+  -- -- print("backpackView.SetUICompent =============================== " ,child.name )
+	 if child.name == "propList" then   --道具
+		backpackView.propList = child:GetComponent("AntVertialScroll") 
+		backpackView.propListObj = child.gameObject   
+		backpackView.saveList[1] =  backpackView.propListObj
+	 elseif child.name == "equipList" then   --装备
+		backpackView.equipList = child:GetComponent("AntVertialScroll") 
+		backpackView.equipListObj = child.gameObject  
+		backpackView.saveList[2] =  backpackView.equipListObj 	
+	elseif child.name == "bookList" then   --武功
+		backpackView.bookList = child:GetComponent("AntVertialScroll") 
+		backpackView.bookListObj = child.gameObject   
+		backpackView.saveList[3] =  backpackView.bookListObj
+	elseif child.name == "equipChipList" then   --装备碎片
+		backpackView.equipChipList = child:GetComponent("AntVertialScroll") 
+		backpackView.equipChipListObj = child.gameObject  
+  	elseif child.name == "wuGongChipList" then   --武功残叶 
+		backpackView.wuGongChipList = child:GetComponent("AntVertialScroll") 
+		backpackView.wuGongChipListObj = child.gameObject
+  	elseif child.name == "scrollList" then   --卷轴 
+		backpackView.scrollList = child:GetComponent("AntVertialScroll") 
+		backpackView.scrollListObj = child.gameObject
+		backpackView.saveList[4] =  backpackView.scrollListObj   
+	elseif child.name == "materList" then   --卷轴 
+		backpackView.materList = child:GetComponent("AntVertialScroll") 
+		backpackView.materListObj = child.gameObject
+		backpackView.saveList[5] =  backpackView.materListObj   
+	elseif child.name == "closeB" then     --关闭
+		backpackView.closeB = child:GetComponent("Button")  
+	elseif child.name == "yuanbaoAddB" then  --元宝增加按钮
+		backpackView.yuanbaoAddB = child:GetComponent("Button")  
+	elseif child.name == "yuanbaoNum" then    --元宝数量
+		backpackView.yuanbaoNum = child:GetComponent("Text")  
+	elseif child.name == "silverAddB" then  --银两增加按钮
+		backpackView.silverAddB = child:GetComponent("Button") 
+	elseif child.name == "silverNum" then  --银两数量
+		backpackView.silverNum = child:GetComponent("Text") 
+	elseif child.name == "goldLeafAddB" then  --金叶子增加按钮 
+		backpackView.goldLeafAddB = child:GetComponent("Button") 
+	elseif child.name == "goldLeafNum" then  --金叶子数量
+		backpackView.goldLeafNum = child:GetComponent("Text") 
+	elseif child.name == "heroContent" then  --生成弟子头像位置
+		backpackView.heroContent = child.gameObject    
+	elseif child.name == "heroPos" then  --弟子图片位置
+		backpackView.heroPos = child.gameObject
+	elseif child.name == "heroName" then  --弟子名字
+		backpackView.heroName = child:GetComponent("Text")   
+	elseif child.name == "heroQuality" then  --弟子品质
+		backpackView.heroQuality = child:GetComponent("Image") 
+	elseif child.name == "level" then  --弟子等级
+		backpackView.level = child:GetComponent("Text")   
+	elseif child.name == "tupoNum" then  --弟子突破数
+		backpackView.tupoNum = child:GetComponent("Text")   
+	elseif child.name == "expjindu" then  --经验条进度
+		backpackView.expjindu = child:GetComponent("Image")  
+	elseif child.name == "expnum" then  --经验值
+		backpackView.expnum = child:GetComponent("Text")  
+	elseif child.name == "atkValue" then  --atk
+		backpackView.atkValue = child:GetComponent("Text")  
+	elseif child.name == "defValue" then  --def
+		backpackView.defValue = child:GetComponent("Text")  
+	elseif child.name == "hpValue" then  --hp
+		backpackView.hpValue = child:GetComponent("Text")  
+	elseif child.name == "manaValue" then  --mana
+		backpackView.manaValue = child:GetComponent("Text")    
+	elseif child.name == "yuanfenShow" then  --缘分显示
+		backpackView.yuanfenShow = child:GetComponent("Text")  
+	elseif child.name == "heroDetailB" then  --弟子详情按钮
+ 		backpackView.heroDetailB = child:GetComponent("Button")   
+	elseif child.name == "heroDetB" then  --弟子详情按钮
+ 		backpackView.heroDetB = child:GetComponent("Button")   
+		 
+	elseif child.name == "weapon" then  --武器
+		backpackView.weapon = child.gameObject   
+	elseif child.name == "armor" then  --服饰
+		backpackView.armor = child.gameObject   
+	elseif child.name == "decorations" then  --饰品
+		backpackView.decorations = child.gameObject   
+	elseif child.name == "wand" then  --令牌
+		backpackView.wand = child.gameObject   
+	elseif child.name == "gossip" then  --八卦
+		backpackView.gossip = child.gameObject   
+	elseif child.name == "wugong1" then  --武功1
+		backpackView.wugong1 = child.gameObject   
+	elseif child.name == "wugong2" then  --武功2
+		backpackView.wugong2 = child.gameObject   
+	elseif child.name == "wugong3" then  --武功3
+		backpackView.wugong3 = child.gameObject   
+	elseif child.name == "tianfuwugong" then  --天赋武功 
+		backpackView.tianfuwugong = child.gameObject   
+	elseif child.name == "zhenqi" then  --真气
+		backpackView.zhenqi = child.gameObject   
+	elseif child.name == "propB" then  --道具按钮
+		backpackView.propBObj = child.gameObject 
+		backpackView.propB = child:GetComponent("Button") 
+		backpackView.saveButton[1] = backpackView.propBObj
+ 	elseif child.name == "equipB" then  --装备按钮
+		backpackView.equipBObj = child.gameObject 
+		backpackView.equipB = child:GetComponent("Button") 
+		backpackView.saveButton[2] = backpackView.equipBObj
+ 	elseif child.name == "wugongB" then  --武功按钮 
+		backpackView.wugongBObj = child.gameObject 
+		backpackView.wugongB = child:GetComponent("Button")  
+		backpackView.saveButton[3] = backpackView.wugongBObj
+	elseif child.name == "wugongB2" then  --武功按钮 2
+		backpackView.wugongB2Obj = child.gameObject 
+		backpackView.wugongB2 = child:GetComponent("Button")  
+	elseif child.name == "wuGongChip" then  --武功残叶按钮 
+		backpackView.wuGongChipBObj = child.gameObject 
+		backpackView.wuGongChip = child:GetComponent("Button") 
+ 	elseif child.name == "equipB2" then  --装备按钮2
+		backpackView.equipB2Obj = child.gameObject 
+		backpackView.equipB2 = child:GetComponent("Button") 
+  	elseif child.name == "equipChipB" then  --装备碎片按钮 
+		backpackView.equipChipBObj = child.gameObject 
+		backpackView.equipChipB = child:GetComponent("Button")  
+ 	elseif child.name == "scrollB" then  --卷轴按钮 
+		backpackView.scrollBObj = child.gameObject 
+		backpackView.scrollB = child:GetComponent("Button") 
+		backpackView.saveButton[4] = backpackView.scrollBObj 
+	elseif child.name == "materB" then  --材料按钮 
+		backpackView.materBObj = child.gameObject 
+		backpackView.materB = child:GetComponent("Button") 
+		backpackView.saveButton[5] = backpackView.materBObj  
+ 	elseif child.name == "DetailPage" then  --详情页面 
+		backpackView.DetailPage = child.gameObject  
+ 	elseif child.name == "shaderPage" then  --遮罩 
+		backpackView.shaderPage = child:GetComponent("Button")  
+ 	elseif child.name == "det_picture" then  --详情图 
+ 		backpackView.det_picture = child:GetComponent("Image") 
+	elseif child.name == "det_name" then  --名字 
+		backpackView.det_name = child:GetComponent("Text")  
+ 	elseif child.name == "det_type" then  --类型 
+		backpackView.det_type = child:GetComponent("Text") 
+	elseif child.name == "det_info" then  --描述 
+		backpackView.det_info = child:GetComponent("Text")   
+ 	elseif child.name == "det_wearer" then  --已装备于
+		backpackView.det_wearer = child:GetComponent("Text")   
+		elseif child.name == "det_Lvorder" then  --显示等级和品阶
+		backpackView.det_Lvorder = child:GetComponent("Text")   
+ 	elseif child.name == "get_path" then  --获取途径
+		backpackView.get_path = child:GetComponent("Text")  
+	elseif child.name == "det_button" then  --按钮列表 
+		backpackView.det_button = child.gameObject    
+	elseif child.name == "btn_Content" then  --按钮生成位置 
+		backpackView.btn_Content = child.gameObject    
+	elseif child.name == "falseB" then    -- 选择使用道具“取消”
+		backpackView.falseB = child:GetComponent("Button")  
+	elseif child.name == "trueB" then    --  选择使用道具“确定”
+		backpackView.trueB = child:GetComponent("Button")  
+ 	elseif child.name == "title2" then    -- 选择使用道具“道具名显示”
+		backpackView.title2 = child:GetComponent("Text")  
+	elseif child.name == "numAll" then    -- 选择使用道具“总数量显示”
+		backpackView.numAll = child:GetComponent("Text")  
+	elseif child.name == "num" then    -- 选择使用道具“当前使用数量显示”
+		backpackView.num = child:GetComponent("Text")  
+	elseif child.name == "zdB" then    -- 选择使用道具“最大按钮”
+		backpackView.zdB = child:GetComponent("Button")  
+	elseif child.name == "jiaB" then    -- 选择使用道具“加按钮”
+		backpackView.jiaB = child:GetComponent("Button")  
+	elseif child.name == "jianB" then    -- 选择使用道具“减按钮”
+		backpackView.jianB = child:GetComponent("Button")  
+	elseif child.name == "useProp" then    -- 选择使用道具页面
+		backpackView.useProp = child.gameObject 
+	elseif child.name == "closeResolve" then    --  
+		backpackView.closeResolve = child:GetComponent("Button")  
+	elseif child.name == "resolve" then    -- 分解获得页面
+		backpackView.resolve = child.gameObject 
+	elseif child.name == "resolveShader" then    -- 分解获得遮罩
+		backpackView.resolveShader = child:GetComponent("Button")  
+	elseif child.name == "resoleTrueB" then    -- 分解获得确定按钮
+		backpackView.resoleTrueB = child:GetComponent("Button")  
+	 
+	elseif child.name == "trueResolvePage" then    -- 分解提示页面
+		backpackView.trueResolvePage = child.gameObject 
+	elseif child.name == "TrueBresole" then    -- 确定分解按钮
+		backpackView.TrueBresole = child:GetComponent("Button")  
+	elseif child.name == "resolveTip" then    -- 分解提示内容
+		backpackView.resolveTip = child:GetComponent("Text")  
+	 elseif child.name == "ContentPos" then     
+		backpackView.ContentPos = child.gameObject
+	 
+ 	end   
+end  
+
+return backpackView
+

@@ -1,0 +1,45 @@
+NetTavernDrink = {}
+local net = require("Net/Base/NetTavernDrinkBase")
+net.__index = net
+
+function NetTavernDrink.Create(drinkHero,drinkType,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(drinkHero,drinkType,callback)
+    return t
+end 
+
+function net:OnResult(v)
+     self.datav = v.value.data    
+    tavern.PTheroData = self.datav.commonDrinkHeroList
+    tavern.HDheroData = self.datav.activeDrinkHeroList 
+    tavern.NowDrinkHero = self.datav.tavernInIt.nowDrinkHero
+    tavern.DrinkActiveTime = self.datav.tavernInIt.drinkActiveTime
+    tavern.ShaodaoFreeNum = self.datav.tavernInIt.shaodaoFreeNum
+    tavern.NverhongFreeTime = self.datav.tavernInIt.nverhongFreeTime
+    tavern.BaicaoFreeTime = self.datav.tavernInIt.baicaoFreeTime 
+    tavern.NowDrinkHeroId = self.datav.tavernInIt.nowDrinkHeroId 
+    tavern.Favorability = self.datav.favorability
+    tavern.IsGet = self.datav.succeId
+
+ end
+ 
+ --获取普通弟子信息
+function NetTavernDrink.getHeroPTMsg(heroId)  
+    for i,v1 in ipairs(tavern.PTheroData) do  
+          if v1.heroId == heroId then
+           return v1 
+          end
+    end 
+    return nil
+end
+
+ --获取活动弟子信息
+ function NetTavernDrink.getHeroHDMsg(heroId)  
+    for i,v1 in ipairs(tavern.HDheroData) do  
+          if v1.heroId == heroId then
+           return v1 
+          end
+    end 
+    return nil
+end

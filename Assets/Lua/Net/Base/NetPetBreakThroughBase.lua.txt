@@ -1,0 +1,31 @@
+local NetPetBreakThroughBase = {}
+
+--宠物突破
+-- petId(string): 宠物id
+-- if_useSoulS(int): 突破是否优先使用甲级魂魄精华（0不优先，1优先）
+function NetPetBreakThroughBase:Init(petId,if_useSoulS,callback)
+    self.data = {}
+	self.data.msgName = "PetBreakThrough"
+
+	self.data.petId = petId
+	self.data.if_useSoulS = if_useSoulS
+	self.callback = callback
+
+    return self
+end
+
+function NetPetBreakThroughBase:Send()
+    Net.Send(self)
+end
+
+function NetPetBreakThroughBase:OnReceive(v)
+	-- body
+    self.responseData = v.value.data[self.data.msgName]
+    self:OnResult(v)
+    if self.callback ~= nil then
+        self.callback(self)
+    end
+end
+
+return NetPetBreakThroughBase
+

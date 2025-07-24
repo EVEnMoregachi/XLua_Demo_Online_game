@@ -1,0 +1,14 @@
+NetMingShanNewresult = {}
+local net = require("Net/Base/NetMingShanNewresultBase")
+net.__index = net
+
+function NetMingShanNewresult.Create(mingshanId,callback)
+    local t = {}
+	setmetatable(t, net)
+    t:Init(mingshanId,callback)
+    return t
+end 
+
+function net:OnResult(v)
+        
+end
