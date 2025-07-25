@@ -179,3 +179,5 @@ Desktop.ini
 
 # Windows shortcuts
 *.lnk
+
+*.meta

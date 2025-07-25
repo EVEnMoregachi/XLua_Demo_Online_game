@@ -9,7 +9,7 @@ function DemoEnter.Create()
     ui.layer = 1
     UI.LoadUI(ui) 
 	return ui
-
+	
 end
 
 

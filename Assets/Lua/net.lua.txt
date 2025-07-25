@@ -1,34 +1,62 @@
+---@class Net 网络模块核心类，处理所有网络通信相关功能
 Net = {}
 ---- print("load lua Net")
+
+---@type table<number, table> 存储网络请求回调的映射表，key为msgID
 local boxRpc = {}
+
+---@type number 请求索引计数器，用于生成唯一msgID
 local index = 0
+
+---@type number 当前未完成的网络请求数量
 local count = 0
 
+---@type number  socket重连定时器ID
 local socketReconnetTimer = 0
 
+---@type string 用户会话ID
 local session = ""
+
+---@type string 用户账号ID
 local account = ""
+
+---@type string 场景服务器地址
 local address = ""
+
+---@type string 登录服务器地址
 local loginAddress = ""
+
+---@type string 聊天服务器地址
 local chatAddress = ""
 
+---@type string PVP服务器地址
 local pvpAddress = "127.0.0.1"
+
+---@type string PVP服务器端口
 local pvpport = "10001"
 
+---获取PVP服务器地址
+---@return string PVP服务器地址
 function Net.GetAddress()
-	   
-	return pvpAddress
+    
+    return pvpAddress
 end
 
+---设置PVP服务器地址
+---@param v string 新的PVP服务器地址
 function Net.SetAddress(v)
 pvpAddress = v
-	address = "http://"..v.."/SceneServer"
+    address = "http://"..v.."/SceneServer"
 end
 
+---设置登录服务器地址
+---@param v string 登录服务器地址
 function Net.SetLoginAddress(v)
 	loginAddress = "http://"..v.."/LoginServer"
 end
 
+---设置用户会话ID
+---@param v string 用户会话标识
 function Net.SetSession(v)
 	session = v
 end
@@ -45,19 +73,28 @@ function Net.SetPvpAddress(v)
 	pvpAddress = v
 end
 
+---生成唯一请求ID
+---@return number 递增的请求ID
 local function GetIndex()
 	index = index+1
 	return index
 end
 
+---设置当前等待的请求数量
+---@param v number 新的请求计数
 local function SetCount(v)
 	count = v
 	UI.SetLoading(count > 0)
 end
+---网络请求回调处理函数
+---@param v string 原始JSON响应数据
 function callBack(v)
 -- print("callBack ******8  ",v)
 	Net.Receive(v)
 end
+
+---处理服务器响应数据
+---@param v string 原始JSON响应数据
 function Net.Receive(v)
 	SetCount(count-1)
 
@@ -103,12 +140,16 @@ function Net.Receive(v)
 	end
 end
 
+---为请求数据添加签名信息（账号、会话ID、请求ID）
+---@param data table 需要签名的请求数据表格
 function Net.SignData(data)
 	data.account = account
 	data.session = session
 	data.msgID = GetIndex()
 end
 
+---发送网络请求到登录服务器
+---@param rpc table 登录请求对象，包含请求数据和回调方法
 function Net.SendLogin(rpc) 
 	if loginAddress == "" then  
 		loginAddress =  "http://" .. "127.0.0.1" .."/LoginServer"  
@@ -130,6 +171,9 @@ function Net.SendTo(rpc,url)
 	SetCount(count+1)
 end
 
+---处理网络错误
+---@param error string 错误信息
+---@param sendData string 原始发送数据(JSON格式)
 function Net.Error(error,sendData)
 	local sendData = ToJsonTable(sendData)
 
@@ -153,6 +197,8 @@ function Net.ReceiveSocket(v)
 	GameMainData.ChatData:ReceiveMsg(rpcData)
 end
 
+---处理Socket连接状态变化
+---@param v number 连接状态码（1表示连接成功）
 function Net.SocketStateChanged(v)
 	if v == 1 then
 		
@@ -180,6 +226,8 @@ end
 
 
 
+---处理Socket错误
+---@param v string 错误信息
 function Net.SocketError(v)
 	if socketReconnetTimer == 0 then
 		socketReconnetTimer = LuaTimer.Add(10000,function (id)
@@ -189,11 +237,14 @@ function Net.SocketError(v)
 	end
 end
 
+---连接聊天服务器Socket
 function Net.SocketConnet()
 	local t = Split(chatAddress,":")
 	LuaTools.SocketConnet(t[1],tonumber(t[2]))
 end
 
+---发送Socket消息
+---@param msg table 要发送的消息对象
 function Net.SocketSend(msg)
 	if socketReconnetTimer ~= 0 then
 		LuaTimer.Delete(socketReconnetTimer)
@@ -206,11 +257,14 @@ function Net.SocketSend(msg)
 	LuaTools.SendMessage(ToJsonString(msg))
 end
 
+---处理PVP Socket消息
+---@param msg string 原始消息数据
 function Net.ReceivePvpSocket(msg)
 	local arrMsg = Split(msg,"|")
 	Event.Call("ReceivePvpSocket",arrMsg)
 end
 
+---连接PVP服务器Socket
 function Net.PvpSocketConnet()
 	local t = Split(pvpAddress,":")
 	LuaTools.PvpConnectSocket(t[1],tonumber(t[2]))
